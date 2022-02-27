@@ -15,13 +15,11 @@ const Navigation = () => {
     <span></span>
 
 
-
-
     <ul id="menu">
       <Link to="/"><li>INICIO</li></Link>
       <Link to="/"><li>RESTAURANTE</li></Link>
       <Link to="/"><li>CARTA/PEDIDOS</li></Link>
-      <Link to="/"><li>RESERVAS</li></Link>
+      <Link to="/reservas"><li>RESERVAS</li></Link>
       <Link to="/"><li>SOCIOS</li></Link>
       <Link to="/"><li>CONTACTO</li></Link>
 
