@@ -1,3 +1,17 @@
 @import "./colors.scss";
 @import "./fonts.scss";
-@import "../elements/button.scss"
+@import "../elements/button.scss";
+
+.mainDiv {
+    text-align: center;
+    margin: 85px auto 0 auto;
+  }
+  
+  .smallIcon{
+    width: 1rem;
+  }
+
+  .mediumIcon{
+      width: 35px;
+      height: 35px;
+  }
