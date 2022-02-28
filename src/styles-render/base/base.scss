@@ -1,17 +1,17 @@
 @import "./colors.scss";
 @import "./fonts.scss";
 @import "../elements/button.scss";
+@import "../elements/icons.scss";
+@import "../elements/titles.scss";
+
+
 
 .mainDiv {
     text-align: center;
-    margin: 85px auto 0 auto;
-  }
-  
-  .smallIcon{
-    width: 1rem;
-  }
-
-  .mediumIcon{
-      width: 35px;
-      height: 35px;
+    margin: 63px auto 0 auto;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: space-between;
   }

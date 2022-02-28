@@ -11,7 +11,7 @@ const Reservas = React.lazy(() => import("../../pages/clientes/Reservas/Reservas
 
 const Main = () => {
   return (
-    <div>
+    <div className="mainDiv">
       <main>
 
         <Routes>
