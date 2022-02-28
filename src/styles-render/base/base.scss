@@ -3,6 +3,8 @@
 @import "../elements/button.scss";
 @import "../elements/icons.scss";
 @import "../elements/titles.scss";
+@import "../elements/input.scss";
+
 
 
 
@@ -15,3 +17,9 @@
     flex-direction: column;
     justify-items: space-between;
   }
+
+// Para poner en elemento separador veritcal de 25px.
+  .vspace {
+    margin: 25px;
+  }
+  

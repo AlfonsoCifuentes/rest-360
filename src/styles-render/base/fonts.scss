@@ -1,3 +1,8 @@
-$firstFont:  Mitr, sans-serif;
+$firstFont: Mitr, sans-serif;
 $secondFont: Comfortaa, sans-serif;
 $titleFont: MitrLight, sans-serif;
+
+
+* {
+  font-family: $secondFont;
+}
