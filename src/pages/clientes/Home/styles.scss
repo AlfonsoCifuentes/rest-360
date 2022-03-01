@@ -17,11 +17,7 @@
         margin: 0 auto;
         padding-top: 0.5rem;
     }
-    &__buttons{
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 3rem;
-    }
+
 }
 
 .homeDown{
@@ -33,9 +29,5 @@
     justify-content: space-between;
     padding: 0.5rem 2rem;
     font-family: Comfortaa, sans-serif;;
-    &__buttons{
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 3rem;
-    }
+
 }

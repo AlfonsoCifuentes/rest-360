@@ -14,7 +14,7 @@ const Home = () => {
           
           
         </div>
-        <div className="homeUp__buttons">
+        <div className="buttonsDiv">
           <button className="translucidButton">Restaurante</button>
           <button className="translucidButton">Reservas</button>
         </div>
@@ -28,7 +28,7 @@ const Home = () => {
             excelencias.
           </p>
         </div>
-        <div  className="homeDown__buttons">
+        <div  className="buttonsDiv">
           <button className="standardButton">Carta / Pedidos</button>
           <button className="standardButton">Regalar</button>
         </div>

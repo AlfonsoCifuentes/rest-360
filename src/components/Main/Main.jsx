@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 
 const Home = React.lazy(() => import("../../pages/clientes/Home/Home"));
 const Reservas = React.lazy(() => import("../../pages/clientes/Reservas/Reservas"));
+const Restaurante = React.lazy(() => import("../../pages/clientes/Restaurante/Restaurante"))
 
 
 const Main = () => {
@@ -20,6 +21,14 @@ const Main = () => {
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <Home />
+              </React.Suspense>
+            }
+          />
+                    <Route
+            path="/restaurante"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <Restaurante />
               </React.Suspense>
             }
           />
