@@ -2,8 +2,8 @@
     background-image: url(../../../images/photos/rest360_seccion_restaurante.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 25vh;
-    margin-top: -3rem;
+    height: 20vh;
+    margin-top: -4rem;
     background-position: center;
 }
 
@@ -14,4 +14,18 @@
     align-self: center;
     width: 90%;
     
+}
+
+.roundDiv{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.753);
+
+}
+
+.roundImage{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
 }

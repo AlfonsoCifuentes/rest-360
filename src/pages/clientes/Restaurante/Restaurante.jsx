@@ -22,7 +22,17 @@ const Restaurante = () => {
           para envío a domicilio.
         </p>
       </div>
-      <div className="dishGallery"></div>
+      <div className="dishGallery">
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/pulpo.jpg")} alt="Foto de nuestros platos"/> </div>
+        <div className="roundDiv"></div>
+        <div className="roundDiv"></div>
+        <div className="roundDiv"></div>
+        <div className="roundDiv"></div>
+        <div className="roundDiv"></div>
+        <div className="roundDiv"></div>
+        <div className="roundDiv"></div>
+        <div className="roundDiv"></div>
+      </div>
       <div className="buttonsDiv">
           <button className="standardButton">Reservas</button>
           <button className="standardButton">Carta/Pedidos</button>
