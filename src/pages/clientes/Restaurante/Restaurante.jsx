@@ -23,15 +23,15 @@ const Restaurante = () => {
         </p>
       </div>
       <div className="dishGallery">
-        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/pulpo.jpg")} alt="Foto de nuestros platos"/> </div>
-        <div className="roundDiv"></div>
-        <div className="roundDiv"></div>
-        <div className="roundDiv"></div>
-        <div className="roundDiv"></div>
-        <div className="roundDiv"></div>
-        <div className="roundDiv"></div>
-        <div className="roundDiv"></div>
-        <div className="roundDiv"></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/pulpo Cropped.jpg")} alt="Foto de nuestros platos"/></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/croquetas Cropped.jpg")} alt="Foto de nuestros platos"/></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/carneasada Cropped.jpg")} alt="Foto de nuestros platos"/></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/postresofisticado Cropped.jpg")} alt="Foto de nuestros platos"/></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/ensaladatropical Cropped.jpg")} alt="Foto de nuestros platos"/></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/cangrejaco Cropped.jpg")} alt="Foto de nuestros platos"/></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/verdurabrasa.jpg")} alt="Foto de nuestros platos"/></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/plato2 Cropped.jpg")} alt="Foto de nuestros platos"/></div>
+        <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/ensaladaconnachos Cropped.jpg")} alt="Foto de nuestros platos"/></div>
       </div>
       <div className="buttonsDiv">
           <button className="standardButton">Reservas</button>
