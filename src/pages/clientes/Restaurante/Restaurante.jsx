@@ -26,9 +26,9 @@ const Restaurante = () => {
           excelencias.
         </p>
         <p>
-          Con nuestra carta digital de pedidos, puede realizar un pedido para
-          su mesa. un pedido para recoger en nuestro restaurante o un pedido
-          para envío a domicilio.
+          Con nuestra carta digital de pedidos, puede realizar un <strong>pedido para
+          su mesa</strong>, un pedido <strong>para recoger</strong> en nuestro restaurante o un pedido
+          para <strong>envío a domicilio.</strong>
         </p>
       </div>
       <div className="dishGallery">

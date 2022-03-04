@@ -18,7 +18,7 @@ const Navigation = () => {
     <ul id="menu">
       <Link to="/"><li>INICIO</li></Link>
       <Link to="/restaurante"><li>RESTAURANTE</li></Link>
-      <Link to="/"><li>CARTA/PEDIDOS</li></Link>
+      <Link to="/carta-pedidos"><li>CARTA/PEDIDOS</li></Link>
       <Link to="/reservas"><li>RESERVAS</li></Link>
       <Link to="/"><li>SOCIOS</li></Link>
       <Link to="/"><li>CONTACTO</li></Link>

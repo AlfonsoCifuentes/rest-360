@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 const Home = React.lazy(() => import("../../pages/clientes/Home/Home"));
 const Reservas = React.lazy(() => import("../../pages/clientes/Reservas/Reservas"));
 const Restaurante = React.lazy(() => import("../../pages/clientes/Restaurante/Restaurante"))
+const CartaPedidos = React.lazy(() => import("../../pages/clientes/CartaPedidos/CartaPedidos"))
 
 
 const Main = () => {
@@ -37,6 +38,15 @@ const Main = () => {
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <Reservas
+                 />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path="/carta-pedidos"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <CartaPedidos
                  />
               </React.Suspense>
             }
