@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import StandardHeader from "src/components/StandardHeader/StandardHeader";
 
 import "./Reservas.scss";
 
@@ -17,6 +18,11 @@ const INITIAL_STATE = {
 };
 
 const Reservas = () => {
+
+  //Props para el componente de header genérico: StandardHeader
+  const bgImage = "https://images2.imgbox.com/d4/be/6FUoKJPx_o.jpg";
+
+
   const [state, setState] = useState(INITIAL_STATE);
   const [envioForm, setEnvioForm] = useState(false);
 
@@ -90,8 +96,10 @@ const Reservas = () => {
 
   if (!envioForm) {
     return (
-      <div className="divForm">
-        <h1>Reservas</h1>
+      <div className="mainDiv">
+      <StandardHeader bgImage={bgImage}/>
+          <div className="divForm">
+        <h1 className="title">Reservas</h1>
 
         {/* <button
         className="btnreservas"
@@ -342,11 +350,15 @@ const Reservas = () => {
           </div>
         </form>
       </div>
+      </div>
+      
     );
   } else {
     return (
-      <div className="divForm">
-        <h1>Reservas</h1>
+      <div className="mainDiv">
+      <StandardHeader bgImage={bgImage}/>
+              <div className="divForm">
+        <h1 className="title">Reservas</h1>
         <div className="confirmation">
           <img
             className="bigIcon"
@@ -365,6 +377,8 @@ const Reservas = () => {
           ¡Te esperamos!
         </div>
       </div>
+      </div>
+
     );
   }
 };

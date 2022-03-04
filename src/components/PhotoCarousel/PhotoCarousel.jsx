@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
+import "./styles.scss"
 
 const PhotoCarousel = () => {
   return (

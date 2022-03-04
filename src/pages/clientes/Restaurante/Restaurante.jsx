@@ -3,15 +3,18 @@ import PhotoCarousel from "../../../components/PhotoCarousel/PhotoCarousel";
 import StandardHeader from "../../../components/StandardHeader/StandardHeader";
 import "./styles.scss";
 
+
+
 const Restaurante = () => {
 
-  const bgImage = "../../images/photos/rest360_seccion_restaurante.jpg";
 
-  //<div className="photoHeader"></div>
+  //Props para el componente de header genérico: StandardHeader
+  const bgImage = "https://images2.imgbox.com/a0/dd/L5y1hFtA_o.jpg";
+
 
   return (
     <div className="mainDiv">
-      <StandardHeader bgImage={bgImage} />
+      <StandardHeader bgImage={bgImage}/>
       <h1 className="title">Restaurante</h1>
       <div className="carousel">
           <PhotoCarousel />
