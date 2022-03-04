@@ -1,4 +1,5 @@
 import React from 'react'
+import Acordeon from 'src/components/Accordion/Acordeon';
 import StandardHeader from 'src/components/StandardHeader/StandardHeader';
 
 const CartaPedidos = () => {
@@ -22,6 +23,7 @@ const CartaPedidos = () => {
           para <strong>envío a domicilio.</strong>
         </p>
       </div>
+      <Acordeon />
     </div>
   )
 }
