@@ -9,6 +9,7 @@ const Home = React.lazy(() => import("../../pages/clientes/Home/Home"));
 const Reservas = React.lazy(() => import("../../pages/clientes/Reservas/Reservas"));
 const Restaurante = React.lazy(() => import("../../pages/clientes/Restaurante/Restaurante"))
 const CartaPedidos = React.lazy(() => import("../../pages/clientes/CartaPedidos/CartaPedidos"))
+const CompraRegistro = React.lazy(() => import("../../pages/clientes/CompraRegistro/CompraRegistro"));
 
 
 const Main = () => {
@@ -48,6 +49,19 @@ const Main = () => {
               <React.Suspense fallback={<>Loading ...</>}>
                 <CartaPedidos
                  />
+              </React.Suspense>
+            }
+          />
+
+        {/*************************
+        Paginas sin link en el menú  
+        ***************************/}
+
+        <Route
+            path="/compraregistro"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <CompraRegistro />
               </React.Suspense>
             }
           />
