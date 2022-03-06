@@ -11,7 +11,6 @@ const Restaurante = () => {
   //Props para el componente de header genérico: StandardHeader
   const bgImage = "https://images2.imgbox.com/a0/dd/L5y1hFtA_o.jpg";
 
-
   return (
     <div className="mainDiv">
       <StandardHeader bgImage={bgImage}/>
