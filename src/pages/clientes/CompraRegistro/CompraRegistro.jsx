@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import StandardHeader from "src/components/StandardHeader/StandardHeader";
 
 const INITIAL_STATE = {
   order: "001",
@@ -9,12 +10,15 @@ const INITIAL_STATE = {
 };
 
 const CompraRegistro = () => {
+  //Props para el componente de header genérico: StandardHeader
+  const bgImage = "https://images2.imgbox.com/d4/be/6FUoKJPx_o.jpg";
+
   const [order, setOrder] = useState(INITIAL_STATE);
   const [mesa, setMesa] = useState(false);
   const [socio, setSocio] = useState(false);
   const [orderForm, setOrderForm] = useState(false);
 
-  const userInput = useRef(null)
+  const userInput = useRef(null);
 
   const submitFormMesa = (ev) => {
     ev.preventDefault();
@@ -32,7 +36,9 @@ const CompraRegistro = () => {
     // forzamos un error cuando es GGG.
     if (order.user === "GGG") {
       //Error
-      alert("El usuario la contraseña no con correctas o no está registrado como socio.")
+      alert(
+        "El usuario la contraseña no con correctas o no está registrado como socio."
+      );
       userInput.current.focus();
     } else {
       // Para validar que es Socio.
@@ -90,30 +96,34 @@ const CompraRegistro = () => {
       if (!mesa) {
         // Preguntamos si esta el campo table. Y si no lo está, lo pedimos.
         return (
-          <div className="divForm">
-            <h1>Su pedido</h1>
+          <div className="mainDiv">
+            <StandardHeader bgImage={bgImage} />
 
-            <form onSubmit={submitFormMesa}>
-              <h3>Mesa del restaurante</h3>
-              <p>Introduzca el código de su mesa:</p>
+            <div className="divForm">
+              <h1>Su pedido</h1>
 
-              <div className="gridForm">
-                <label>
-                  <input
-                    type="text"
-                    name="table"
-                    value={order.table}
-                    onChange={handleInput}
-                    placeholder="Cógido de su mesa *"
-                  />
-                </label>
-                <div>
-                  <button className="standardButton" type="submit">
-                    Siguente
-                  </button>
+              <form onSubmit={submitFormMesa}>
+                <h3>Mesa del restaurante</h3>
+                <p>Introduzca el código de su mesa:</p>
+
+                <div className="gridForm">
+                  <label>
+                    <input
+                      type="text"
+                      name="table"
+                      value={order.table}
+                      onChange={handleInput}
+                      placeholder="Cógido de su mesa *"
+                    />
+                  </label>
+                  <div>
+                    <button className="standardButton" type="submit">
+                      Siguente
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         );
       } else {
@@ -134,7 +144,7 @@ const CompraRegistro = () => {
                     value={order.user}
                     onChange={handleInput}
                     placeholder="Usuario *"
-                    ref={userInput} 
+                    ref={userInput}
                   />
                 </label>
                 <label>
@@ -173,16 +183,18 @@ const CompraRegistro = () => {
     } else {
       // Tenemos todo el pedido completado.
       return (
-        <div className="divForm">
-          <h1>Su pedido</h1>
-          <div className="confirmation">
-            <img
-              className="confirmationIcon"
-              src={require("../../../images/icons/RoundedTickIcon.png")}
-              alt="Facebook logo"
-            />
-            <div className="vSpace" />
-            <p>Tu pedido está completado.</p>
+        <div className="mainDiv">
+          <div className="divForm">
+            <h1>Su pedido</h1>
+            <div className="confirmation">
+              <img
+                className="confirmationIcon"
+                src={require("../../../images/icons/RoundedTickIcon.png")}
+                alt="Facebook logo"
+              />
+              <div className="vSpace" />
+              <p>Tu pedido está completado.</p>
+            </div>
           </div>
         </div>
       );
