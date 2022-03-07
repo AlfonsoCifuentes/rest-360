@@ -35,21 +35,21 @@ const Footer = () => {
       <div className="footer__yellow">
         <div className="footer__yellow__up">
           <div className="footer__yellow__up__icons">
-            <a href="https://es-es.facebook.com/" target="blank">
+            <a href="https://es-es.facebook.com/" target="_blank" rel="noreferrer">
               <img
                 className="footer__yellow__up__icons--icon"
                 src={require("../../images/icons/FacebookIcon.png")}
                 alt="Facebook logo"
               />
             </a>
-            <a href="https://www.whatsapp.com/?lang=es" target="blank">
+            <a href="https://www.whatsapp.com/?lang=es" target="_blank" rel="noreferrer">
               <img
                 className="footer__yellow__up__icons--icon"
                 src={require("../../images/icons/WhastsappIcon.png")}
                 alt="Whatsapp logo"
               />
             </a>
-            <a href="https://www.instagram.com/?hl=es" target="blank">
+            <a href="https://www.instagram.com/?hl=es" target="_blank" rel="noreferrer">
               <img
                 className="footer__yellow__up__icons--icon"
                 src={require("../../images/icons/InstagramIcon.png")}
@@ -67,9 +67,15 @@ const Footer = () => {
             </Link>
           </div>
           <div className="footer__yellow__up__text">
-            <p>Aviso legal</p>
-            <p>Política de privacidad</p>
-            <p>Política de cookies</p>
+            <Link to="/avisolegal">
+              <p>Aviso legal</p>
+            </Link>
+            <Link to="/politicaprivacidad">
+              <p>Política de privacidad</p>
+            </Link>
+            <Link to="/politicacookies">
+              <p>Política de cookies</p>
+            </Link>
           </div>
         </div>
 

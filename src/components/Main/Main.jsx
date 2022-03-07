@@ -1,7 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AvisoLegal from "src/pages/clientes/AvisoLegal/AvisoLegal";
 import DondeEstamos from "src/pages/clientes/DondeEstamos/DondeEstamos";
 import Horarios from "src/pages/clientes/Horarios/Horarios";
+import PoliticaCookies from "src/pages/clientes/PoliticaCookies/PoliticaCookies";
+import PoliticaPrivacidad from "src/pages/clientes/PoliticaPrivacidad/PoliticaPrivacidad";
 
 const Home = React.lazy(() => import("../../pages/clientes/Home/Home"));
 const Reservas = React.lazy(() =>
@@ -114,6 +117,30 @@ const Main = () => {
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <Horarios />
+              </React.Suspense>
+            }
+          />
+                    <Route
+            path="/avisolegal"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <AvisoLegal />
+              </React.Suspense>
+            }
+          />
+                    <Route
+            path="/politicacookies"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <PoliticaCookies />
+              </React.Suspense>
+            }
+          />
+                    <Route
+            path="/politicaprivacidad"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <PoliticaPrivacidad />
               </React.Suspense>
             }
           />
