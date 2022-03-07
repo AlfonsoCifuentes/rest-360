@@ -22,7 +22,6 @@ const CartaPedidos = () => {
  
 
   //
-
   useEffect(() => {
     fetch("http://localhost:3001/vga/articles")
     .then ((response) => response.json())
