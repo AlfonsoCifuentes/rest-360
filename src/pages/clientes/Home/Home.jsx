@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.scss"
-
+import { Link } from "react-router-dom";
+import "./styles.scss";
 
 const Home = () => {
   return (
@@ -9,14 +9,18 @@ const Home = () => {
         <div>
           <h1 className="title">Bienvenidos</h1>
           <div className="homeUp__subtitle">
-             <h3 className="subtitle">COCINA CREATIVA Y DE AUTOR</h3>
+            <h3 className="subtitle">COCINA CREATIVA Y DE AUTOR</h3>
           </div>
-          
-          
         </div>
+
         <div className="buttonsDiv">
-          <button className="translucidButton">Restaurante</button>
-          <button className="translucidButton">Reservas</button>
+          <Link to="/restaurante">
+            <button className="translucidButton">Restaurante</button>
+          </Link>
+
+          <Link to="/reservas">
+            <button className="translucidButton">Reservas</button>
+          </Link>
         </div>
       </div>
 
@@ -28,9 +32,13 @@ const Home = () => {
             excelencias.
           </p>
         </div>
-        <div  className="buttonsDiv">
-          <button className="standardButton">Carta / Pedidos</button>
-          <button className="standardButton">Regalar</button>
+        <div className="buttonsDiv">
+          <Link to="/carta-pedidos">
+            <button className="standardButton">Carta / Pedidos</button>
+          </Link>
+          <Link to="/regalar">
+            <button className="standardButton">Regalar</button>
+          </Link>
         </div>
       </div>
     </div>

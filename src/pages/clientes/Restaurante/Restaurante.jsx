@@ -1,6 +1,7 @@
 import React from "react";
 import PhotoCarousel from "../../../components/PhotoCarousel/PhotoCarousel";
 import StandardHeader from "../../../components/StandardHeader/StandardHeader";
+import { Link } from 'react-router-dom';
 import "./styles.scss";
 
 
@@ -42,9 +43,12 @@ const Restaurante = () => {
         <div className="roundDiv"><img className="roundImage" src={require ("../../../images/photos/ensaladaconnachos Cropped.jpg")} alt="Foto de nuestros platos"/></div>
       </div>
       <div className="buttonsDiv">
-          <button className="standardButton">Reservas</button>
-          <button className="standardButton">Carta/Pedidos</button>
-          <button className="standardButton">Regalar</button>
+      <Link to="/reservas">
+          <button className="standardButton">Reservas</button></Link>
+          <Link to="/carta-pedidos">
+          <button className="standardButton">Carta/Pedidos</button></Link>
+          <Link to="/regalar">
+          <button className="standardButton">Regalar</button></Link>
       </div>
     </div>
   );
