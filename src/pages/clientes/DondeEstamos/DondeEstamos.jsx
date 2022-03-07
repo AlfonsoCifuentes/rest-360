@@ -1,6 +1,7 @@
 import React from "react";
 import StandardHeader from "../../../components/StandardHeader/StandardHeader";
 
+
 const DondeEstamos = () => {
   //Props para el componente de header genérico: StandardHeader
   const bgImage = "https://images2.imgbox.com/a0/dd/L5y1hFtA_o.jpg";
