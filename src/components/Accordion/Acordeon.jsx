@@ -36,10 +36,35 @@ const Acordeon = (props) => {
         <div></div>
       ) : (
         <div className="deployedDiv">
-        {JSONresponse.map ((item, i) => (
-          <MenuItem product={item} key={item}/>
-        ))}
-  
+          {JSONresponse.map((item, i) => (
+            <MenuItem
+              product={item.name}
+              key={item.id}
+              idArticle={item.idArticle}
+              type={item.type}
+              image={item.image}
+              timeCook={item.timeCook}
+              cost={item.cost}
+              iva={item.iva}
+              pvp={item.pvp}
+              active={item.active}
+              gluten={item.gluten}
+              egg={item.egg}
+              fish={item.fish}
+              soja={item.soja}
+              milk={item.milk}
+              fructose={item.fructose}
+              mustard={item.mustard}
+              apio={item.apio}
+              molusco={item.molusco}
+              altramuces={item.altramuces}
+              sesamo={item.sesamo}
+              sulfito={item.sulfito}
+              cacahuete={item.cacahuete}
+              createdAt={item.createdAt}
+              updatedAt={item.updatedAt}
+            />
+          ))}
         </div>
       )}
     </div>

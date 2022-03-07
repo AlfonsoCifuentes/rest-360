@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import Acordeon from "src/components/Accordion/Acordeon";
 import StandardHeader from "src/components/StandardHeader/StandardHeader";
 
@@ -7,11 +7,36 @@ const CartaPedidos = () => {
   //Props para el componente de header genérico: StandardHeader
   const bgImage = "https://images2.imgbox.com/c1/2d/UgwCbQiR_o.jpg";
 
-  const estoSeraUnaRespuestaEnJSON = ["Cocido Madrileño","Callos","Pulpo a la Gallega","Fabadaca con chorizaco"]
+
+  //Props para el componente Acordeón:
+
+  //Carta completa
+  const [cartaArray, setCartaArray] = useState([]);
+  //Carta por categorías
+  const [entrantesArray, setEntrantesArray] = useState([]);
+  const [principalesArray, setPrincipalesArray] = useState([]);
+  const [segundosArray, setSegundosArray] = useState([]);
+  const [postresArray, setPostresArray] = useState([]);
+  const [bebidasArray, setBebidasArray] = useState([]);
+
+ 
+
+  //
 
   useEffect(() => {
-    console.log(estoSeraUnaRespuestaEnJSON)
-  })
+    fetch("http://localhost:3001/vga/articles")
+    .then ((response) => response.json())
+    .then((data) => setCartaArray(data))
+    setEntrantesArray(cartaArray.filter(plato => plato.category === "Entrante"))
+    setPrincipalesArray(cartaArray.filter(plato => plato.category === "Primeros"))
+    setSegundosArray(cartaArray.filter(plato => plato.category === "Segundos"))
+    setPostresArray(cartaArray.filter(plato => plato.category === "Postres"))
+    setBebidasArray(cartaArray.filter(plato => plato.category === "Bebidas"))
+  },[]);
+
+
+
+
 
   return (
     <div className="mainDiv">
@@ -30,11 +55,11 @@ const CartaPedidos = () => {
           <strong>envío a domicilio.</strong>
         </p>
       </div>
-      <Acordeon title="ENTRANTES" response={estoSeraUnaRespuestaEnJSON}/>
-      <Acordeon title="PINCIPALES" response={estoSeraUnaRespuestaEnJSON} />
-      <Acordeon title="SEGUNDOS" response={estoSeraUnaRespuestaEnJSON} />
-      <Acordeon title="POSTRES" response={estoSeraUnaRespuestaEnJSON} />
-      <Acordeon title="BEBIDAS" response={estoSeraUnaRespuestaEnJSON} />
+      <Acordeon title="ENTRANTES" response={entrantesArray} key="Entrantes"/>
+      <Acordeon title="PINCIPALES" response={principalesArray} key="Principales"/>
+      <Acordeon title="SEGUNDOS" response={segundosArray} key="Segundos"/>
+      <Acordeon title="POSTRES" response={postresArray} key="Postres"/>
+      <Acordeon title="BEBIDAS" response={bebidasArray} key="Bebidas"/>
 
     </div>
   );
