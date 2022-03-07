@@ -34,7 +34,7 @@ const MenuItem = (props) => {
         <div className="menuItemDiv__card__alergenos">
             {props.gluten ? (
               <img
-                src={require("../../images/icons/Aler_Gluten.png")}
+                src={require("../../images/icons/ico_alerg_gluten.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -43,7 +43,7 @@ const MenuItem = (props) => {
             )}
             {props.egg ? (
               <img
-                src={require("../../images/icons/Aler_Huevos.png")}
+                src={require("../../images/icons/ico_alerg_huevos.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -52,7 +52,7 @@ const MenuItem = (props) => {
             )}
             {props.fish ? (
               <img
-                src={require("../../images/icons/Aler_Pescado.png")}
+                src={require("../../images/icons/ico_alerg_pescado.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -61,7 +61,7 @@ const MenuItem = (props) => {
             )}
             {props.soja ? (
               <img
-                src={require("../../images/icons/Aler_Soja.png")}
+                src={require("../../images/icons/ico_alerg_soja.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -70,7 +70,7 @@ const MenuItem = (props) => {
             )}
             {props.milk ? (
               <img
-                src={require("../../images/icons/Aler_Lactosa.png")}
+                src={require("../../images/icons/ico_alerg_lactosa.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -88,7 +88,7 @@ const MenuItem = (props) => {
             )}
             {props.mustard ? (
               <img
-                src={require("../../images/icons/Aler_Mostaza.png")}
+                src={require("../../images/icons/ico_alerg_mostaza.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -97,7 +97,7 @@ const MenuItem = (props) => {
             )}
             {props.apio ? (
               <img
-                src={require("../../images/icons/Aler_Celery.png")}
+                src={require("../../images/icons/ico_alerg_apio.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -106,7 +106,7 @@ const MenuItem = (props) => {
             )}
             {props.molusco ? (
               <img
-                src={require("../../images/icons/Aler_Moluscos.png")}
+                src={require("../../images/icons/ico_alerg_moluscos.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -115,7 +115,7 @@ const MenuItem = (props) => {
             )}
             {props.altramuces ? (
               <img
-                src={require("../../images/icons/Aler_Cacahuetes.png")}
+                src={require("../../images/icons/ico_alerg_altramuces.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -124,7 +124,7 @@ const MenuItem = (props) => {
             )}
             {props.sesamo ? (
               <img
-                src={require("../../images/icons/Aler_Gluten.png")}
+                src={require("../../images/icons/ico_alerg_sesamo.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -133,7 +133,7 @@ const MenuItem = (props) => {
             )}
             {props.sulfito ? (
               <img
-                src={require("../../images/icons/Aler_Sulfitos.png")}
+                src={require("../../images/icons/ico_alerg_sulfitos.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -142,7 +142,7 @@ const MenuItem = (props) => {
             )}
             {props.cacahuete ? (
               <img
-                src={require("../../images/icons/Aler_Cacahuetes.png")}
+                src={require("../../images/icons/ico_alerg_cacahuetes.png")}
                 alt="Gluten"
                 className="alergenoIcon"
               />
@@ -150,7 +150,7 @@ const MenuItem = (props) => {
               <p></p>
             )}
             <div>
-              <img className="alergenoIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" />
+              <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" />
             </div>
           </div>
       </div>
