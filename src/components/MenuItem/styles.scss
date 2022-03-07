@@ -1,44 +1,65 @@
 .menuItemDiv{
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     background-color: #f2f2f2;
-    height: 7rem;
-    display: flex;
-    flex-direction: row;
+    height: 10rem;
     margin-bottom: 2rem;
     padding: 0.5rem;
-    align-items: center;
-    &__image{
-        
-        width: 29%;
-    }
-    &__titleandprice{
+    
+    justify-content: space-between;
+    &__card{
+
         display: flex;
         flex-direction: row;
-        width: 77%;
-        text-align: left;
-        align-self: flex-start;
-        align-items: center;
-        border-bottom: 1px solid black;
-        margin:0 2rem;
-        &__divTitle{
-            width: 70%;
-            padding-right:1.5rem;
-            &__title{
-                font-size: 0.75rem;
-                
-            }
-        }
-        &__divPrice{
-            width: 30%;
-            padding-right: 0.5rem;
-            align-self: flex-start;
-            &__price{
-                padding-top: 1rem;
-                font-size: 1.7rem;
-                
-            }
-        }
 
+        &__image{
+            width: 33%;
+        }
+        &__titleandprice{
+            display: flex;
+            flex-direction: row;
+            width: 77%;
+            text-align: left;
+            align-self: flex-start;
+            align-items: center;
+            border-bottom: 1px solid black;
+            margin:0 2rem;
+            &__divTitle{
+                width: 70%;
+                padding-right:1.5rem;
+                &__title{
+                    font-size: 0.75rem;
+                    
+                }
+            }
+            &__divPrice{
+                width: 30%;
+                padding-right: 0.5rem;
+                align-self: flex-start;
+                &__price{
+                    padding-top: 1rem;
+                    font-size: 1.7rem;
+                    
+                }
+            }
+    
+        }
+        &__alergenos{
+            display: flex;
+            flex-direction: row;
+            margin-top: -1rem;
+            justify-content: right;
+        }
     }
+
+
+
+
+}
+
+.ItemDiv{
+    display: flex;
+    flex-direction: column;
 
 }

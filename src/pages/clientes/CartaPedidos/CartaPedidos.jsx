@@ -19,9 +19,8 @@ const CartaPedidos = () => {
   const [postresArray, setPostresArray] = useState([]);
   const [bebidasArray, setBebidasArray] = useState([]);
 
- 
 
-  //
+  ///
   useEffect(() => {
     fetch("http://localhost:3001/vga/articles")
     .then ((response) => response.json())
