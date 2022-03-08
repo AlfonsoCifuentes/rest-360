@@ -20,17 +20,21 @@ const CartaPedidos = () => {
   const [bebidasArray, setBebidasArray] = useState([]);
 
 
-  //
+  //Fetch de la carta al servidor
   useEffect(() => {
     fetch("http://localhost:3001/vga/articles")
     .then ((response) => response.json())
     .then((data) => setCartaArray(data))
+  },[]);
+
+  //Filtrado de la carta completa en arrays de categorías
+  useEffect(() => {
     setEntrantesArray(cartaArray.filter(plato => plato.category === "Entrante"))
     setPrincipalesArray(cartaArray.filter(plato => plato.category === "Primeros"))
     setSegundosArray(cartaArray.filter(plato => plato.category === "Segundos"))
     setPostresArray(cartaArray.filter(plato => plato.category === "Postres"))
     setBebidasArray(cartaArray.filter(plato => plato.category === "Bebidas"))
-  },[]);
+  },[cartaArray]);
 
 
 
