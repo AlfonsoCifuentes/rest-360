@@ -3,9 +3,19 @@ import React, {useState, useEffect} from "react";
 
 const ListadoTickets = () => {
 
+  //Props para el componente Acordeón:
+
+  //Carta completa
+  const [datosArray, setDatosArray] = useState([]);
+  const [ticketsArray, setTicketsArray] = useState([]);
 
 
-
+  //Fetch de la carta al servidor
+  useEffect(() => {
+    fetch("http://localhost:3001/vga/articles") //Cambiar a bill cuando tenga datos.
+    .then ((response) => response.json())
+    .then((data) =>   console.log(data)); 
+  },[]);
 
 
   return (
