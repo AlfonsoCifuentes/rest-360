@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
+import { CartContext } from "../CartContext/CartContext";
 
 const Navigation = () => {
+
+
+  const {cartItems}  = useContext(CartContext);
+ 
+  
+
   return (
     <nav role="navigation" className="nav">
       <div id="menuToggle">
@@ -35,6 +42,13 @@ const Navigation = () => {
       </div>
 
       <div className="nav__background">
+
+        <div className="nav__background__logoCart">
+        <h1 className="white">CUENTA:{cartItems.length}cosas</h1>
+        <img className="nav__background__logoCart__bandeja" src={require("../../images/icons/IconoBandeja.png")} alt="Su pedido" />
+          
+
+
         <Link to="/">
           <img
             className="nav__logo"
@@ -42,6 +56,7 @@ const Navigation = () => {
             alt="Logo"
           />
         </Link>
+        </div>
       </div>
     </nav>
   );

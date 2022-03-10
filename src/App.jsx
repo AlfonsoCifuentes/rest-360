@@ -12,9 +12,11 @@ const App = () => {
 
   return (
     <>
+        
         <Navigation />
         <Main />
         <Footer />
+        
     </>
 
   );

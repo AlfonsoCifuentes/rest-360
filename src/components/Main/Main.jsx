@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { CartContex, CartProvider } from "../CartContext/CartContext";
 
 
 const Home = React.lazy(() => import("../../pages/clientes/Home/Home"));
@@ -21,143 +22,151 @@ const ListadoPedidos = React.lazy(() => import("../../pages/admin/ListadoPedidos
 const Main = () => {
   return (
     <div className="mainDiv">
+
       <main>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <Home />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/restaurante"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <Restaurante />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/reservas"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <Reservas />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/carta-pedidos"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <CartaPedidos />
-              </React.Suspense>
-            }
-          />
+        
 
-          <Route
-            path="/socios"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <Socios />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/contacto"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <Contacto />
-              </React.Suspense>
-            }
-          />
 
-          <Route
-            path="/regalar"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <Regalar />
-              </React.Suspense>
-            }
-          />
 
-          {/*************************
-        Paginas sin link en el menú  
-        ***************************/}
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <Home />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/restaurante"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <Restaurante />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/reservas"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <Reservas />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/carta-pedidos"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <CartaPedidos />
+                  </React.Suspense>
+                }
+              />
 
-          <Route
-            path="/compraregistro"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <CompraRegistro />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/dondeestamos"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <DondeEstamos />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/horarios"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <Horarios />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/avisolegal"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <AvisoLegal />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/politicacookies"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <PoliticaCookies />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="/politicaprivacidad"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <PoliticaPrivacidad />
-              </React.Suspense>
-            }
-          />
+              <Route
+                path="/socios"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <Socios />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/contacto"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <Contacto />
+                  </React.Suspense>
+                }
+              />
 
-          {/*************************
-        Paginas Admin con botones  
-        ***************************/}
+              <Route
+                path="/regalar"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <Regalar />
+                  </React.Suspense>
+                }
+              />
 
-          <Route
-            path="/listadotickets"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <ListadoTickets />
-              </React.Suspense>
-            }
-          />
+              {/*************************
+            Paginas sin link en el menú  
+            ***************************/}
 
-          <Route
-            path="/listadopedidos"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <ListadoPedidos />
-              </React.Suspense>
-            }
-          />
-        </Routes>
+              <Route
+                path="/compraregistro"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <CompraRegistro />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/dondeestamos"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <DondeEstamos />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/horarios"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <Horarios />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/avisolegal"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <AvisoLegal />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/politicacookies"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <PoliticaCookies />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="/politicaprivacidad"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <PoliticaPrivacidad />
+                  </React.Suspense>
+                }
+              />
+
+              {/*************************
+            Paginas Admin con botones  
+            ***************************/}
+
+              <Route
+                path="/listadotickets"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <ListadoTickets />
+                  </React.Suspense>
+                }
+              />
+
+              <Route
+                path="/listadopedidos"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <ListadoPedidos />
+                  </React.Suspense>
+                }
+              />
+            </Routes>
+            
+
       </main>
+
     </div>
   );
 };

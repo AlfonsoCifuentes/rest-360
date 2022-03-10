@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./styles.scss";
 import MenuItem from "../MenuItem/MenuItem";
-
+import { CartContext } from "../CartContext/CartContext"
 const Acordeon = (props) => {
   const [deployed, setDeployed] = useState(true);
 
   let JSONresponse = props.response;
+
+  const {cartItems, setCartItems} = useContext(CartContext)
 
   return (
     <div className="acordeonDiv">
@@ -63,6 +65,7 @@ const Acordeon = (props) => {
               cacahuete={item.cacahuete}
               createdAt={item.createdAt}
               updatedAt={item.updatedAt}
+              cart={[...cartItems, item.idArticle]}
             />
           ))}
         </div>
