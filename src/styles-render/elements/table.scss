@@ -1,0 +1,277 @@
+
+//Punto de ruptura, A partir de este dato, deja de ser movil responsive.
+$breakpoint-alpha: 480px; // adjust to your needs
+
+
+// Ajuste de la tabla para formato movil:
+
+.rwd-table {
+  // margin: 1em 0;
+  // min-width: 300px; // adjust to your needs
+
+
+  // tr {
+  //   border-top: 1px solid #ddd;
+  //   border-bottom: 1px solid #ddd;
+  // }
+
+// Pasa todas las columnas a filas.
+  th { 
+    display: none;
+  }
+
+  td {
+    display: block;
+
+    &:first-child {
+      padding-top: 0.5em;
+    }
+    &:last-child {
+      padding-bottom: 0.5em;
+    }
+
+    // Textos de data-th para vista movil.
+    &:before {
+      content: attr(data-th)" "; // who knew you could do this? The internet, that's who.
+      font-weight: bold;
+      color: $highcolor;
+      // text-align: left;
+
+      // // optional stuff to make it look nicer
+      // width: 6.5em; // magic number :( adjust according to your own content
+      // display: inline-block;
+      // // end options
+      
+
+      @media (min-width: $breakpoint-alpha) {
+        // Comtrola que no salga Befores a partir del punto de ruptura.
+        display: none;
+      }
+    }
+  }
+
+
+  // Ajuste de la celdas, tanto para movil como escritorio:
+  th,
+  td {
+    // text-align: center;
+    color: $highcolor; // color titulos
+
+    @media (min-width: $breakpoint-alpha) {
+      // Muestra tabla normal a partir del punto de ruptura.
+      display: table-cell;
+      padding: 1em; // altura titulos.
+
+      // &:first-child { // Primera columna.
+      //   padding-left: 0;
+      // }
+
+      // &:last-child { // Ultima colimna.
+      //   padding-right: 0;
+      // }
+
+      span {
+        // padding-left: 10%;
+        // padding-right: 5%;
+        // text-align: center !important;
+        // color: $bgcolor;
+      }
+    }
+
+
+  }
+}
+
+
+
+
+//Ajuste de la tabla, tanto para movil como escritorio:
+// // presentational styling
+
+.rwd-table {
+  background: $navcolor;
+  // color: $navcolor;
+  border-radius: 0.5em;
+  // overflow: hidden;
+  tr {
+    // border-color: lighten($navcolor, 10%);
+  }
+  td {
+    // Relleno de columnas td (fondo blanco, texto negro y borde.
+    background: $bgcolor;
+    color: $navcolor;
+    margin: 0.15em; // Borde tabla movil
+
+    @media (min-width: $breakpoint-alpha) {
+      // a partir del punto de ruptura.
+      // padding: 1em !important;
+
+
+      &.div__table__center {
+        text-align: center;
+      }
+      &.div__table__right {
+        // text-align: right;
+      }
+
+      span {
+        // padding-left: 10%;
+        // padding-right: 5%;
+        // text-align: center !important;
+        // color: $navcolor;
+      }
+    }
+
+    th {
+      // background-color: blue;
+      // color: $highcolor;
+      // margin: 0.5em 1em;
+
+      td:before {
+        // text-align: left;
+        // background: $navcolor;
+        // color: $highcolor;
+      }
+      th:before {
+        // background: $navcolor;
+        // color: $highcolor;
+      }
+
+      @media (min-width: $breakpoint-alpha) {
+        // a partir del punto de ruptura.
+        // padding: 1em !important;
+        // color: $highcolor;
+      }
+    }
+
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ORIGINAL
+
+// // More practical CSS...
+// // using mobile first method (IE8,7 requires respond.js polyfill https://github.com/scottjehl/Respond)
+
+// $breakpoint-alpha: 480px; // adjust to your needs
+
+// .rwd-table {
+//   margin: 1em 0;
+//   min-width: 300px; // adjust to your needs
+  
+//   tr {
+//     border-top: 1px solid rgb(187, 20, 20);
+//     border-bottom: 1px solid rgb(12, 4, 114);
+    
+//   }
+  
+//   th {
+//     display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!   
+//     background-color: black;
+//   }
+  
+//   td {
+//     display: block; 
+    
+//     &:first-child {
+//       padding-top: .5em;
+//     }
+//     &:last-child {
+//       padding-bottom: .5em;
+//     }
+
+//     &:before {
+//       content: attr(data-th)" "; // who knew you could do this? The internet, that's who.
+//       font-weight: bold;
+
+//       // optional stuff to make it look nicer
+//       width: 6.5em; // magic number :( adjust according to your own content
+//       display: inline-block;
+//       // end options
+      
+//       @media (min-width: $breakpoint-alpha) {
+//         display: none;
+//       }
+//     }
+//   }
+  
+//   th {
+//     text-align: left;
+    
+//     @media (min-width: $breakpoint-alpha) {
+//       display: table-cell;
+//       padding: .25em .5em;
+      
+//       &:first-child {
+//         padding-left: 0;
+//       }
+      
+//       &:last-child {
+//         padding-right: 0;
+//       }
+//     }
+
+//   }
+//    td {
+//     text-align: left;
+    
+//     @media (min-width: $breakpoint-alpha) {
+//       display: table-cell;
+//       padding: .25em .5em;
+      
+//       &:first-child {
+//         padding-left: 0;
+//       }
+      
+//       &:last-child {
+//         padding-right: 0;
+//       }
+//     }
+
+//   }
+  
+  
+// }
+
+
+// // presentational styling
+
+// .rwd-table {
+//   background: $bgcolor;
+//   color: $navcolor;
+//   border-radius: .4em;
+//   overflow: hidden;
+//   tr {
+//     border-color: lighten(#34495E, 10%);
+//   }
+//   th, td {
+    
+//     margin: .5em 1em;
+//     @media (min-width: $breakpoint-alpha) { 
+//       padding: 1em !important; 
+//     }
+//   }
+//   th, td:before {
+//     color: $highcolor;
+//   }
+// }
+
+
