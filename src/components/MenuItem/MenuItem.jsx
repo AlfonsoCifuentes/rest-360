@@ -7,7 +7,6 @@ const MenuItem = (props) => {
 
   const {cartItems, setCartItems} = useContext(CartContext)
 
-
   return (
     <div className="ItemDiv">
       <div className="menuItemDiv">
@@ -156,7 +155,7 @@ const MenuItem = (props) => {
               <p></p>
             )}
             <div className="addItem">
-              <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => setCartItems(props.cart)}/>
+              <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => setCartItems(props.carta)}/>
             </div>
           </div>
       </div>

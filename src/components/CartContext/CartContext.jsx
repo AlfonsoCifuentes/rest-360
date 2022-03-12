@@ -5,11 +5,14 @@ export const CartContext = React.createContext({});
 export const CartProvider = ({ children }) => {
 
     const [cartItems, setCartItems] = useState([]);
+    const [pedidoItems, setPedidoItems] = useState([]);
 
 
     const store = {
       cartItems,
       setCartItems,
+      pedidoItems,
+      setPedidoItems
     };
   
 
