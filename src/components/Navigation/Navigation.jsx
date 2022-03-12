@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 import { CartContext } from "../CartContext/CartContext";
@@ -42,11 +42,16 @@ const Navigation = () => {
       </div>
 
       <div className="nav__background">
-
+        
         <div className="nav__background__logoCart">
-        <h1 className="white">CUENTA:{cartItems.length}cosas</h1>
+        
+        <Link to="/su-pedido">
+        <div className="nav__background__logoCart__countDiv">
+           <h3 className="nav__background__logoCart__countDiv__count">{cartItems.length}</h3>
+        </div>
+        
         <img className="nav__background__logoCart__bandeja" src={require("../../images/icons/IconoBandeja.png")} alt="Su pedido" />
-          
+        </Link> 
 
 
         <Link to="/">

@@ -1,13 +1,6 @@
 @import "../../styles-render/base/base.scss";
 
-.white{
-  color: rgb(255, 0, 0);
-  position: absolute;
-  right:50rem;
-  top: 2.8rem;
-  z-index: 5;
-  font-size: 4rem;
-}
+
 
 .nav{
   background-color: $navcolor;
@@ -36,12 +29,28 @@
       flex-direction: row;
       align-content: flex-start;
       justify-content: flex-end;
+        &__countDiv{
+          background-color: $highcolor;
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          border-radius: 100%;
+          right:12rem;
+          top: 0.8rem;
+          z-index: 3;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &__count{
+            color: white;
+          }
+        }
         &__bandeja{
           height: 10px;
-          width: 30px;
+          width: 35px;
           position: absolute;
-          right:12rem;
-          top: 2.8rem;
+          right:11.8rem;
+          top: 3rem;
           z-index: 3;
         }
     }

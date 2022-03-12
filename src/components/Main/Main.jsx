@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { CartContex, CartProvider } from "../CartContext/CartContext";
+import Pedido from "src/pages/clientes/Pedido/Pedido";
+
 
 
 const Home = React.lazy(() => import("../../pages/clientes/Home/Home"));
@@ -91,6 +92,14 @@ const Main = () => {
               {/*************************
             Paginas sin link en el menú  
             ***************************/}
+            <Route
+                path="/su-pedido"
+                element={
+                  <React.Suspense fallback={<>Loading ...</>}>
+                    <Pedido />
+                  </React.Suspense>
+                }
+              />
 
               <Route
                 path="/compraregistro"

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Acordeon from "src/components/Accordion/Acordeon";
 import StandardHeader from "src/components/StandardHeader/StandardHeader";
-
+import { Link } from "react-router-dom";
 
 const CartaPedidos = () => {
   //Props para el componente de header genérico: StandardHeader
@@ -37,9 +37,6 @@ const CartaPedidos = () => {
   },[cartaArray]);
 
 
-
-
-
   return (
     <div className="mainDiv">
       <StandardHeader bgImage={bgImage} />
@@ -62,7 +59,11 @@ const CartaPedidos = () => {
       <Acordeon title="SEGUNDOS" response={segundosArray} key="Segundos"/>
       <Acordeon title="POSTRES" response={postresArray} key="Postres"/>
       <Acordeon title="BEBIDAS" response={bebidasArray} key="Bebidas"/>
-
+      <div className="buttonsDiv">
+          <Link to="/su-pedido">
+            <button className="standardButton">Ver Pedido</button>
+          </Link>
+        </div>
     </div>
   );
 };
