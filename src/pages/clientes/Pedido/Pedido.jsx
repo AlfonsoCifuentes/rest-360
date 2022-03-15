@@ -26,6 +26,15 @@ const Pedido = () => {
         setBebidasArray(cartItems.filter(plato => plato.category === "Bebidas"))
     }, [cartItems] ); 
 
+  //Suma del total de todos los artículos
+  
+
+
+  const precioTotalTemp = cartItems.reduce ((acumulador, plato) => {return acumulador + parseFloat(plato.pvp, 10)}, 0 );
+  const precioTotal = precioTotalTemp.toFixed(2)
+  
+  const cantidadDeArticulos = cartItems.length;
+
   return (
     <div className="mainDiv">
       <StandardHeader bgImage={bgImage} />
@@ -35,6 +44,10 @@ const Pedido = () => {
           Su pedido está compuesto por los siguientes productos:
         </p>
       </div>
+
+      <div>
+        <h3><h1>{cantidadDeArticulos}</h1> Artículos</h3>
+      </div>
  
       <Acordeon title="ENTRANTES" response={entrantesArray} key="EntrantesDelPedido"/>
       <Acordeon title="PINCIPALES" response={principalesArray} key="PrincipalesDelPedido"/>
@@ -42,6 +55,10 @@ const Pedido = () => {
       <Acordeon title="POSTRES" response={postresArray} key="PostresDelPedido"/>
       <Acordeon title="BEBIDAS" response={bebidasArray} key="BebidasDelPedido"/>
     
+      <div>
+        <h2>Total a pagar: <strong><h1>{precioTotal} €</h1></strong></h2>
+      </div>
+
       <div className="buttonsDiv">
           <Link to="/su-pedido">
             <button className="standardButton">Realizar pedido</button>
