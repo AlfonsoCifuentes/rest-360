@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./styles.scss";
 import { CartContext } from "../CartContext/CartContext"
+import { AccordionIcon } from "@chakra-ui/accordion";
 
 
 const MenuItem = (props) => {
 
   const {cartItems, setCartItems} = useContext(CartContext)
   const [pedidoItems, setPedidoItems] = useState([])
-  const clave = props.clave
+  const clave = props.key
   const indexOfPlato =  cartItems.findIndex( plato => plato.clave)
 
 
@@ -21,6 +22,7 @@ const MenuItem = (props) => {
     const borrarPlato = () => { setCartItems(cartItems.splice(indexOfPlato, 1))}
     borrarPlato()
   }
+
 
   useEffect(() => {
    console.log(cartItems)
@@ -179,7 +181,7 @@ const MenuItem = (props) => {
               <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => setCartItems(props.carta)}/> 
             </div>
             <div className="addItem">
-            <img className="controlIcon" src={require("../../images/icons/RoundIcon.png")} alt="Borrar del pedido" onClick={() => borrarEstePlato()}/>
+            <img className="controlIcon" src={require("../../images/icons/ico_eliminar.png")} alt="Borrar del pedido" onClick={() => handleRemoveItem()}/>
             </div>
           </div>
       </div>
