@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import StandardHeader from "src/components/StandardHeader/StandardHeader";
 
-import "./Reservas.scss";
-
 const INITIAL_STATE = {
   diners: "",
   date: "",
@@ -264,6 +262,7 @@ const Reservas = () => {
             onChange={handleInput}
           />
 
+          <div className="div__datos">
           <p>Datos de la reserva:</p>
           <label>
             <input
@@ -321,7 +320,8 @@ const Reservas = () => {
               placeholder="Solicitud particular"
             />
           </label>
-          <div></div>
+          
+          <div className="vSpace"></div>
           <label>
             <input
               type="checkbox"
@@ -332,7 +332,7 @@ const Reservas = () => {
             Deseo recibir ofertas especiales y notificaciones del restaurante
             por correo electrónico y mensajes de texto.
           </label>
-          <div className="vSpace"></div>
+          <div></div>
           <label>
             <input
               type="checkbox"
@@ -342,6 +342,7 @@ const Reservas = () => {
             />
             Acepto Políticas de Privacidad.
           </label>
+          </div>
 
           <div>
             <button className="standardButton" type="submit">
