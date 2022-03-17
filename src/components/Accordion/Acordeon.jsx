@@ -41,8 +41,10 @@ const Acordeon = (props) => {
         <div className="deployedDiv">
           {JSONresponse.map((item, i) => (
             <MenuItem
+              
               product={item.name}
               key={uuidv4()}
+              index={i}
               idArticle={item.idArticle}
               type={item.type}
               image={item.image}
@@ -70,6 +72,8 @@ const Acordeon = (props) => {
               carta={[
                 ...cartItems,
                 {
+                  key: item.name + uuidv4(),
+                  index: i,
                   idArticle: item.idArticle,
                   name: item.name,
                   id: item.id,

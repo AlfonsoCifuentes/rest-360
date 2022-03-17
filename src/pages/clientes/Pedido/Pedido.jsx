@@ -27,12 +27,10 @@ const Pedido = () => {
     }, [cartItems] ); 
 
   //Suma del total de todos los artículos
-  
-
-
   const precioTotalTemp = cartItems.reduce ((acumulador, plato) => {return acumulador + parseFloat(plato.pvp, 10)}, 0 );
   const precioTotal = precioTotalTemp.toFixed(2)
   
+  //Comprobando cuantos artículos hay en la cesta
   const cantidadDeArticulos = cartItems.length;
 
   return (

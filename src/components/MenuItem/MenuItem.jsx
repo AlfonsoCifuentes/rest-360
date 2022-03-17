@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./styles.scss";
 import { CartContext } from "../CartContext/CartContext"
 
@@ -6,6 +6,22 @@ import { CartContext } from "../CartContext/CartContext"
 const MenuItem = (props) => {
 
   const {cartItems, setCartItems} = useContext(CartContext)
+  const [pedidoItems, setPedidoItems] = useState([])
+
+  
+  
+
+  const borrarEstePlato = () => {
+    const indexOfPlato =  cartItems.findIndex( plato => plato.key)
+    const borrarPlato = () => { setCartItems(cartItems.splice(indexOfPlato, 1))}
+    borrarPlato()
+  }
+
+  useEffect(() => {
+   console.log(cartItems)
+}, [cartItems] ); 
+
+
 
   return (
     <div className="ItemDiv">
@@ -156,6 +172,7 @@ const MenuItem = (props) => {
             )}
             <div className="addItem">
               <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => setCartItems(props.carta)}/>
+              <img className="controlIcon" src={require("../../images/icons/WhastsappIcon.png")} alt="Borrar del pedido" onClick={() => borrarEstePlato()}/>
             </div>
           </div>
       </div>
