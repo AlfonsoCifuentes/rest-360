@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const INITIAL_STATE = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
 const LoginForm = (props) => {
