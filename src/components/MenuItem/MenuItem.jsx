@@ -7,12 +7,17 @@ const MenuItem = (props) => {
 
   const {cartItems, setCartItems} = useContext(CartContext)
   const [pedidoItems, setPedidoItems] = useState([])
+  const clave = props.clave
+  const indexOfPlato =  cartItems.findIndex( plato => plato.clave)
 
-  
-  
 
+  //Este funciona mal, borra todos los platos
+  const handleRemoveItem = () => { 
+    setCartItems(cartItems.filter(item => item.clave !== clave))
+  }
+  
+  //Este también funciona mal, borra todos menos el último añadido
   const borrarEstePlato = () => {
-    const indexOfPlato =  cartItems.findIndex( plato => plato.key)
     const borrarPlato = () => { setCartItems(cartItems.splice(indexOfPlato, 1))}
     borrarPlato()
   }
@@ -171,8 +176,10 @@ const MenuItem = (props) => {
               <p></p>
             )}
             <div className="addItem">
-              <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => setCartItems(props.carta)}/>
-              <img className="controlIcon" src={require("../../images/icons/WhastsappIcon.png")} alt="Borrar del pedido" onClick={() => borrarEstePlato()}/>
+              <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => setCartItems(props.carta)}/> 
+            </div>
+            <div className="addItem">
+            <img className="controlIcon" src={require("../../images/icons/RoundIcon.png")} alt="Borrar del pedido" onClick={() => borrarEstePlato()}/>
             </div>
           </div>
       </div>
