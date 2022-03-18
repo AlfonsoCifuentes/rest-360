@@ -15,6 +15,7 @@ const DondeEstamos = React.lazy(() => import("../../pages/clientes/DondeEstamos/
 const Horarios = React.lazy(() => import("../../pages/clientes/Horarios/Horarios"));
 const PoliticaCookies = React.lazy(() => import("../../pages/clientes/PoliticaCookies/PoliticaCookies"));
 const PoliticaPrivacidad = React.lazy(() => import("../../pages/clientes/PoliticaPrivacidad/PoliticaPrivacidad"));
+const RegistroUsuarios = React.lazy(() => import("../../pages/clientes/RegistroUsuarios/RegistroUsuarios"));
 
 // Admin routes.
 const AdmMain = React.lazy(() => import("../../pages/admin/AdmMain/AdmMain"));
@@ -159,6 +160,15 @@ const Main = () => {
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <PoliticaPrivacidad />
+              </React.Suspense>
+            }
+          />
+
+          <Route
+            path="/registro"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <RegistroUsuarios />
               </React.Suspense>
             }
           />

@@ -1,79 +1,122 @@
 import React, {useState} from 'react'
-import { useLocation } from 'react-router-dom';
 
-const INITIAL_STATE = {
-    userName: "",
-    firstName:"",
-    lastName:"",
-    email: "",
-    password: "",
-    phone:"",
-    dateOfBirth:"",
-    avatar: ""
-  };
+const RegisterForm = () => {
 
-const RegisterForm = (props) => {
+    const [userName, setUserName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState(0);
+    const [phone, setPhone] = useState(0);
+    const [dateOfBirth, setDateOfBirth] = useState(0);
+    const [avatar, setAvatar] = useState("");
+    const [idUser, setIdUser] = useState(0);
 
-const { state } = useLocation();
-  const [formulario, setFormulario] = useState(INITIAL_STATE);
+    const [message, setMessage] = useState("");
 
-  const submitForm = (ev) => {
-    ev.preventDefault();
-    props.loginUser(formulario, state ? state.prevRoute : null);
-    setFormulario(INITIAL_STATE);
-  }
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+        try{
+            let response = await fetch("http://localhost:3001/vga/users", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    idUser: idUser,
+                    userName: userName,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
+                    phone: phone,
+                    dateOfBirth: dateOfBirth,
+                    avatar: avatar
+                })
+            });
+            let responseJson = await response.json();
+            if(response.status === 200) {
+                setIdUser();
+                setUserName();
+                setFirstName();
+                setLastName();
+                setEmail();
+                setPassword();
+                setPhone();
+                setDateOfBirth();
+                setAvatar();
+                setMessage("Usuario creado con éxito");
+                
+            }else{
+                setMessage("Ha habido un error");
+            }
+            
+        }catch (err) {
+            console.log(err);
+            }
+    }
 
-    const changeInput = (ev) => {
-    const { name, value } = ev.target;
 
-    setFormulario({ ...formulario, [name]: value });
-  };
-
-  
 
   return (
-    <form onSubmit={submitForm}>
+    <form onSubmit={handleSubmit}>
 
-    <label>
-        <p>Nombre de usuario</p>
-        <input type="text" name="userName" onChange={changeInput} value={formulario.email} />
+      <label>
+        <p>Id Usuario</p>
+        <input type="number" name="idUser" onChange={(e) => setIdUser(e.target.value)} value={idUser} />
       </label>
 
+      <label>
+        <p>Nombre de usuario (apodo)</p>
+        <input type="text" name="userName" onChange={(e) => setUserName(e.target.value)} value={userName} />
+      </label>
+
+      
       <label>
         <p>Nombre</p>
-        <input type="password" name="firstName" onChange={changeInput} value={formulario.password} />
+        <input type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
       </label>
 
+           
       <label>
         <p>Apellidos</p>
-        <input type="password" name="lastName" onChange={changeInput} value={formulario.password} />
+        <input type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} value={lastName} />
       </label>
 
       <label>
-        <p>Correo Electrónico</p>
-        <input type="text" name="email" onChange={changeInput} value={formulario.email} />
+        <p>Correo electrónico</p>
+        <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} value={email} />
       </label>
 
       <label>
         <p>Contraseña</p>
-        <input type="password" name="password" onChange={changeInput} value={formulario.password} />
+        <input type="number" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
       </label>
 
       <label>
         <p>Teléfono</p>
-        <input type="number" name="password" onChange={changeInput} value={formulario.password} />
+        <input type="number" name="phone" onChange={(e) => setPhone(e.target.value)} value={phone} />
       </label>
 
       <label>
         <p>Fecha de nacimiento</p>
-        <input type="date" name="dateOfBirth" onChange={changeInput} value={formulario.password} />
+        <input type="number" name="dateOfBirth" onChange={(e) => setDateOfBirth(e.target.value)} value={dateOfBirth} />
       </label>
 
+      
+      <label>
+        <p>Avatar</p>
+        <input type="text" name="avatar" onChange={(e) => setAvatar(e.target.value)} value={avatar} />
+      </label>
+
+
+
+
+
+
       <div>
-        <button type='submit'>Registrarme</button>
+        <button className='standardButton' type='submit'>Registrarme</button>
       </div>
 
-      {props.loginError && <div style={{color: 'tomato'}}>{props.loginError}</div>}
+      {message && <div style={{color: 'tomato'}}>{message}</div>}
     </form>
   )
 }
