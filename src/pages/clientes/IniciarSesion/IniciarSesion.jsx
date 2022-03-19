@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import LoginForm from 'src/components/LoginForm/LoginForm'
 import { UserContext } from 'src/context/UserContext'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import StandardHeader from 'src/components/StandardHeader/StandardHeader'
 
 const IniciarSesion = () => {
@@ -40,10 +40,21 @@ const IniciarSesion = () => {
     <div className='mainDiv'>
         <StandardHeader bgImage={bgImage} />
         <h1>Iniciar Sesión</h1>
-        <p className='sectionParagraph'>
+        <div className='sectionParagraph'>
+          <p>
             Por favor, introduzca su correo electrónico y contraseña para iniciar sesión
-        </p>
+          </p>
+        </div>
+
         <LoginForm  loginUser={loginUser} loginError={loginError} />
+        <div className='sectionParagraph'>
+          <p>
+            ¿Aún no tienes cuenta?
+          </p>
+        </div>
+        <Link to="/registro">
+          <button className='standardButton'>Regístrate</button>
+        </Link>
     </div>
   )
 }

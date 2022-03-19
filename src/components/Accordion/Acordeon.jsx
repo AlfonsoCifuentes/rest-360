@@ -8,7 +8,7 @@ const Acordeon = (props) => {
 
   let JSONresponse = props.response;
 
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
  
   return (
     <div className="acordeonDiv">

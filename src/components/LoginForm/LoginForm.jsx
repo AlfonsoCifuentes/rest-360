@@ -36,7 +36,7 @@ const LoginForm = (props) => {
       </label>
 
       <div>
-        <button type='submit'>Iniciar Sesión</button>
+        <button className='standardButton' type='submit'>Iniciar Sesión</button>
       </div>
 
       {props.loginError && <div style={{color: 'tomato'}}>{props.loginError}</div>}
