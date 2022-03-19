@@ -41,9 +41,9 @@ const IniciarSesion = () => {
         <StandardHeader bgImage={bgImage} />
         <h1>Iniciar Sesión</h1>
         <div className='sectionParagraph'>
-          <p>
+          <h3>
             Por favor, introduzca su correo electrónico y contraseña para iniciar sesión
-          </p>
+          </h3>
         </div>
 
         <LoginForm  loginUser={loginUser} loginError={loginError} />

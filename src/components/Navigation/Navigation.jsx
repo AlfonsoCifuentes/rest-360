@@ -13,7 +13,7 @@ const Navigation = () => {
   return (
     <nav role="navigation" className="nav">
       <div id="menuToggle">
-        <input type="checkbox" />
+        <input className="check" type="checkbox" />
 
         <span></span>
         <span></span>
