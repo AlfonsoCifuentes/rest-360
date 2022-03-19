@@ -11,23 +11,24 @@ const MenuItem = (props) => {
 
 
   //Este funciona mal, borra todos los platos
-  const handleRemoveItem = () => { 
-    setCartItems(cartItems.filter(item => item.clave !== clave))
+  const handleRemoveItem = (id) => { 
+    setCartItems(cartItems.filter(item => item.idArticle !== id))
   }
   
   //Este también funciona mal, borra todos menos el último añadido
-  const borrarEstePlato = () => {
+  const borrarEstePlato = (key) => {
+    console.log(key)
     const borrarPlato = () => { setCartItems(cartItems.splice(indexOfPlato, 1))}
-    borrarPlato()
+   // borrarPlato()
   }
-
+/* 
 
   useEffect(() => {
    console.log(cartItems)
 }, [cartItems] ); 
 
 
-
+ */
   return (
     <div className="ItemDiv">
       <div className="menuItemDiv">
@@ -179,7 +180,7 @@ const MenuItem = (props) => {
               <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => setCartItems(props.carta)}/> 
             </div>
             <div className="addItem">
-            <img className="controlIcon" src={require("../../images/icons/ico_eliminar.png")} alt="Borrar del pedido" onClick={() => handleRemoveItem()}/>
+            <img className="controlIcon" src={require("../../images/icons/ico_eliminar.png")} alt="Borrar del pedido" onClick={() => handleRemoveItem(props.idArticle)}/>
             </div>
           </div>
       </div>

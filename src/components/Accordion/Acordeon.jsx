@@ -68,11 +68,11 @@ const Acordeon = (props) => {
               cacahuete={item.cacahuete}
               createdAt={item.createdAt}
               updatedAt={item.updatedAt}
-              cart={[...cartItems, item.idArticle]}
+           
               carta={[
                 ...cartItems,
                 {
-                  key: item.name + uuidv4(),
+                  key: item.key,
                   index: i,
                   idArticle: item.idArticle,
                   name: item.name,

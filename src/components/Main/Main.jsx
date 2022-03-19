@@ -39,7 +39,7 @@ const PedidosEnCurso = React.lazy(() => import("../../pages/admin/PedidosEnCurso
 
 const Main = () => {
 
-  const {usuario, setUsuario} = useContext(UserContext);
+  const {usuario} = useContext(UserContext);
 
   return (
     <div className="mainDiv">

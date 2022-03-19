@@ -1,11 +1,11 @@
 import React from "react";
 import StandardHeader from "../../../components/StandardHeader/StandardHeader";
 
-const Socios = ({usuario}) => {
+const Socios = ({user}) => {
   //Props para el componente de header genérico: StandardHeader
   const bgImage = "https://images2.imgbox.com/69/b4/NbrJbPWf_o.jpg";
-
-  const { firstName, lastName, email, password, phone, userName, foto } = usuario || {};
+  
+  const { firstName, lastName, email, password, phone, userName, avatar } = user|| {};
   
   return (
     <div className="mainDiv">
@@ -17,7 +17,7 @@ const Socios = ({usuario}) => {
       <div className="sectionParagraph">
       <h4>{userName}</h4>
       <div className="roundDiv">
-        <div className="roundImage" src={foto} alt={userName}></div>
+        <div className="roundImage" src={avatar} alt={userName}></div>
       </div>
       </div>
 

@@ -9,7 +9,7 @@ const IniciarSesion = () => {
    //Props para el componente de header genérico: StandardHeader
    const bgImage = "https://images2.imgbox.com/d4/be/6FUoKJPx_o.jpg";      
 
-  const {setUsuario} = useContext(UserContext);
+  const {usuario, setUsuario} = useContext(UserContext);
   const navigate = useNavigate();  
   const [usuariosRegistrados, setUsuariosRegistrados] = useState([]);
   const [loginError, setLoginError] = useState('');
@@ -20,7 +20,12 @@ const IniciarSesion = () => {
         .then ((response) => response.json())
         .then((data) => setUsuariosRegistrados(data))
       },[]);
- 
+
+      useEffect(() => {
+        const usuarioLogueado = (JSON.parse(localStorage.getItem("user")));
+        setUsuario(usuarioLogueado)
+        console.log(usuario)
+      },[]);
 
       const loginUser = (formData, prevRoute) => {
         const existsUser = usuariosRegistrados.find(element => element.password === formData.password && element.email === formData.email);
