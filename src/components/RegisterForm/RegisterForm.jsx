@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 const RegisterForm = () => {
 
@@ -6,11 +7,11 @@ const RegisterForm = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState(0);
-    const [phone, setPhone] = useState(0);
-    const [dateOfBirth, setDateOfBirth] = useState(0);
-    const [avatar, setAvatar] = useState("");
-    const [idUser, setIdUser] = useState(0);
+    const [password, setPassword] = useState("");
+    const [phone, setPhone] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState("");
+    
+    const [idUser, setIdUser] = useState(uuidv4());
 
     const [message, setMessage] = useState("");
 
@@ -29,12 +30,12 @@ const RegisterForm = () => {
                     password: password,
                     phone: phone,
                     dateOfBirth: dateOfBirth,
-                    avatar: avatar
+                    
                 })
             });
             let responseJson = await response.json();
             if(response.status === 200) {
-                setIdUser();
+
                 setUserName();
                 setFirstName();
                 setLastName();
@@ -42,7 +43,7 @@ const RegisterForm = () => {
                 setPassword();
                 setPhone();
                 setDateOfBirth();
-                setAvatar();
+                
                 setMessage("Usuario creado con éxito");
                 
             }else{
@@ -58,11 +59,6 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-
-      <label>
-        <p>Id Usuario</p>
-        <input type="number" name="idUser" onChange={(e) => setIdUser(e.target.value)} value={idUser} />
-      </label>
 
       <label>
         <p>Nombre de usuario (apodo)</p>
@@ -88,7 +84,7 @@ const RegisterForm = () => {
 
       <label>
         <p>Contraseña</p>
-        <input type="number" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+        <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
       </label>
 
       <label>
@@ -98,16 +94,8 @@ const RegisterForm = () => {
 
       <label>
         <p>Fecha de nacimiento</p>
-        <input type="number" name="dateOfBirth" onChange={(e) => setDateOfBirth(e.target.value)} value={dateOfBirth} />
+        <input type="date" format="yyyy-mm-dd" name="dateOfBirth"  onChange={(e) => setDateOfBirth(e.target.value)} value={dateOfBirth} />
       </label>
-
-      
-      <label>
-        <p>Avatar</p>
-        <input type="text" name="avatar" onChange={(e) => setAvatar(e.target.value)} value={avatar} />
-      </label>
-
-
 
 
 
