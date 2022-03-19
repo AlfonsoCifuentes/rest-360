@@ -71,10 +71,10 @@ const Reservas = () => {
     }
 
 
-    // if(!errors.length){
-    //   console.log(errors);
-    //   errors = {};
-    // }else{
+    if(!errors.length){
+      console.log(errors);
+      errors = {};
+    }else{
 
       console.log(errors);
     // aqui MySQL para guardado de datos.
@@ -82,7 +82,7 @@ const Reservas = () => {
     console.log(state);
     setEnvioForm(true);
     
-    // }
+    }
     
   };
 

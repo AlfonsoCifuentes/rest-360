@@ -1,41 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 import { CartContext } from "../CartContext/CartContext";
 
 const Navigation = () => {
 
-
   const {cartItems}  = useContext(CartContext);
- 
-  
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <nav role="navigation" className="nav">
       <div id="menuToggle">
-        <input className="check" type="checkbox" />
+        <input className="check" type="checkbox" value="checkHamb" checked={isChecked} onChange={handleOnChange}/>
 
         <span></span>
         <span></span>
         <span></span>
 
         <ul id="menu">
-          <Link to="/">
+          <Link to="/" onClick={handleOnChange}>
             <li>INICIO</li>
           </Link>
-          <Link to="/restaurante">
+          <Link to="/restaurante" onClick={handleOnChange}>
             <li>RESTAURANTE</li>
           </Link>
-          <Link to="/carta-pedidos">
+          <Link to="/carta-pedidos" onClick={handleOnChange}>
             <li>CARTA/PEDIDOS</li>
           </Link>
-          <Link to="/reservas">
+          <Link to="/reservas" onClick={handleOnChange}>
             <li>RESERVAS</li>
           </Link>
-          <Link to="/socios">
+          <Link to="/socios" onClick={handleOnChange}>
             <li>SOCIOS</li>
           </Link>
-          <Link to="/contacto">
+          <Link to="/contacto" onClick={handleOnChange}>
             <li>CONTACTO</li>
           </Link>
         </ul>
@@ -54,7 +56,7 @@ const Navigation = () => {
         </Link> 
 
 
-        <Link to="/">
+        <Link to="/" onClick={handleOnChange}>
           <img
             className="nav__logo"
             src={require("../../images/icons/Logo360Blanco.png")}

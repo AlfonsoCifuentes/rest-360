@@ -38,7 +38,7 @@ const ListadoPedidos = () => {
               <th>IVA</th>
               <th>P.V.P.</th>
               <th>Estado</th>
-              <th>Dia / Hora</th>
+              <th>Dia/Hora</th>
               <th>Ver detalle</th>
             </tr>
           </thead>
