@@ -35,7 +35,7 @@ const Footer = () => {
       <div className="footer__yellow">
         <div className="footer__yellow__up">
           <div className="footer__yellow__up__icons">
-            <a href="https://es-es.facebook.com/" target="_blank" rel="noreferrer">
+            <a href="https://www.facebook.com/profile.php?id=100079150917439" target="_blank" rel="noreferrer">
               <img
                 className="footer__yellow__up__icons--icon"
                 src={require("../../images/icons/FacebookIcon.png")}
