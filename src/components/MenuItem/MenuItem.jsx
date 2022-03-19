@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./styles.scss";
 import { CartContext } from "../CartContext/CartContext"
-import { AccordionIcon } from "@chakra-ui/accordion";
-
 
 const MenuItem = (props) => {
 

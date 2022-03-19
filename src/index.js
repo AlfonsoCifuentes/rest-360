@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { CartProvider } from "./components/CartContext/CartContext";
 
 import "./index.css";
+import { UserProvider } from "./context/UserContext";
 
 
 
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <CartProvider>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </CartProvider>
     </Router>
   </React.StrictMode>,

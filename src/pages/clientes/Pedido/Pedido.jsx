@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { CartContext } from "src/components/CartContext/CartContext";
 import Acordeon from "src/components/Accordion/Acordeon";
 import StandardHeader from "src/components/StandardHeader/StandardHeader";
