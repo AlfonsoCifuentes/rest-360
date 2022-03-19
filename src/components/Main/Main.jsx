@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import Pedido from "src/pages/clientes/Pedido/Pedido";
+import AuthRoute from 'src/routes/AuthRoute/AuthRoute';
+import { UserContext } from 'src/context/UserContext'
 
 const Home = React.lazy(() => import("../../pages/clientes/Home/Home"));
 const Reservas = React.lazy(() => import("../../pages/clientes/Reservas/Reservas"));
@@ -16,6 +18,7 @@ const Horarios = React.lazy(() => import("../../pages/clientes/Horarios/Horarios
 const PoliticaCookies = React.lazy(() => import("../../pages/clientes/PoliticaCookies/PoliticaCookies"));
 const PoliticaPrivacidad = React.lazy(() => import("../../pages/clientes/PoliticaPrivacidad/PoliticaPrivacidad"));
 const RegistroUsuarios = React.lazy(() => import("../../pages/clientes/RegistroUsuarios/RegistroUsuarios"));
+const IniciarSesion = React.lazy(() => import("../../pages/clientes/IniciarSesion/IniciarSesion"));
 
 // Admin routes.
 const AdmMain = React.lazy(() => import("../../pages/admin/AdmMain/AdmMain"));
@@ -30,7 +33,14 @@ const ListadoTickets = React.lazy(() => import("../../pages/admin/ListadoTickets
 const ListadoUsuarios = React.lazy(() => import("../../pages/admin/ListadoUsuarios/ListadoUsuarios"));
 const PedidosEnCurso = React.lazy(() => import("../../pages/admin/PedidosEnCurso/PedidosEnCurso"));
 
+
+
+
+
 const Main = () => {
+
+  const {usuario, setUsuario} = useContext(UserContext);
+
   return (
     <div className="mainDiv">
       <main>
@@ -67,15 +77,6 @@ const Main = () => {
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <CartaPedidos />
-              </React.Suspense>
-            }
-          />
-
-          <Route
-            path="/socios"
-            element={
-              <React.Suspense fallback={<>Loading ...</>}>
-                <Socios />
               </React.Suspense>
             }
           />
@@ -169,6 +170,24 @@ const Main = () => {
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <RegistroUsuarios />
+              </React.Suspense>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <IniciarSesion />
+              </React.Suspense>
+            }
+          />
+
+          <Route
+            path="/socios"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <AuthRoute user={usuario} component={<Socios user={usuario} />} />
               </React.Suspense>
             }
           />
