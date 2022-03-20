@@ -33,8 +33,8 @@ const ListadoTickets = React.lazy(() => import("../../pages/admin/ListadoTickets
 const ListadoUsuarios = React.lazy(() => import("../../pages/admin/ListadoUsuarios/ListadoUsuarios"));
 const PedidosEnCurso = React.lazy(() => import("../../pages/admin/PedidosEnCurso/PedidosEnCurso"));
 
-
-
+// Si la ruta o pagina no existe.
+const NotFound = React.lazy(() => import("../../pages/clientes/NotFound/NotFound"));
 
 
 const Main = () => {
@@ -224,7 +224,7 @@ const Main = () => {
           />
 
           <Route
-            path="/detalletickets"
+            path="/detalletickets/:id"
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <DetalleTickets />
@@ -294,6 +294,18 @@ const Main = () => {
               </React.Suspense>
             }
           />
+
+
+          <Route
+            path="/*"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <NotFound />
+              </React.Suspense>
+            }
+          />
+
+
         </Routes>
       </main>
     </div>

@@ -54,7 +54,7 @@ const ListadoPedidos = () => {
                 <td data-th="PVP:" className="div__table__right">{item.pvp}</td>
                 <td data-th="Estado:" className="div__table__center">{item.estado ? (<><img src={require("../../../images/icons/ico_punto_verde.png")} alt="Usuario Administrador" className="reservasIcon"/>Cerrado</>):('Pendiente')}</td>
                 <td data-th="Dia/Hora:" className="div__table__right">{item.day}</td>
-                <td data-th="Ver detalle:" className="div__table__center"><p className="spaceMovile"><img className="tableDetIcon" src={require("../../../images/icons/flechaIcon.png")} alt="Añadir al pedido" /></p></td>
+                <td data-th="Ver detalle:" className="div__table__center"><p className="spaceMovile"><Link to={`/detalletickets/${item.idOrder}`}><img className="tableDetIcon" src={require("../../../images/icons/flechaIcon.png")} alt="Ver detalle del pedido" /></Link></p></td>
               </tr>
             ))}
 
