@@ -35,7 +35,7 @@ const ListadoPlatos = () => {
         <table className="rwd-table">
           <thead>
             <tr>
-              <th>Id</th>
+              <th>Nº</th>
               <th>Nombre</th>
               <th>Categoría</th>
               <th>Tipo</th>
@@ -50,139 +50,114 @@ const ListadoPlatos = () => {
           <tbody>
             {datosArray.map((item) => (
               <tr key={item.id}>
-                <td className="div__table__center">{item.id}</td>
-                <td className="div__table__right">{item.name}</td>
-                <td className="div__table__center">{item.category}</td>
-                <td className="div__table__center">{item.type}</td>
-                <td className="div__table__center">{item.timeCook}</td>
-                <td className="div__table__center">{item.cost}</td>
-                <td className="div__table__center">{item.iva}</td>
-                <td className="div__table__center">{item.pvp}</td>
-                <td className="div__table__center">
+                <td data-th="Nº:" className="div__table__center">{item.id}</td>
+                <td data-th="Nombre:" className="div__table__left">{item.name}</td>
+                <td data-th="Categoría:" className="div__table__center">{item.category}</td>
+                <td data-th="Tipo:" className="div__table__center">{item.type}</td>
+                <td data-th="Tiempo:" className="div__table__center">{item.timeCook}</td>
+                <td data-th="Imp.:" className="div__table__center">{item.cost}</td>
+                <td data-th="IVA:" className="div__table__center">{item.iva}</td>
+                <td data-th="PVP:" className="div__table__center">{item.pvp}</td>
+                <td data-th="Alergenos:" className="div__table__center">
                   {item.gluten ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_gluten.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ):""}
                   {item.egg ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_huevos.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ) :""}
                   {item.fish ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_pescado.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ):""}
                   {item.soja ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_soja.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ):""}
                   {item.milk ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_lactosa.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ):""}
                   {item.fructose ? (
                     <img
                       src={require("../../../images/icons/Aler_Azucar.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ):""}
                   {item.mustard ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_mostaza.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ):""}
                   {item.apio ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_apio.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ) :""}
                   {item.molusco ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_moluscos.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ) :""}
                   {item.altramuces ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_altramuces.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ) :""}
                   {item.sesamo ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_sesamo.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ) :""}
                   {item.sulfito ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_sulfitos.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ) :""}
                   {item.cacahuete ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_cacahuetes.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
-                  ) : (
-                    <p></p>
-                  )}
+                  ) :""}
                 </td>
                 <td data-th="Ver detalle:" className="div__table__center">
+                <p className="spaceMovile">
                   <img
-                    className="controlIcon"
+                    className="tableDetIcon"
                     src={require("../../../images/icons/flechaIcon.png")}
-                    alt="Añadir al pedido"
-                  />
+                    alt="Ver detalle del ticket"
+                  /></p>
                 </td>
               </tr>
             ))}

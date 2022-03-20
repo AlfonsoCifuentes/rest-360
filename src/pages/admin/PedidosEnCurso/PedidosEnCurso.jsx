@@ -7,14 +7,11 @@ import "./styles.scss";
 
 const PedidosEnCurso = () => {
   const [datosArray, setDatosArray] = useState([]);
-  const [orderId, setOrderId] = useState([]);
   const [comandaDatos, setComandaDatos] = useState([]);
   const [comanda, setComanda] = useState();
 
   const handleSelectItem = (ev) => {
-    setOrderId(ev);
     setComanda(ev);
-
   };
 
   //Fetch de pdidos al servidor
@@ -24,14 +21,14 @@ const PedidosEnCurso = () => {
       .then((data) => setDatosArray(data));
   }, []);
 
-
   useEffect(() => {
     fetch(`http://localhost:3001/vga/orderArticles/order/${comanda}`)
       .then((response) => response.json())
       .then((data) => setComandaDatos(data));
   }, [comanda]);
 
-
+  console.log("Vemos comanda")
+  console.log(comandaDatos)
 
   return (
     <div className="mainDiv">
@@ -45,12 +42,11 @@ const PedidosEnCurso = () => {
                 className="arrowIcon"
               />
             </Link>
-            Pedidos
+            Pedidos en Curso
           </h1>
         </div>
 
         <div className="detallePedidos">
-
           <div className="orderItem">
             {datosArray.map((pedidos) => (
               <div
@@ -58,14 +54,16 @@ const PedidosEnCurso = () => {
                 key={pedidos.id}
                 onClick={() => handleSelectItem(pedidos.id)}
               >
-                <OrderItem potorro={pedidos} key={pedidos.id} />
-
+                <OrderItem ordenId={pedidos} key={pedidos.id} />
               </div>
             ))}
           </div>
 
           <div className="orderDetailItem__card">
-            <OrderCardtem escroto={comandaDatos} />
+
+
+          {comandaDatos.length > 0 ? <OrderCardtem comandaId={comandaDatos} /> : <p>Seleccione un pedido para ver los datos</p>}
+
           </div>
         </div>
       </div>

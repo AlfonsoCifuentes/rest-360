@@ -31,9 +31,9 @@ const ListadoReservas = () => {
           <thead>
             <tr>
               <th>Nº</th>
-              <th>Dia</th>
+              <th>Día</th>
               <th>Hora</th>
-              <th>Pax</th>
+              <th>PAX</th>
               <th>Nombre y Apellido</th>
               <th>Teléfono</th>
               <th>Email</th>
@@ -46,17 +46,17 @@ const ListadoReservas = () => {
           <tbody>
             {datosArray.map((item) => (
               <tr key={item.id}>
-                <td className="div__table__center">{item.idReserva}</td>
-                <td className="div__table__center">{item.date}</td>
-                <td className="div__table__center">{item.hour}</td>
-                <td className="div__table__center">{item.numPerson}</td>
-                <td className="div__table__right">{item.name} {item.lastName}</td>
-                <td className="div__table__center">{item.phone}</td>
-                <td className="div__table__center">{item.email}</td>
-                <td className="div__table__right">{item.allergic ? <img src={require("../../../images/icons/ico_punto_rojo.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}{item.allergic}</td>
-                <td className="div__table__right">{item.text}</td>
-                <td className="div__table__center">{item.ofertas ? <img src={require("../../../images/icons/ico_punto_naranja.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</td>
-                <td className="div__table__center">{item.confirmacion ? <img src={require("../../../images/icons/ico_punto_verde.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</td>
+                <td data-th="Nº:" className="div__table__center">{item.idReserva}</td>
+                <td data-th="Día:" className="div__table__center">{item.date}</td>
+                <td data-th="Hora:" className="div__table__center">{item.hour}</td>
+                <td data-th="PAX:" className="div__table__center">{item.numPerson}</td>
+                <td data-th="Nombre y Apellido:" className="div__table__left">{item.name} {item.lastName}</td>
+                <td data-th="Teléfono:" className="div__table__center">{item.phone}</td>
+                <td data-th="Email:" className="div__table__center">{item.email}</td>
+                <td data-th="Alergias:" className="div__table__left">{item.allergic ? <img src={require("../../../images/icons/ico_punto_rojo.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}{item.allergic}</td>
+                <td data-th="Solicitud:" className="div__table__left">{item.text}</td>
+                <td data-th="Ofertas:" className="div__table__center">{item.ofertas ? <img src={require("../../../images/icons/ico_punto_naranja.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</td>
+                <td data-th="Confirm.:" className="div__table__center"><p className="spaceMovile">{item.confirmacion ? <img src={require("../../../images/icons/ico_punto_verde.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</p></td>
               </tr>
             ))}
           </tbody>

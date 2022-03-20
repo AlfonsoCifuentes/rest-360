@@ -32,9 +32,9 @@ const ListadoRegalos = () => {
             <tr>
               <th>Nº</th>
               <th>Regalo</th>
-              <th>Pax</th>
+              <th>PAX</th>
               <th>Precio</th>
-              <th>Codigo Secreto</th>
+              <th>Código Secreto</th>
               <th>Fecha Compra</th>
               <th>Fecha Consumo</th>
               <th>Validado</th>
@@ -43,14 +43,14 @@ const ListadoRegalos = () => {
           <tbody>
             {datosArray.map((item) => (
               <tr key={item.id}>
-                <td className="div__table__center">{item.idGift}</td>
-                <td className="div__table__center">{item.typeGift}</td>
-                <td className="div__table__center">{item.numPersonas}</td>
-                <td className="div__table__center">{item.cost}</td>
-                <td className="div__table__center">{item.codigo}</td>
-                <td className="div__table__center">{item.dateBuy}</td>
-                <td className="div__table__right">{item.dateConsume}</td>
-                <td className="div__table__center">{item.valid ? <img src={require("../../../images/icons/ico_ok.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</td>
+                <td data-th="Nº:" className="div__table__center">{item.idGift}</td>
+                <td data-th="Regalo:" className="div__table__center">{item.typeGift}</td>
+                <td data-th="PAX:" className="div__table__center">{item.numPersonas}</td>
+                <td data-th="Precio:" className="div__table__center">{item.cost}</td>
+                <td data-th="Código Secreto:" className="div__table__center">{item.codigo}</td>
+                <td data-th="Fecha Compra:" className="div__table__center">{item.dateBuy}</td>
+                <td data-th="Fecha Consumo:" className="div__table__right">{item.dateConsume}</td>
+                <td data-th="Validado:" className="div__table__center"><p className="spaceMovile">{item.valid ? <img src={require("../../../images/icons/ico_ok.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</p></td>
 
               </tr>
             ))}

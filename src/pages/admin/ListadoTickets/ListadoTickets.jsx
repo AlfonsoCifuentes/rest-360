@@ -33,7 +33,7 @@ const ListadoTickets = () => {
               <th>Ticket</th>
               <th>Mesa</th>
               <th>Pedido</th>
-              <th>Comensales</th>
+              <th>PAX</th>
               <th>Importe</th>
               <th>IVA</th>
               <th>P.V.P.</th>
@@ -47,12 +47,12 @@ const ListadoTickets = () => {
                 <td data-th="Ticket:" className="div__table__center"><span>{item.idTicket}</span></td>
                 <td data-th="Mesa:" className="div__table__center"><span>{item.idDestino}</span></td>
                 <td data-th="Orden:" className="div__table__center"><span>{item.idOrder}</span></td>
-                <td data-th="Comensales:" className="div__table__center"><span>{item.comensales}</span></td>
+                <td data-th="PAX:" className="div__table__center"><span>{item.comensales}</span></td>
                 <td data-th="Importe:" className="div__table__right"><span>{item.cost}</span></td>
                 <td data-th="IVA:" className="div__table__right"><span>{item.iva}</span></td>
                 <td data-th="P.V.P.:" className="div__table__right"><span>{item.pvp}</span></td>
-                <td data-th="Pagado:" className="div__table__right"><span>{item.pagado}</span></td>
-                <td data-th="Ver detalle:" className="div__table__center"><img className="controlIcon" src={require("../../../images/icons/flechaIcon.png")} alt="Añadir al pedido" /></td>
+                <td data-th="Pagado:" className="div__table__center"><span>{item.pagado ? (<><img src={require("../../../images/icons/ico_punto_verde.png")} alt="Usuario Administrador" className="reservasIcon"/>Pagado</>):('Pendiente')}</span></td>
+                <td data-th="Ver detalle:" className="div__table__center"><p className="spaceMovile"><img className="tableDetIcon" src={require("../../../images/icons/flechaIcon.png")} alt="Añadir al pedido" /></p></td>
               </tr>
             ))}
           </tbody>

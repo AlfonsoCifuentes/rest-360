@@ -1,38 +1,22 @@
 import React, { useState, useEffect } from "react";
-
 import "./styles.scss";
-// import { CartContext } from "../CartContext/CartContext"
-// import { AccordionIcon } from "@chakra-ui/accordion";
 
 const OrderCardtem = (props) => {
   const [orderId, setOrderId] = useState([]);
- 
-  const comanda = props.escroto;
-  console.log("comanda hijo");
-  console.log(comanda);
+  const comanda = props.comandaId;
 
   useEffect(() => {
     fetch(`http://localhost:3001/vga/orders/${comanda}`)
       .then((response) => response.json())
       .then((data) => setOrderId(data));
-    // console.log("Datos pedido Order");
-    // console.log(setOrderId);
-
   }, [comanda]);
   
-  // useEffect(() => {
-  //   fetch(`http://localhost:3001/vga/orderArticles/order/${comanda}`)
-  //     .then((response) => response.json())
-  //     .then((data) => setComandaDatos(data));
-  //   console.log("Datos comanda Order");
-  //   console.log(setComandaDatos);
-  // }, [comanda]);
 
   return (
     <div className="ItemDiv">
       <div className="orderCardDiv">
         <div className="orderCardDiv__card">
-          <table className="rwd-table sinborde">
+          {/* <table className="rwd-table sinborde">
             <tbody>
               <tr key={orderId.id}>
                 <td colSpan="3" className="div__table__left">
@@ -65,7 +49,7 @@ const OrderCardtem = (props) => {
                 <td className="div__table__right">{orderId.pvp} €.</td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
 
           <table className="rwd-table">
             <thead>
@@ -78,10 +62,9 @@ const OrderCardtem = (props) => {
             <tbody>
               {comanda.map((item) => (
                 <tr key={item.id}>
-                  <td className="div__table__center">{item.estado}</td>
-                  <td className="div__table__center">{item.idArticle}</td>
-                  <td className="div__table__center">{item.idUser}</td>
-                  <td className="div__table__center">{item.costNeto}</td>
+                  <td data-th="Estado:" className="div__table__center">{item.estado ? (<><img src={require("../../images/icons/ico_punto_verde.png")} alt="Usuario Administrador" className="reservasIcon"/>Cerrado</>):('Pendiente')}</td>
+                  <td data-th="Producto:" className="div__table__left">{item.idArticle}</td>
+                  <td data-th="Producto:" className="div__table__center">{item.costNeto}<p className="spaceMovile"></p></td>
                 </tr>
               ))}
             </tbody>

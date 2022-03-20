@@ -6,7 +6,7 @@
 .orderItem {
   // border: 3px solid orange;
   padding-right: 25px;
-  margin-right: 25px;
+  //margin-right: 25px;
   overflow-y: scroll;
   height: 320px;
 }
@@ -30,6 +30,7 @@
 
 .orderDetailItem__card{
   width: 65%;
+  margin-left: 25px;
 }
 
 //Punto de ruptura, A partir de este dato, deja de ser movil responsive.

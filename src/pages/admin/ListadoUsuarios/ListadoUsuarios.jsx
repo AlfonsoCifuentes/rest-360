@@ -35,17 +35,21 @@ const ListadoUsuarios = () => {
               <th>Teléfono</th>
               <th>Email</th>
               <th>Cumpleaños</th>
-
+              <th>RollUser</th>
             </tr>
           </thead>
           <tbody>
             {datosArray.map((item) => (
               <tr key={item.id}>
-                <td data-th="Ticket:" className="div__table__center"><span>{item.userName}</span></td>
-                <td data-th="Mesa:" className="div__table__center"><span>{item.firstName} {item.lastName}</span></td>
-                <td data-th="Orden:" className="div__table__center"><span>{item.phone}</span></td>
-                <td data-th="Comensales:" className="div__table__center"><span>{item.email}</span></td>
-                <td data-th="Importe:" className="div__table__right"><span>{item.dateOfBirth}</span></td>
+                <td data-th="Usuario:" className="div__table__left"><span>{item.userName}</span></td>
+                <td data-th="Nombre y Apellido:" className="div__table__left"><span>{item.firstName} {item.lastName}</span></td>
+                <td data-th="Teléfono:" className="div__table__center"><span>{item.phone}</span></td>
+                <td data-th="Email:" className="div__table__left"><span>{item.email}</span></td>
+                <td data-th="Cumpleaños:" className="div__table__center"><span>{item.dateOfBirth}</span></td>
+                <td data-th="RollUser:" className="div__table__left"><span><p className="spaceMovile">
+                {item.roll === 'admin'? (<><img src={require("../../../images/icons/ico_punto_verde.png")} alt="Usuario Administrador" className="reservasIcon"/>{item.roll}</>):('')}
+                {item.roll === 'chef'? (<><img src={require("../../../images/icons/ico_gorro.png")} alt="Usuario Administrador" className="reservasIcon"/>{item.roll}</>):('')}
+                </p></span></td>
               </tr>
             ))}
           </tbody>

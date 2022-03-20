@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-content: space-between;
-  width: 360px;
+  width: 100%;
   cursor: pointer;
 
   & h1 {
@@ -15,10 +15,9 @@
   }
 
   & p {
-      font-size: 1.5rem;
-      border-top: 1px solid gray;
-      margin: 0 20px 0 20px;
-
+    font-size: 1.5rem;
+    border-top: 1px solid gray;
+    margin: 0 20px 0 20px;
   }
 
   &__card {
@@ -40,13 +39,14 @@
   cursor: pointer;
 }
 
-.orderTable{
+.orderTable {
   width: 100%;
 }
 
-.rwd-table{
+.rwd-table {
   width: 100%;
 }
-.sinborde{
+.sinborde {
   border: 0;
 }
+

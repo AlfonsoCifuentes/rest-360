@@ -33,10 +33,10 @@ const ListadoPedidos = () => {
               <th>Pedido</th>
               <th>Mesa</th>
               <th>Usuario</th>
-              <th>Comensales</th>
+              <th>PAX</th>
               <th>Importe</th>
               <th>IVA</th>
-              <th>P.V.P.</th>
+              <th>PVP</th>
               <th>Estado</th>
               <th>Dia/Hora</th>
               <th>Ver detalle</th>
@@ -45,16 +45,16 @@ const ListadoPedidos = () => {
           <tbody>
             {datosArray.map((item) => (
               <tr key={item.id}>
-                <td className="div__table__center">{item.idOrder}</td>
-                <td className="div__table__center">{item.idDestino}</td>
-                <td className="div__table__center">{item.idUser}</td>
-                <td className="div__table__center">{item.numPerson}</td>
-                <td className="div__table__right">{item.costNeto}</td>
-                <td className="div__table__right">{item.iva}</td>
-                <td className="div__table__right">{item.pvp}</td>
-                <td className="div__table__right">{item.estado}</td>
-                <td className="div__table__right">{item.day}</td>
-                <td data-th="Ver detalle:" className="div__table__center"><img className="controlIcon" src={require("../../../images/icons/flechaIcon.png")} alt="Añadir al pedido" /></td>
+                <td data-th="Pedido:" className="div__table__center">{item.idOrder}</td>
+                <td data-th="Mesa:" className="div__table__center">{item.idDestino}</td>
+                <td data-th="Usuario:" className="div__table__center">{item.idUser}</td>
+                <td data-th="PAX:" className="div__table__center">{item.numPerson}</td>
+                <td data-th="Importe:" className="div__table__right">{item.costNeto}</td>
+                <td data-th="IVA:" className="div__table__right">{item.iva}</td>
+                <td data-th="PVP:" className="div__table__right">{item.pvp}</td>
+                <td data-th="Estado:" className="div__table__center">{item.estado ? (<><img src={require("../../../images/icons/ico_punto_verde.png")} alt="Usuario Administrador" className="reservasIcon"/>Cerrado</>):('Pendiente')}</td>
+                <td data-th="Dia/Hora:" className="div__table__right">{item.day}</td>
+                <td data-th="Ver detalle:" className="div__table__center"><p className="spaceMovile"><img className="tableDetIcon" src={require("../../../images/icons/flechaIcon.png")} alt="Añadir al pedido" /></p></td>
               </tr>
             ))}
 
