@@ -42,30 +42,30 @@ const Acordeon = (props) => {
           {JSONresponse.map((item, i) => (
             <MenuItem
               
-              product={item.name}
+              name={item.name}
               key={uuidv4()}
               index={i}
-              idArticle={item.idArticle}
+              isActive={item.isActive}
               type={item.type}
               image={item.image}
               timeCook={item.timeCook}
               cost={item.cost}
               iva={item.iva}
               pvp={item.pvp}
-              active={item.active}
-              gluten={item.gluten}
-              egg={item.egg}
-              fish={item.fish}
-              soja={item.soja}
-              milk={item.milk}
-              fructose={item.fructose}
-              mustard={item.mustard}
-              apio={item.apio}
-              molusco={item.molusco}
-              altramuces={item.altramuces}
-              sesamo={item.sesamo}
-              sulfito={item.sulfito}
-              cacahuete={item.cacahuete}
+
+              hasGluten={item.hasGluten}
+              hasEgg={item.hasEgg}
+              hasFish={item.hasFish}
+              hasSoja={item.hasSoja}
+              hasMilk={item.hasMilk}
+              hasFructose={item.hasFructose}
+              hasMustard={item.hasMustard}
+              hasApio={item.hasApio}
+              hasMolusco={item.hasMolusco}
+              hasAltramuces={item.hasAltramuces}
+              hasSesamo={item.hasSesamo}
+              hasSulfito={item.hasSulfito}
+              hasCacahuete={item.hasCacahuete}
               createdAt={item.createdAt}
               updatedAt={item.updatedAt}
            
@@ -74,7 +74,7 @@ const Acordeon = (props) => {
                 {
                   key: item.key,
                   index: i,
-                  idArticle: item.idArticle,
+                  isActive: item.isActive,
                   name: item.name,
                   id: item.id,
                   category: item.category,
@@ -84,21 +84,20 @@ const Acordeon = (props) => {
                   cost: item.cost,
                   iva: item.iva,
                   pvp: item.pvp,
-                  active: item.active,
-                  gluten: item.gluten,
-                  crustaceos: item.crustaceos,
-                  egg: item.egg,
-                  fish: item.fish,
-                  soja: item.soja,
-                  fructose: item.fructose,
-                  milk: item.milk,
-                  mustard: item.mustard,
-                  apio: item.apio,
-                  molusco: item.molusco,
-                  altramuces: item.altramuces,
-                  sesamo: item.sesamo,
-                  sulfito: item.sulfito,
-                  cacahuete: item.cacahuete,
+                  hasGluten: item.hasGluten,
+                  hasCrustaceos: item.hasCrustaceos,
+                  hasEgg: item.hasEgg,
+                  hasFish: item.hasFish,
+                  hasSoja: item.hasSoja,
+                  hasFructose: item.hasFructose,
+                  hasMilk: item.hasMilk,
+                  hasMustard: item.hasMustard,
+                  hasApio: item.hasApio,
+                  hasMolusco: item.hasMolusco,
+                  hasAltramuces: item.hasAltramuces,
+                  hasSesamo: item.hasSesamo,
+                  hasSulfito: item.hasSulfito,
+                  hasCacahuete: item.hasCacahuete,
                   createdAt: item.createdAt,
                   updatedAt: item.updatedAt,
                 },

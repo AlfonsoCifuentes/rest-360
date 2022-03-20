@@ -1,34 +1,65 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./styles.scss";
 import { CartContext } from "../CartContext/CartContext"
+import CustomHook from "../CounterHook/CounterHook";
 
 const MenuItem = (props) => {
 
   const {cartItems, setCartItems} = useContext(CartContext)
   const [pedidoItems, setPedidoItems] = useState([])
-  const clave = props.key
-  const indexOfPlato =  cartItems.findIndex( plato => plato.clave)
+  const [valor, setValor] = useState(0);
 
 
-  //Este funciona mal, borra todos los platos
-  const handleRemoveItem = (id) => { 
-    setCartItems(cartItems.filter(item => item.idArticle !== id))
+
+useEffect(()=> {
+  for (let articulo of cartItems){
+    if (pedidoItems.includes(articulo)){
+      break
+    }else{
+      pedidoItems.push(articulo)
+    }
   }
+}, [cartItems, pedidoItems])
+
+
+
+useEffect(() => {
+  console.log(pedidoItems)
+})
+
+  //Función para que quite el item actual de la lista
+  const handleRemoveItem = (nombre) => { 
+    setCartItems(cartItems.filter(item => item.name !== nombre))
+    console.log("Eliminados del pedido todos los artículos con nombre", nombre)
+  }
+
+ //Función para añadir el item actual a la lista 
+const handleAddItem = (articulo) => {
+ if (!cartItems.includes(articulo)){
+   setCartItems(articulo)
+ }
+}
+
+
+
+      const funcionContador = () => {
+        const incremento = () => {
+            setValor(valor + 1);  
+        }
+        const decremento = () => {
+            setValor(valor - 1);
+        }
+        return {
+            valor,
+            incremento,
+            decremento,
+        }
+}
+
+
+
+const contador = funcionContador();
   
-  //Este también funciona mal, borra todos menos el último añadido
-  const borrarEstePlato = (key) => {
-    console.log(key)
-    const borrarPlato = () => { setCartItems(cartItems.splice(indexOfPlato, 1))}
-   // borrarPlato()
-  }
-/* 
-
-  useEffect(() => {
-   console.log(cartItems)
-}, [cartItems] ); 
-
-
- */
   return (
     <div className="ItemDiv">
       <div className="menuItemDiv">
@@ -38,7 +69,7 @@ const MenuItem = (props) => {
               <img
                 className="roundImage"
                 src={props.image}
-                alt={props.product}
+                alt={props.name}
               />
             </div>
           </div>
@@ -46,7 +77,7 @@ const MenuItem = (props) => {
           <div className="menuItemDiv__card__titleandprice">
             <div className="menuItemDiv__card__titleandprice__divTitle">
               <h1 className="menuItemDiv__card__titleandprice__divTitle__title">
-                {props.product}
+                {props.name}
               </h1>
             </div>
             <div className="menuItemDiv__card__titleandprice__divPrice">
@@ -59,7 +90,7 @@ const MenuItem = (props) => {
 
         </div>
         <div className="menuItemDiv__card__alergenos">
-            {props.gluten ? (
+            {props.hasGluten ? (
               <img
                 src={require("../../images/icons/ico_alerg_gluten.png")}
                 alt="Gluten"
@@ -68,7 +99,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.egg ? (
+            {props.hasEgg ? (
               <img
                 src={require("../../images/icons/ico_alerg_huevos.png")}
                 alt="Gluten"
@@ -77,7 +108,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.fish ? (
+            {props.hasFish ? (
               <img
                 src={require("../../images/icons/ico_alerg_pescado.png")}
                 alt="Gluten"
@@ -86,7 +117,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.soja ? (
+            {props.hasSoja ? (
               <img
                 src={require("../../images/icons/ico_alerg_soja.png")}
                 alt="Gluten"
@@ -95,7 +126,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.milk ? (
+            {props.hasMilk ? (
               <img
                 src={require("../../images/icons/ico_alerg_lactosa.png")}
                 alt="Gluten"
@@ -104,7 +135,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.fructose ? (
+            {props.hasFructose ? (
               <img
                 src={require("../../images/icons/Aler_Azucar.png")}
                 alt="Gluten"
@@ -113,7 +144,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.mustard ? (
+            {props.hasMustard ? (
               <img
                 src={require("../../images/icons/ico_alerg_mostaza.png")}
                 alt="Gluten"
@@ -122,7 +153,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.apio ? (
+            {props.hasApio ? (
               <img
                 src={require("../../images/icons/ico_alerg_apio.png")}
                 alt="Gluten"
@@ -131,7 +162,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.molusco ? (
+            {props.hasMolusco ? (
               <img
                 src={require("../../images/icons/ico_alerg_moluscos.png")}
                 alt="Gluten"
@@ -140,7 +171,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.altramuces ? (
+            {props.hasAltramuces ? (
               <img
                 src={require("../../images/icons/ico_alerg_altramuces.png")}
                 alt="Gluten"
@@ -149,7 +180,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.sesamo ? (
+            {props.hasSesamo ? (
               <img
                 src={require("../../images/icons/ico_alerg_sesamo.png")}
                 alt="Gluten"
@@ -158,7 +189,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.sulfito ? (
+            {props.hasSulfito ? (
               <img
                 src={require("../../images/icons/ico_alerg_sulfitos.png")}
                 alt="Gluten"
@@ -167,7 +198,7 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
-            {props.cacahuete ? (
+            {props.hasCacahuete ? (
               <img
                 src={require("../../images/icons/ico_alerg_cacahuetes.png")}
                 alt="Gluten"
@@ -176,11 +207,22 @@ const MenuItem = (props) => {
             ) : (
               <p></p>
             )}
+            
+
+
+            <div>
+            <div><p>Cantidad: {contador.valor}</p></div>
+            <button onClick={contador.incremento}>+</button>
+            <button onClick={contador.decremento}>-</button>
+           
+             </div>
+
+
             <div className="addItem">
-              <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => setCartItems(props.carta)}/> 
+              <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => handleAddItem(props.carta)}/> 
             </div>
             <div className="addItem">
-            <img className="controlIcon" src={require("../../images/icons/ico_eliminar.png")} alt="Borrar del pedido" onClick={() => handleRemoveItem(props.idArticle)}/>
+            <img className="controlIcon" src={require("../../images/icons/ico_eliminar.png")} alt="Borrar del pedido" onClick={() => handleRemoveItem(props.name)}/>
             </div>
           </div>
       </div>

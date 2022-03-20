@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { UserContext } from 'src/context/UserContext';
 
@@ -63,7 +63,11 @@ const LoginForm = (props) => {
       </label>
 
       <div>
+
+ 
         <button className='standardButton' type='submit'>Iniciar Sesión</button>
+    
+        
       </div>
 
       {message && <div style={{color: 'tomato'}}>{message}</div>}

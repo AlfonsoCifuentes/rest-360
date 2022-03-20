@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import { Navigate } from "react-router-dom";
 
 const RegisterForm = () => {
 
@@ -14,6 +15,10 @@ const RegisterForm = () => {
     const [idUser, setIdUser] = useState(uuidv4());
 
     const [message, setMessage] = useState("");
+
+    const goToLogin = () => {
+     return <Navigate to="/login" state={{prevRoute: window.location.pathname}} />
+    }
 
     let handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,6 +50,9 @@ const RegisterForm = () => {
                 setDateOfBirth();
                 
                 setMessage("Usuario creado con éxito");
+                setTimeout(() => {
+                  goToLogin()
+                }, 750)
                 
             }else{
                 setMessage("Ha habido un error");
