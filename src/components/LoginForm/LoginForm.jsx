@@ -59,11 +59,11 @@ const LoginForm = (props) => {
 
             
             setMessage("Sesión iniciada");
-            //localStorage.setItem("jwtToken", responseJson.data.token)
-            //console.log(usuario)
-            //setUsuario(responseJson.data.id)
+            localStorage.setItem("jwtToken", response.data.token)
+            console.log(response)
+            setUsuario(responseJson.data.id)
             localStorage.setItem("user", JSON.stringify(responseJson))
-            setUsuario(usuario)
+            //setUsuario(usuario)
 
         }else{
             setMessage("Correo electrónico o contraseña incorrectos");
