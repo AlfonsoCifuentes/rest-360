@@ -9,6 +9,7 @@ const Pedido = () => {
   const bgImage = "https://images2.imgbox.com/d4/be/6FUoKJPx_o.jpg";
   //Contexto de carrito
   const {cartItems}  = useContext(CartContext);
+  const {setPvp}  = useContext(CartContext);
   //Pedido por categorías
   const [entrantesArray, setEntrantesArray] = useState([]);
   const [principalesArray, setPrincipalesArray] = useState([]);
@@ -32,6 +33,9 @@ const Pedido = () => {
   
   //Comprobando cuantos artículos hay en la cesta
   const cantidadDeArticulos = cartItems.length;
+
+  //Seteando el precio del pedido en el contexto de carrito
+  setPvp(precioTotal)
 
   return (
     <div className="mainDiv">

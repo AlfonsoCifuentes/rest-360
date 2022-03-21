@@ -1,45 +1,48 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import StandardHeader from 'src/components/StandardHeader/StandardHeader';
 import { useForm } from "../../../Hooks/useForm";
+import { CartContext } from "src/components/CartContext/CartContext";
 
 const PedidoMesa = () => {
-  //Props para el componente de header genérico: StandardHeader
-  const bgImage = "https://images2.imgbox.com/3b/b3/gCfNWEuG_o.jpg";
+
+    //Props para el componente de header genérico: StandardHeader
+    const bgImage = "https://images2.imgbox.com/3b/b3/gCfNWEuG_o.jpg";
 
   const [idMesa, setIdMesa] = useState(0);
   const [message, setMessage] = useState("");
   const [mesaFound, setMesaFound] = useState(false);
- 
-
   
+  //Contexto de carrito
+  const {cartItems}  = useContext(CartContext);
+  const {pvp}  = useContext(CartContext);
+    
   //Comprobar si la mesa existe en la base de datos
- 
+  useEffect(()=>{
+    fetch(`http://localhost:3001/api/tables/${form.idTable}`)
+    .then ((response) => response.json())
+    .then((data) => setIdMesa(data.id)) 
+  })
 
 
-useEffect(()=>{
-  fetch(`http://localhost:3001/api/tables/${form.idTable}`)
-  .then ((response) => response.json())
-  .then((data) => setIdMesa(data.id)) 
-})
+  //Estado inicial del formulario
+  const initialForm = {
+    diners: "",
+    idTable: "",
+  };
 
 
+  //Validaciones del formulario
+  const validationsForm = (form) => {
+    let errors = {};
 
-const initialForm = {
-  diners: "",
-  idTable: "",
-};
-
-const validationsForm = (form) => {
-  let errors = {};
-
-  if (!form.diners.trim()) {
-    errors.diners = "El 'Número de Personas' es requerido";
-  }
-  if (!form.idTable.trim()) {
-    errors.idTable = "El número de mesa es requerido";
-  }
-  return errors;
-};
+    if (!form.diners.trim()) {
+      errors.diners = "El 'Número de Personas' es requerido";
+    }
+    if (!form.idTable.trim()) {
+      errors.idTable = "El número de mesa es requerido";
+    }
+    return errors;
+  };
 
 
  const { form, errors, formOK, handleChange, handleSubmit } = useForm(
@@ -47,6 +50,8 @@ const validationsForm = (form) => {
     validationsForm
   );
 
+
+  //Efecto que controla si el formulario está correcto
   useEffect(() => {
     if (formOK) {
       console.log("Datos del formuario correctos. Pedido enviado.");
@@ -55,10 +60,10 @@ const validationsForm = (form) => {
     }
   }, [formOK]);
 
+
+  //Seteando a true la variable mesaFound si la mesa introducida existe en base de datos
   useEffect(()=> {
     idMesa === parseInt(form.idTable) ? setMesaFound(true) : setMesaFound(false)
-    console.log("Id Mesa-->", idMesa)
-    console.log("Idtable -->", form.idTable)
   }, [idMesa, form.idTable])
 
   return (
@@ -159,7 +164,12 @@ const validationsForm = (form) => {
             <div className="vSpace" />
             Número de mesa: {form.idTable}
             <br />
-            Personas: {form.diners} <br />
+            <div className="vSpace" />
+            Personas: {form.diners}
+            <br />
+            <div className="vSpace" />
+            Precio total: <h2>{pvp}€ ({cartItems.length} artículos)</h2>
+            <br />
             <div className="vSpace" />
             ¡Gracias por venir a comer a nuestro restaurante!
           </div>
