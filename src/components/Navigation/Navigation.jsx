@@ -17,7 +17,6 @@ const Navigation = () => {
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
-    console.log(isChecked)
   };
 
   return (

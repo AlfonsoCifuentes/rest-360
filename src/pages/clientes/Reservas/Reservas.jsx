@@ -393,10 +393,11 @@ El codigo bueno empieza en la linea 400
 
 // export default Reservas;
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "../../../Hooks/useForm";
 // import StandardHeader from "src/components/StandardHeader/StandardHeader";
 import StandardHeader from "../../../components/StandardHeader/StandardHeader";
+import { v4 as uuidv4 } from 'uuid';
 
 const initialForm = {
   diners: "",
@@ -448,19 +449,71 @@ const validationsForm = (form) => {
 };
 
 const Reservas = () => {
+  const [message, setMessage] = useState("");
   const { form, errors, formOK, handleChange, handleSubmit } = useForm(
     initialForm,
     validationsForm
   );
 
+
   useEffect(() => {
     if (formOK) {
-      console.log("Datos del formuario correctos. Guardamos en base de datos");
-      console.log(form)
+      guardadoDatos()
     } else {
       return;
     }
   }, [formOK]);
+  
+
+  let guardadoDatos = async (e) => {
+        try{
+            let response = await fetch("http://localhost:3001/api/booking/register", {
+              
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({                   
+                    idReserva: uuidv4(),
+                    date: form.date,
+                    hour: form.hour,
+                    numPerson: form.diners,
+                    name: form.name,
+                    lastName: form.surnames,
+                    phone: form.phone,
+                    email: form.email,
+                    allergic: form.allergies,
+                    text: form.comments,
+                    ofertas: (form.newsletter? 1:0),
+                    confirmacion: 0,
+
+                })
+            });
+            let responseJson = await response.json();
+            if(response.status === 200) {
+
+                setMessage("Usuario creado con éxito");
+                //initialForm()
+                
+                // setTimeout(() => {
+                //   goToLogin()
+                // }, 750)
+                
+            }else{
+                setMessage("Ha habido un error");
+            }
+            
+        }catch (err) {
+            console.log(err);
+            }
+    
+          }
+
+  
+
+
+
+
+
+
 
   //Props para el componente de header genérico: StandardHeader
   const bgImage = "https://images2.imgbox.com/d4/be/6FUoKJPx_o.jpg";
@@ -654,12 +707,12 @@ const Reservas = () => {
             />
 
             <textarea
-              name="request"
+              name="comments"
               cols="50"
               rows="5"
               placeholder="Solicitud particular"
               onChange={handleChange}
-              value={form.request}
+              value={form.comments}
             />
 
             <div className="vSpace"></div>
@@ -686,6 +739,7 @@ const Reservas = () => {
             {errors.privacy && <p className="error">{errors.privacy}</p>}
 
             <input type="submit" value="Enviar" />
+            {message && <div style={{color: 'tomato'}}>{message}</div>}
             </div>
           </form>
 
@@ -701,6 +755,7 @@ const Reservas = () => {
             />
             <div className="vSpace" />
             Tu reserva se ha registrado con éxito.
+            
             <div className="vSpace" />
             Día: {form.date}
             <br />
