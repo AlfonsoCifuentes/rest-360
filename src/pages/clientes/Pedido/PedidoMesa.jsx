@@ -9,7 +9,6 @@ const PedidoMesa = () => {
     const bgImage = "https://images2.imgbox.com/3b/b3/gCfNWEuG_o.jpg";
 
   const [idMesa, setIdMesa] = useState(0);
-  const [message, setMessage] = useState("");
   const [mesaFound, setMesaFound] = useState(false);
   
   //Contexto de carrito

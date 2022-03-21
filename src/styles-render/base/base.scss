@@ -46,6 +46,17 @@ a{
   margin: 1rem auto;
 }
 
+.userHeader{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: space-evenly;
+  align-content: space-around;
+  width: 90%;
+  margin: 1rem auto;
+}
+
 // Para poner en elemento separador veritcal de 25px.
   .vSpace {
     margin: 15px;
