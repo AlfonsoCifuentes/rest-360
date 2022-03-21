@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
-import Pedido from "src/pages/clientes/Pedido/Pedido";
 import AuthRoute from 'src/routes/AuthRoute/AuthRoute';
 import { UserContext } from 'src/context/UserContext'
 
@@ -8,6 +7,8 @@ const Home = React.lazy(() => import("../../pages/clientes/Home/Home"));
 const Reservas = React.lazy(() => import("../../pages/clientes/Reservas/Reservas"));
 const Restaurante = React.lazy(() => import("../../pages/clientes/Restaurante/Restaurante"));
 const CartaPedidos = React.lazy(() => import("../../pages/clientes/CartaPedidos/CartaPedidos"));
+const Pedido = React.lazy(() => import("../../pages/clientes/Pedido/Pedido"));
+const PedidoMesa = React.lazy(() => import("../../pages/clientes/Pedido/PedidoMesa"));
 const CompraRegistro = React.lazy(() => import("../../pages/clientes/CompraRegistro/CompraRegistro"));
 const Regalar = React.lazy(() => import("../../pages/clientes/Regalar/Regalar"));
 const Contacto = React.lazy(() => import("../../pages/clientes/Contacto/Contacto"));
@@ -107,6 +108,15 @@ const Main = () => {
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <Pedido />
+              </React.Suspense>
+            }
+          />
+
+          <Route
+            path="/su-pedido/en-mesa"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+                <PedidoMesa />
               </React.Suspense>
             }
           />

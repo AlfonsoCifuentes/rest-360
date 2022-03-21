@@ -58,7 +58,7 @@ const Pedido = () => {
       </div>
 
       <div className="buttonsDiv">
-          <Link to="/su-pedido">
+          <Link to="/su-pedido/en-mesa">
             <button className="standardButton">Realizar pedido</button>
           </Link>
         </div>
