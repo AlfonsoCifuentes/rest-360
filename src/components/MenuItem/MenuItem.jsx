@@ -1,43 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./styles.scss";
 import { CartContext } from "../CartContext/CartContext"
-import CustomHook from "../CounterHook/CounterHook";
 
 const MenuItem = (props) => {
 
   const {cartItems, setCartItems} = useContext(CartContext)
-  const [pedidoItems, setPedidoItems] = useState([])
   const [valor, setValor] = useState(0);
 
-
-
-useEffect(()=> {
-  for (let articulo of cartItems){
-    if (pedidoItems.includes(articulo)){
-      break
-    }else{
-      pedidoItems.push(articulo)
-    }
-  }
-}, [cartItems, pedidoItems])
-
-
-
-useEffect(() => {
-  console.log(pedidoItems)
-})
-
-  //Función para que quite el item actual de la lista
+//Función para que quite el item actual de la lista
   const handleRemoveItem = (nombre) => { 
-    setCartItems(cartItems.filter(item => item.name !== nombre))
-    console.log("Eliminados del pedido todos los artículos con nombre", nombre)
+    let index = cartItems.findIndex(i => i.name === nombre)
+    if (index > -1){
+      cartItems.splice(index, 1)
+      setCartItems(cartItems => [...cartItems]) //Para forzar el re render
+    }
   }
 
  //Función para añadir el item actual a la lista 
 const handleAddItem = (articulo) => {
- if (!cartItems.includes(articulo)){
-   setCartItems(articulo)
- }
+  setCartItems(articulo)
 }
 
 
