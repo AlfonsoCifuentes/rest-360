@@ -10,7 +10,7 @@ const ListadoPedidos = () => {
 
   //Fetch de la carta al servidor
   useEffect(() => {
-    fetch("http://localhost:3001/vga/orders")
+    fetch("http://localhost:3001/api/orders")
       .then((response) => response.json())
       .then((data) => setDatosArray(data));
   }, []);

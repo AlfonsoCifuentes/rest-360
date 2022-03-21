@@ -10,7 +10,7 @@ const ListadoRegalos = () => {
 
   //Fetch de la carta al servidor
   useEffect(() => {
-    fetch("http://localhost:3001/vga/bookingGift")
+    fetch("http://localhost:3001/api/bookingGift")
       .then((response) => response.json())
       .then((data) => setDatosArray(data));
   }, []);

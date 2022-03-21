@@ -23,7 +23,7 @@ const RegisterForm = () => {
     let handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            let response = await fetch("http://localhost:3001/vga/users/register", {
+            let response = await fetch("http://localhost:3001/api/users/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

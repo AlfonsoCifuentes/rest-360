@@ -1,7 +1,7 @@
 
 .divForm{
-    margin-top: 4rem;
-    margin-bottom: 4rem;  
+    // margin-top: 4rem;
+    // margin-bottom: 4rem;  
     p{
         margin-top: 25px;
         margin-bottom: 10px;
@@ -21,11 +21,17 @@
     }
 }
 
+.error{
+    color:red;
+    font-size: 11px;
+    font-weight: 800;
+
+}
 
 
 .confirmation{
     
-    margin: 25px;
+    margin: 15%;
     padding: 26px;
     border-radius: 25px;
     background-color: $highcolor;

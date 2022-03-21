@@ -6,7 +6,7 @@ const OrderCardtem = (props) => {
   const comanda = props.comandaId;
 
   useEffect(() => {
-    fetch(`http://localhost:3001/vga/orders/${comanda}`)
+    fetch(`http://localhost:3001/api/orders/${comanda}`)
       .then((response) => response.json())
       .then((data) => setOrderId(data));
   }, [comanda]);

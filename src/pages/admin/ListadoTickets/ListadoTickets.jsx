@@ -10,7 +10,7 @@ const ListadoTickets = () => {
 
   //Fetch de la carta al servidor
   useEffect(() => {
-    fetch("http://localhost:3001/vga/bill/") //Cambiar a bill cuando tenga datos.
+    fetch("http://localhost:3001/api/bill/") //Cambiar a bill cuando tenga datos.
       .then((response) => response.json())
       .then((data) => setDatosArray(data));
   }, []);

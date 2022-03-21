@@ -23,7 +23,7 @@ const LoginForm = (props) => {
     props.loginUser( state ? state.prevRoute : null);
 
     try{
-        let response = await fetch("http://localhost:3001/vga/users/login", {
+        let response = await fetch("http://localhost:3001/api/users/login", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -53,12 +53,12 @@ const LoginForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        <p>Correo Electrónico</p>
+        <p>Correo Electrónico:</p>
         <input type="text" name="email" onChange={(e) => setEmail(e.target.value)} value={email} />
       </label>
 
       <label>
-        <p>Contraseña</p>
+        <p>Contraseña:</p>
         <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} />
       </label>
 

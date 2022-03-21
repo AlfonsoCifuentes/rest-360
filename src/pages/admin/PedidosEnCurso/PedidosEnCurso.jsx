@@ -16,13 +16,13 @@ const PedidosEnCurso = () => {
 
   //Fetch de pdidos al servidor
   useEffect(() => {
-    fetch("http://localhost:3001/vga/orders")
+    fetch("http://localhost:3001/api/orders")
       .then((response) => response.json())
       .then((data) => setDatosArray(data));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/vga/orderArticles/order/${comanda}`)
+    fetch(`http://localhost:3001/api/orderArticles/order/${comanda}`)
       .then((response) => response.json())
       .then((data) => setComandaDatos(data));
   }, [comanda]);

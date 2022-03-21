@@ -8,8 +8,16 @@ const Navigation = () => {
   const {cartItems}  = useContext(CartContext);
   const [isChecked, setIsChecked] = useState(false);
 
+  const handleOnChangeLogo = () => {
+    // El logo solo cierra el menu cuando este está activo.
+    if (isChecked){
+      handleOnChange()
+    }
+  };
+
   const handleOnChange = () => {
     setIsChecked(!isChecked);
+    console.log(isChecked)
   };
 
   return (
@@ -56,7 +64,7 @@ const Navigation = () => {
         </Link> 
 
 
-        <Link to="/" onClick={handleOnChange}>
+        <Link to="/" onClick={handleOnChangeLogo}>
           <img
             className="nav__logo"
             src={require("../../images/icons/Logo360Blanco.png")}

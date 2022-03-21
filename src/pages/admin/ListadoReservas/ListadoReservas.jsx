@@ -10,7 +10,7 @@ const ListadoReservas = () => {
 
   //Fetch de la carta al servidor
   useEffect(() => {
-    fetch("http://localhost:3001/vga/booking")
+    fetch("http://localhost:3001/api/booking")
       .then((response) => response.json())
       .then((data) => setDatosArray(data));
   }, []);

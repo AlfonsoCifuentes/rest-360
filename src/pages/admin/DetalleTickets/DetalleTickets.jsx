@@ -12,7 +12,7 @@ const Tickets = () => {
   const {id} = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:3001/vga/bill/")
+    fetch("http://localhost:3001/api/bill/")
       .then((response) => response.json())
       .then((data) => setDatosArray(data));
   }, []);

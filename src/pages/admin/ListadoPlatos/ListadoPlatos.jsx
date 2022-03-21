@@ -10,7 +10,7 @@ const ListadoPlatos = () => {
 
   //Fetch de la carta al servidor
   useEffect(() => {
-    fetch("http://localhost:3001/vga/articles")
+    fetch("http://localhost:3001/api/articles")
       .then((response) => response.json())
       .then((data) => setDatosArray(data));
   }, []);
