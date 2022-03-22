@@ -67,19 +67,35 @@ const DetallePlatos = () => {
   return (
     <div className="mainDiv">
       <div className="sectionParagraph">
-        <div className="titleAdmin">
-          <h1 className="title">
-            <Link to="/listadotickets">
-              <img
-                src={require("../../../images/icons/ico_flechaizquierda.png")}
-                alt="Volver al listado de tickets"
-                className="arrowIcon"
-              />
-            </Link>
-            Platos {id}
-          </h1>
+        <div className="tituloYPagina">
+          <div className="titleAdmin">
+            <h1 className="title">
+              <Link to="/listadotickets">
+                <img
+                  src={require("../../../images/icons/ico_flechaizquierda.png")}
+                  alt="Volver al listado de tickets"
+                  className="arrowIcon"
+                />
+              </Link>
+              Platos
+              {id}
+            </h1>
+          </div>
+          <div className="pagination">
+            <img
+              src={require("../../../images/icons/ico_flechaizquierda.png")}
+              alt="Volver al listado de tickets"
+              className="arrowIcon"
+            />
+            {id}
+            <img
+              src={require("../../../images/icons/ico_flechaderecha.png")}
+              alt="Volver al listado de tickets"
+              className="arrowIcon"
+            />
+          </div>
         </div>
-
+        <hr />
         <div className="detallePlato">
           <div className="detallePlato__img">
             <img
@@ -90,72 +106,66 @@ const DetallePlatos = () => {
           </div>
 
           <div className="detallePlato_card">
-            <form onSubmit={handleSubmit}>
-              <div className="div__datos">
-                <p>Datos de contacto:</p>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Nombre *"
-                  onChange={handleChange}
-                  value={form.name}
-                />
-                {errors.name && <p className="error">{errors.name}</p>}
-
-                <input
-                  type="text"
-                  name="surnames"
-                  placeholder="Apellidos"
-                  onChange={handleChange}
-                  value={form.surnames}
-                />
-
-                <input
-                  type="text"
-                  name="phone"
-                  placeholder="Telefono *"
-                  onChange={handleChange}
-                  value={form.phone}
-                />
-                {errors.phone && <p className="error">{errors.phone}</p>}
-
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Escribe tu email *"
-                  onChange={handleChange}
-                  value={form.email}
-                />
-                {errors.email && <p className="error">{errors.email}</p>}
-
-                <textarea
-                  name="comments"
-                  cols="50"
-                  rows="5"
-                  placeholder="¿En qué podemos ayudarte? Coméntanos..."
-                  onChange={handleChange}
-                  value={form.comments}
-                />
-                {errors.comments && <p className="error">{errors.comments}</p>}
-
-                <label>
+            <form onSubmit={handleSubmit} className="formDetallePlato">
+     
+                {/* <p>Datos de contacto:</p> */}
+                <label>Nombre:</label>
                   <input
-                    type="checkbox"
-                    name="privacy"
-                    value={!isChecked ? "ok" : ""}
-                    checked={isChecked}
-                    onChange={handleCheck}
+                    type="text"
+                    name="name"
+                    placeholder="Nombre *"
+                    onChange={handleChange}
+                    value={form.name}
                   />
-                  Acepto Políticas de Privacidad.
-                </label>
-                {errors.privacy && <p className="error">{errors.privacy}</p>}
+                  {errors.name && <p className="error">{errors.name}</p>}
+                
+
+                <label>Categoría:</label>
+                  <input
+                    type="text"
+                    name="surnames"
+                    placeholder="Categoría"
+                    onChange={handleChange}
+                    value={form.surnames}
+                  />
+
+                <label>Tipo:</label>
+                  <select name="select">
+                    <option value="value1">Value 1</option>
+                    <option value="value2" selected>Value 2</option>
+                    <option value="value3">Value 3</option>
+                  </select>
+                  {errors.phone && <p className="error">{errors.phone}</p>}
+
+                <label>Tiempo:</label>
+                  <input
+                    type="text"
+                    name="Tiempo"
+                    placeholder="Escribe tu email *"
+                    onChange={handleChange}
+                    value={form.email}
+                  />
+                  {errors.email && <p className="error">{errors.email}</p>}
+                
+
+                <label>PVP:</label>
+                  <input
+                    type="text"
+                    name="PVP"
+                    placeholder="Escribe tu email *"
+                    onChange={handleChange}
+                    value={form.PVP}
+                  />
+                  {errors.PVP && <p className="error">{errors.PVP}</p>}
+                
+
+
                 <div className="vSpace"></div>
 
                 <input type="submit" value="Enviar" />
-              </div>
+        
             </form>
 
-            {datosArray.name}
 
             <p className="menuItemDiv__card__titleandprice__divPrice__price">
               <strong>{datosArray.pvp}€</strong>

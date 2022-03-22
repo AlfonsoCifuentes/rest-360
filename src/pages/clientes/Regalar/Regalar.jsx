@@ -220,7 +220,6 @@ console.log(codigoRandom());
         ) : (
           " respuesta todo ok"
         )}
-        ;
       </div>
     </>
   );
