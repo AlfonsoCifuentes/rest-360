@@ -337,7 +337,7 @@ const Reservas = () => {
             {errors.privacy && <p className="error">{errors.privacy}</p>}
 
             <div className="vSpace"></div>
-            <input type="submit" value="Enviar" />
+            <input className="standardButton" type="submit" value="Enviar" />
             {message && <div style={{color: 'tomato'}}>{message}</div>}
             </div>
           </form>
