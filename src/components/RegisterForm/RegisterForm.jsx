@@ -235,7 +235,7 @@ const RegisterForm = () => {
         </> 
       ) : (
         // Si el formulario esta Ok y se ha enviado.
-        <div className="confirmation">
+        <div className="confirmationLessMargin">
           <img
             className="bigIcon"
             src={require("src/images/icons/RoundedTickIcon.png")}

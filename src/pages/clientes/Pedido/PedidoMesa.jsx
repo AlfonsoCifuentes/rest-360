@@ -74,8 +74,9 @@ const PedidoMesa = () => {
         {!formOK ? (
 
           // Si el formulario no esta OK.
+          <div className='formDiv'>
           <form onSubmit={handleSubmit}>
-
+            <div className="buttonsDiv">
             <p>Introduzca el número de su mesa</p>
             <input
               label="1"
@@ -83,8 +84,10 @@ const PedidoMesa = () => {
               name="idTable"
               onChange={handleChange}
             />
+            </div>
             {errors.idTable && <p className="error">{errors.idTable}</p>}
 
+            <div className='peopleDiv'>
             <p>Número de personas:</p>
             <input
               label="1"
@@ -142,17 +145,18 @@ const PedidoMesa = () => {
               value="8"
               onChange={handleChange}
             />
+            </div>
             {errors.diners && <p className="error">{errors.diners}</p>}
 
-            <input type="submit" value="Enviar" />
+            <input className='standardButton' type="submit" value="Enviar" />
             
           </form>
-
+          </div>
 
         ) : (
 
           // Si el formulario esta Ok y se ha enviado.
-          <div className="confirmation">
+          <div className="confirmationLessMargin">
             <img
               className="bigIcon"
               src={require("../../../images/icons/RoundedTickIcon.png")}
