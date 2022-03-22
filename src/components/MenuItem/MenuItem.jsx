@@ -23,23 +23,23 @@ const handleAddItem = (articulo) => {
 
 
 
-      const funcionContador = () => {
-        const incremento = () => {
-            setValor(valor + 1);  
-        }
-        const decremento = () => {
-            setValor(valor - 1);
-        }
-        return {
-            valor,
-            incremento,
-            decremento,
-        }
-}
+//       const funcionContador = () => {
+//         const incremento = () => {
+//             setValor(valor + 1);  
+//         }
+//         const decremento = () => {
+//             setValor(valor - 1);
+//         }
+//         return {
+//             valor,
+//             incremento,
+//             decremento,
+//         }
+//       }
 
 
 
-const contador = funcionContador();
+// const contador = funcionContador();
   
   return (
     <div className="ItemDiv">
@@ -190,7 +190,7 @@ const contador = funcionContador();
             )}
             
 
-
+{/* 
             <div>
             <div><p>Cantidad: {contador.valor}</p></div>
             <button onClick={contador.incremento}>+</button>
@@ -198,7 +198,7 @@ const contador = funcionContador();
            
              </div>
 
-
+ */}
             <div className="addItem">
               <img className="controlIcon" src={require("../../images/icons/ico_anadir.png")} alt="Añadir al pedido" onClick={() => handleAddItem(props.carta)}/> 
             </div>

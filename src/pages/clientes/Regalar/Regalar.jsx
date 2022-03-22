@@ -214,7 +214,7 @@ console.log(codigoRandom());
               {errors.diners && <p className="error">{errors.diners}</p>}
 
               <div className="vSpace"></div>
-              <input type="submit" value="Enviar" />
+              <input className="standardButton" type="submit" value="Enviar" />
             </div>
           </form>
         ) : (
