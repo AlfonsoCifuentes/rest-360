@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import StandardHeader from "../../../components/StandardHeader/StandardHeader";
 
 const Socios = ({user}) => {
@@ -8,6 +8,8 @@ const Socios = ({user}) => {
   const { firstName, lastName, email, password, phone, userName, avatar } = user|| {};
   const firstNameInitial = firstName.charAt(0);
   const lastNameInitial = lastName.charAt(0);
+
+  const [showModify, setShowModify] = useState(false);
 
 
   return (
@@ -36,8 +38,14 @@ const Socios = ({user}) => {
       </div>
 
       <div className="buttonsDiv">
-        <button className="standardButton">Modificar datos</button>
+        <button className="standardButton" onClick={() => setShowModify(true)}>Modificar datos</button>
       </div>
+
+      {showModify === true ? (
+        <p>Mostrando modificar datos</p>
+        ) : (
+          <p></p>
+          )}
     </div>
 
   );

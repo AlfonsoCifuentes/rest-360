@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
-const Footer = () => {
+const Footer = (props) => {
   return (
-    <div className="footer">
+    <div className="footer" onClick={props.closeNav}>
       <div className="footer__white">
         <div>
           <Link to="/">
