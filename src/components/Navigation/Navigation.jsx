@@ -54,14 +54,17 @@ const Navigation = () => {
         
         <div className="nav__background__logoCart">
 
-      
+        {cartItems.length >= 1 ? ( 
         <Link to="/su-pedido">
         <div className="nav__background__logoCart__countDiv">
            <h3 className="nav__background__logoCart__countDiv__count">{cartItems.length}</h3>
-        </div>
-        {console.log(cartItems.length)}
+        </div>        
         <img className="nav__background__logoCart__bandeja" src={require("../../images/icons/IconoBandeja.png")} alt="Su pedido" />
         </Link> 
+        ) : (
+        <p></p>
+        )}
+
 
 
 
