@@ -1,4 +1,3 @@
-
 //Punto de ruptura, A partir de este dato, deja de ser movil responsive.
 $breakpoint-alpha: 480px; // adjust to your needs
 
@@ -6,7 +5,7 @@ $breakpoint-alpha: 480px; // adjust to your needs
 // Ajuste de la tabla para formato movil:
 
 .rwd-table {
-  background-color: white;
+  background-color: $bgcolor;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
@@ -40,6 +39,12 @@ $breakpoint-alpha: 480px; // adjust to your needs
       padding-bottom: 0.2em;
     }
 
+    a {
+      color: $highcolor;
+    }
+    a:hover {
+      color: $navcolor;
+    }
     // Textos de data-th para vista movil.
     &:before {
       content: attr(data-th) " ";
@@ -59,12 +64,11 @@ $breakpoint-alpha: 480px; // adjust to your needs
   .div__table__left {
     text-align: center;
   }
-  
 
-  // Ajuste de la celdas para escritorio:
+  // Ajuste de la celdas para escritorio, solo valores que cambian:
   @media (min-width: $breakpoint-alpha) {
-
-  th, td {
+    th,
+    td {
       // IMPORTANTE:
       // Muestra tabla normal a partir del punto de ruptura.
       display: table-cell;
@@ -83,9 +87,5 @@ $breakpoint-alpha: 480px; // adjust to your needs
     .div__table__left {
       text-align: left;
     }
-
-
-
   }
-
 }

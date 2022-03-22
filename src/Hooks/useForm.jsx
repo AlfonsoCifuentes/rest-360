@@ -5,10 +5,18 @@ export const useForm = (initialForm, validateForm) => {
   const [errors, setErrors] = useState({});
   const [submiteado, setSubmiteado] = useState();
   const [formOK, setFormOk] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+
+  const handleCheck = (e) => {
+    setIsChecked(!isChecked);
+    handleChange(e)
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+    // console.log(form)
   };
 
   const handleSubmit = (e) => {
@@ -29,6 +37,8 @@ export const useForm = (initialForm, validateForm) => {
     form,
     errors,
     formOK,
+    isChecked,
+    handleCheck,
     handleChange,
     handleSubmit,
   };

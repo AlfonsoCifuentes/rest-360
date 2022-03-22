@@ -14,9 +14,7 @@ const RegistroUsuarios = () => {
     <div className="mainDiv">
       <StandardHeader bgImage={bgImage} />
       <h1 className="title">Registrarse como usuario</h1>
-      <div className='"sectionParagraph'>
-          <h3>Introduzca los datos solicitados, y ¡forme parte ahora de la familia Rest360!</h3>
-      </div>
+
       <div className='divForm'>
       <RegisterForm />
       </div>

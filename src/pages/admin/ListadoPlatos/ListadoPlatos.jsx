@@ -59,91 +59,98 @@ const ListadoPlatos = () => {
                 <td data-th="IVA:" className="div__table__center">{item.iva}</td>
                 <td data-th="PVP:" className="div__table__center">{item.pvp}</td>
                 <td data-th="Alergenos:" className="div__table__center">
-                  {item.gluten ? (
+                  {item.hasGluten ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_gluten.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ):""}
-                  {item.egg ? (
+                  {item.hasCrustaceos ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_huevos.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ) :""}
-                  {item.fish ? (
+                  {item.hasEgg ? (
+                    <img
+                      src={require("../../../images/icons/ico_alerg_huevos.png")}
+                      alt="Gluten"
+                      className="alergenoIcon"
+                    />
+                  ) :""}
+                  {item.hasFish ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_pescado.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ):""}
-                  {item.soja ? (
+                  {item.hasSoja ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_soja.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ):""}
-                  {item.milk ? (
+                  {item.hasMilk ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_lactosa.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ):""}
-                  {item.fructose ? (
+                  {item.hasFructose ? (
                     <img
                       src={require("../../../images/icons/Aler_Azucar.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ):""}
-                  {item.mustard ? (
+                  {item.hasMustard ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_mostaza.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ):""}
-                  {item.apio ? (
+                  {item.hasApio ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_apio.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ) :""}
-                  {item.molusco ? (
+                  {item.hasMolusco ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_moluscos.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ) :""}
-                  {item.altramuces ? (
+                  {item.hasAltramuces ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_altramuces.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ) :""}
-                  {item.sesamo ? (
+                  {item.hasSesamo ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_sesamo.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ) :""}
-                  {item.sulfito ? (
+                  {item.hasSulfito ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_sulfitos.png")}
                       alt="Gluten"
                       className="alergenoIcon"
                     />
                   ) :""}
-                  {item.cacahuete ? (
+                  {item.hasCacahuate ? (
                     <img
                       src={require("../../../images/icons/ico_alerg_cacahuetes.png")}
                       alt="Gluten"

@@ -44,11 +44,11 @@ const ListadoUsuarios = () => {
                 <td data-th="Usuario:" className="div__table__left"><span>{item.userName}</span></td>
                 <td data-th="Nombre y Apellido:" className="div__table__left"><span>{item.firstName} {item.lastName}</span></td>
                 <td data-th="Teléfono:" className="div__table__center"><span>{item.phone}</span></td>
-                <td data-th="Email:" className="div__table__left"><span>{item.email}</span></td>
+                <td data-th="Email:" className="div__table__center"><span><a href={`mailto:${item.email}`}>{item.email}</a></span></td>
                 <td data-th="Cumpleaños:" className="div__table__center"><span>{item.dateOfBirth}</span></td>
                 <td data-th="RollUser:" className="div__table__left"><span><p className="spaceMovile">
-                {item.roll === 'admin'? (<><img src={require("../../../images/icons/ico_punto_verde.png")} alt="Usuario Administrador" className="reservasIcon"/>{item.roll}</>):('')}
-                {item.roll === 'chef'? (<><img src={require("../../../images/icons/ico_gorro.png")} alt="Usuario Administrador" className="reservasIcon"/>{item.roll}</>):('')}
+                {item.rol === 'admin'? (<><img src={require("../../../images/icons/ico_punto_verde.png")} alt="Usuario Administrador" className="reservasIcon"/>{item.rol}</>):('')}
+                {item.rol === 'chef'? (<><img src={require("../../../images/icons/ico_gorro.png")} alt="Usuario Administrador" className="reservasIcon"/>{item.rol}</>):('')}
                 </p></span></td>
               </tr>
             ))}

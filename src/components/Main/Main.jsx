@@ -24,7 +24,7 @@ const IniciarSesion = React.lazy(() => import("../../pages/clientes/IniciarSesio
 // Admin routes.
 const AdmMain = React.lazy(() => import("../../pages/admin/AdmMain/AdmMain"));
 const DetallePedidos = React.lazy(() => import("../../pages/admin/DetallePedidos/DetallePedidos"));
-const DetallePlatos = React.lazy(() => import("../../pages/admin/DetallePlatos/DetallePlatos.jsx"));
+const DetallePlatos = React.lazy(() => import("../../pages/admin/DetallePlatos/DetallePlatos"));
 const DetalleTickets = React.lazy(() => import("../../pages/admin/DetalleTickets/DetalleTickets"));
 const ListadoPedidos = React.lazy(() => import("../../pages/admin/ListadoPedidos/ListadoPedidos"));
 const ListadoPlatos = React.lazy(() => import("../../pages/admin/ListadoPlatos/ListadoPlatos"));
@@ -216,7 +216,7 @@ const Main = () => {
           />
 
           <Route
-            path="/detallepedidos"
+            path="/detallepedidos/:id"
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <DetallePedidos />
@@ -225,7 +225,7 @@ const Main = () => {
           />
 
           <Route
-            path="/detalleplatos"
+            path="/detalleplatos/:id"
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <DetallePlatos />
@@ -305,6 +305,9 @@ const Main = () => {
             }
           />
 
+          {/*******************************************************
+            Paginas Not Foun para rutas diferentes a las informadas
+            ******************************************************/}
 
           <Route
             path="/*"

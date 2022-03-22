@@ -46,17 +46,17 @@ const ListadoReservas = () => {
           <tbody>
             {datosArray.map((item) => (
               <tr key={item.id}>
-                <td data-th="Nº:" className="div__table__center">{item.idReserva}</td>
+                <td data-th="Nº:" className="div__table__center">{item.id}</td>
                 <td data-th="Día:" className="div__table__center">{item.date}</td>
                 <td data-th="Hora:" className="div__table__center">{item.hour}</td>
                 <td data-th="PAX:" className="div__table__center">{item.numPerson}</td>
                 <td data-th="Nombre y Apellido:" className="div__table__left">{item.name} {item.lastName}</td>
                 <td data-th="Teléfono:" className="div__table__center">{item.phone}</td>
-                <td data-th="Email:" className="div__table__center">{item.email}</td>
-                <td data-th="Alergias:" className="div__table__left">{item.allergic ? <img src={require("../../../images/icons/ico_punto_rojo.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}{item.allergic}</td>
+                <td data-th="Email:" className="div__table__center"><a href={`mailto:${item.email}`}>{item.email}</a></td>
+                <td data-th="Alergias:" className="div__table__left">{item.isAllergic ? <img src={require("../../../images/icons/ico_punto_rojo.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}{item.isAllergic}</td>
                 <td data-th="Solicitud:" className="div__table__left">{item.text}</td>
-                <td data-th="Ofertas:" className="div__table__center">{item.ofertas ? <img src={require("../../../images/icons/ico_punto_naranja.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</td>
-                <td data-th="Confirm.:" className="div__table__center"><p className="spaceMovile">{item.confirmacion ? <img src={require("../../../images/icons/ico_punto_verde.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</p></td>
+                <td data-th="Ofertas:" className="div__table__center">{item.disccount ? <img src={require("../../../images/icons/ico_punto_naranja.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</td>
+                <td data-th="Confirm.:" className="div__table__center"><p className="spaceMovile">{item.confirmation ? <img src={require("../../../images/icons/ico_punto_verde.png")} alt="Alergias" className="reservasIcon"/>:<p></p>}</p></td>
               </tr>
             ))}
           </tbody>

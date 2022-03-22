@@ -53,14 +53,16 @@ const Navigation = () => {
       <div className="nav__background">
         
         <div className="nav__background__logoCart">
-        
+
+      
         <Link to="/su-pedido">
         <div className="nav__background__logoCart__countDiv">
            <h3 className="nav__background__logoCart__countDiv__count">{cartItems.length}</h3>
         </div>
-        
+        {console.log(cartItems.length)}
         <img className="nav__background__logoCart__bandeja" src={require("../../images/icons/IconoBandeja.png")} alt="Su pedido" />
         </Link> 
+
 
 
         <Link to="/" onClick={handleOnChangeLogo}>

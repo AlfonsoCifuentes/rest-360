@@ -200,7 +200,7 @@ const contador = funcionContador();
 
 
             <div className="addItem">
-              <img className="controlIcon" src={require("../../images/icons/circuloMas.png")} alt="Añadir al pedido" onClick={() => handleAddItem(props.carta)}/> 
+              <img className="controlIcon" src={require("../../images/icons/ico_anadir.png")} alt="Añadir al pedido" onClick={() => handleAddItem(props.carta)}/> 
             </div>
             <div className="addItem">
             <img className="controlIcon" src={require("../../images/icons/ico_eliminar.png")} alt="Borrar del pedido" onClick={() => handleRemoveItem(props.name)}/>

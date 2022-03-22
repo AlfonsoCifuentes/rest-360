@@ -39,7 +39,7 @@ const validationsForm = (form) => {
 };
 
 const Contacto = () => {
-  const { form, errors, formOK, handleChange, handleSubmit } = useForm(
+  const { form, errors, formOK, isChecked, handleCheck, handleChange, handleSubmit } = useForm(
     initialForm,
     validationsForm
   );
@@ -112,8 +112,7 @@ const Contacto = () => {
               />
               {errors.comments && <p className="error">{errors.comments}</p>}
 
-              <div className="vSpace"></div>
-              <label>
+              {/* <label>
                 <input
                   type="checkbox"
                   name="newsletter"
@@ -123,17 +122,20 @@ const Contacto = () => {
                 Deseo recibir ofertas especiales y notificaciones del
                 restaurante por correo electrónico y mensajes de texto.
               </label>
-              <div></div>
+              <div></div> */}
+
               <label>
-                <input
-                  type="checkbox"
-                  name="privacy"
-                  checked={form.privacy}
-                  onChange={handleChange}
-                />
-                Acepto Políticas de Privacidad.
-              </label>
-              {errors.privacy && <p className="error">{errors.privacy}</p>}
+              <input
+                type="checkbox"
+                name="privacy"
+                value= {!isChecked? 'ok':''}
+                checked={isChecked}
+                onChange={handleCheck}
+              />
+              Acepto Políticas de Privacidad.
+            </label>
+            {errors.privacy && <p className="error">{errors.privacy}</p>}
+            <div className="vSpace"></div>
 
               <input type="submit" value="Enviar" />
             </div>

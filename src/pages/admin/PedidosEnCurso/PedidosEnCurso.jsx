@@ -22,7 +22,8 @@ const PedidosEnCurso = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/orderArticles/order/${comanda}`)
+    // fetch(`http://localhost:3001/api/orderArticles/order/${comanda}`)
+    fetch(`http://localhost:3001/api/orderArticles/order/1`)
       .then((response) => response.json())
       .then((data) => setComandaDatos(data));
   }, [comanda]);
