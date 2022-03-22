@@ -18,7 +18,10 @@ const NotFound = () => {
             Para que no te quedes con hambre, de mostramos las siguintes opciones:
           </p>
         </div>
+        
         <div className="buttonsDiv">
+        <div className="buttonsDiv">
+        </div>
         <Link to="/">
             <button className="standardButton">Inicio</button>
           </Link>
