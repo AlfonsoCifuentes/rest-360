@@ -6,6 +6,8 @@ const PhotoCarousel = () => {
   return (
     <Carousel
     wrapAround={true}
+    autoplay={true}
+    speed={1000}
   >
       <img src={require ("../../images/photos/restaurante1.jpg")} alt="Foto Restaurante 1"/>
       <img src={require ("../../images/photos/restaurante2.jpg")} alt="Foto Restaurante 2"/>
