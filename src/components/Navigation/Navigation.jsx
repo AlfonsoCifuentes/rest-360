@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 import "./styles.scss";
 import { CartContext } from "../CartContext/CartContext";
 
-const Navigation = () => {
+const Navigation = (props) => {
 
   const {cartItems}  = useContext(CartContext);
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleOnChangeLogo = () => {
+  const handleOnChangeLogo = (props) => {
     // El logo solo cierra el menu cuando este está activo.
     if (isChecked){
+      handleOnChange()
+    }
+    if (props.closeNav === false){
       handleOnChange()
     }
   };
@@ -20,7 +23,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav role="navigation" className="nav">
+    <nav role="navigation" className="nav" onBlur={handleOnChangeLogo}>
       <div id="menuToggle">
         <input className="check" type="checkbox" value="checkHamb" checked={isChecked} onChange={handleOnChange}/>
 
