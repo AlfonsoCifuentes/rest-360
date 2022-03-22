@@ -11,7 +11,8 @@ import "./styles.scss";
 const initialForm = {
   diners: "",
   gift: "",
-  code: "",
+  experiencia: "125",
+  degustacion: "70",
 };
 
 const validationsForm = (form) => {
@@ -35,22 +36,29 @@ const Regalar = () => {
     validationsForm
   );
 
-
-  const  codigoRandom = () => {
+  const codigoRandom = () => {
     // const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     // Obtenemos un codigo random, en base a 36 caracteres (abecedario + nunmeros) y con una largura de 6 (8-2).
-    let codigo= Math.random().toString(36).substring(2,8);       
+    let codigo = Math.random().toString(36).substring(2, 8);
     return codigo;
-}
+  };
 
-console.log(codigoRandom());
+  // const giftCost = () => {
+  //   let cost = 0;
+  //   if (form.gift === "Menú degustación") {
+  //     cost = form.degustacion * form.diners;
+  //   }
+  //   if (form.gift === "Experiencia 360º") {
+  //     cost = form.experiencia * form.diners;
+  //   }
+  //   console.log(cost);
+  //   return cost;
+  // };
 
   useEffect(() => {
     if (formOK) {
       guardadoDatos();
-      console.log("listos para guardar datos")
-
-      
+      console.log("listos para guardar datos");
     } else {
       return;
     }
@@ -58,24 +66,19 @@ console.log(codigoRandom());
 
   let guardadoDatos = async (e) => {
     try {
-      let response = await fetch("http://localhost:3001/api/bookingGift/register", {
+      let response = await fetch("http://localhost:3001/api/bookingGift", {
+        // mode: "no-cors",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          id: 1,
-          codigo: '542',
-          typeGift: 'menu',
-          numPerson: 5,
-          cost: 12,
+          id: uuidv4(),
+          codigo: codigoRandom(),
+          typeGift: form.gift,
+          numPersonas: 5, //form.diners,
+          cost: 50, //giftCost(),
           dateBuy: Date.now(),
-
-
-          // id: uuidv4(),
-          // codigo: codigoRandom(),
-          // typeGift: form.hour,
-          // numPerson: form.diners,
-          // cost: form.name,
-          // dateBuy: Date.now()
+          dateConsume: "",
+          valid: 0,
         }),
       });
       let responseJson = await response.json();
@@ -120,12 +123,13 @@ console.log(codigoRandom());
                   <br />
                   Se sirve a mesa completa
                 </p>
-                <input type="image"
+                <input
+                  type="image"
                   className="menuForm__Icon"
                   src={require("../../../images/icons/circuloMas.png")}
                   alt="Añadir al pedido"
                   name="gift"
-                  value="Menú degustación (70€)"
+                  value="Menú degustación"
                   onClick={handleChange}
                 />
               </div>
@@ -144,12 +148,13 @@ console.log(codigoRandom());
                   <br />
                   Se serve a mesa completa
                 </p>
-                <input type="image"
+                <input
+                  type="image"
                   className="menuForm__Icon"
                   src={require("../../../images/icons/circuloMas.png")}
                   alt="Añadir al pedido"
                   name="gift"
-                  value="Experiencia 360º (125€)"
+                  value="Experiencia 360º"
                   onClick={handleChange}
                 />
               </div>
@@ -218,7 +223,18 @@ console.log(codigoRandom());
             </div>
           </form>
         ) : (
-          " respuesta todo ok"
+          // Si el formulario esta Ok y se ha enviado.
+          <div className="confirmationLessMargin">
+            <img
+              className="bigIcon"
+              src={require("src/images/icons/RoundedTickIcon.png")}
+              alt="Pedido OK"
+            />
+            <div className="vSpace">
+              <p>¡Gracias por confiar en nosotros!</p>
+              <p>Se ha generado un Bono-Regalo con el codigo:</p>
+            </div>
+          </div>
         )}
       </div>
     </>

@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate} from "react-router-dom";
 import { UserContext } from "src/context/UserContext";
 import axios from "axios";
 
@@ -8,6 +8,8 @@ const LoginForm = (props) => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const [iniciadaSesion, setIniciadaSesion] = useState(false)
 
   const { usuario, setUsuario } = useContext(UserContext);
 
@@ -48,6 +50,9 @@ const LoginForm = (props) => {
       });
       let responseJson = await response.json();
       console.log(responseJson);
+
+
+
       if (response.status === 200) {
         setMessage("Sesión iniciada");
         localStorage.setItem("jwtToken", response.data.token);
@@ -55,13 +60,30 @@ const LoginForm = (props) => {
         setUsuario(responseJson.data.id);
         localStorage.setItem("user", JSON.stringify(responseJson));
         //setUsuario(usuario)
+        setIniciadaSesion(true);
       } else {
         setMessage("Correo electrónico o contraseña incorrectos");
       }
+
+
     } catch (err) {
       console.log(err);
     }
+
+
+    // setIniciadaSesion(true);
+    //         navigate('/admmain')
+    //         // window.Location.href('/admmain')
   };
+
+useEffect(() => {
+
+  // console.log(iniciadaSesion);
+
+  if (iniciadaSesion === true){ navigate('/admmain')}
+  // window.Location.href('/admmain')
+
+}, [iniciadaSesion, navigate])
 
   return (
     <form onSubmit={handleSubmit}>
