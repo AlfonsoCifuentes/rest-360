@@ -50,17 +50,14 @@ const DetallePlatos = () => {
     handleSubmit,
   } = useForm(initialForm, validationsForm);
 
-  //Carta completa
   const [datosArray, setDatosArray] = useState([]);
-  //const [ticketsArray, setTicketsArray] = useState([]);
-
   const { id } = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/articles/1")
+    fetch(`http://localhost:3001/api/articles/${id}`)
       .then((response) => response.json())
       .then((data) => setDatosArray(data));
-  }, []);
+  }, [id]);
 
   console.log(setDatosArray);
 
@@ -70,29 +67,30 @@ const DetallePlatos = () => {
         <div className="tituloYPagina">
           <div className="titleAdmin">
             <h1 className="title">
-              <Link to="/listadotickets">
+              <Link to="/listadoplatos">
                 <img
                   src={require("../../../images/icons/ico_flechaizquierda.png")}
                   alt="Volver al listado de tickets"
                   className="arrowIcon"
                 />
               </Link>
-              Platos
-              {id}
+              Plato: {datosArray.name}
             </h1>
           </div>
           <div className="pagination">
-            <img
-              src={require("../../../images/icons/ico_flechaizquierda.png")}
-              alt="Volver al listado de tickets"
-              className="arrowIcon"
-            />
+            <Link to={`/detalleplatos/${parseInt(id) - 1}`}>
+              <img
+                src={require("../../../images/icons/ico_flechaizquierda.png")}
+                alt="Volver al listado de tickets"
+              />
+            </Link>
             {id}
-            <img
-              src={require("../../../images/icons/ico_flechaderecha.png")}
-              alt="Volver al listado de tickets"
-              className="arrowIcon"
-            />
+            <Link to={`/detalleplatos/${parseInt(id) + 1}`}>
+              <img
+                src={require("../../../images/icons/ico_flechaderecha.png")}
+                alt="Volver al listado de tickets"
+              />
+            </Link>
           </div>
         </div>
         <hr />
@@ -107,189 +105,216 @@ const DetallePlatos = () => {
 
           <div className="detallePlato_card">
             <form onSubmit={handleSubmit} className="formDetallePlato">
-     
-                {/* <p>Datos de contacto:</p> */}
-                <label>Nombre:</label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Nombre *"
-                    onChange={handleChange}
-                    value={form.name}
+              {/* <p>Datos de contacto:</p> */}
+
+              <div className="isActive">
+                {datosArray.isActive ? (
+                  <img
+                    src={require("../../../images/icons/ico_punto_verde.png")}
+                    alt="Plato activado"
+                    className="isActive"
                   />
-                  {errors.name && <p className="error">{errors.name}</p>}
+                ) : (
+                  <img
+                    src={require("../../../images/icons/ico_punto_rojo.png")}
+                    alt="Plato desactivado"
+                    className="isActive"
+                  />
+                )}
+              </div>
+
+              <div className="vSpace"></div>
+              <label>Nombre:</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Nombre *"
+                onChange={handleChange}
+                value={datosArray.name}
                 
+              />
 
-                <label>Categoría:</label>
-                  <input
-                    type="text"
-                    name="surnames"
-                    placeholder="Categoría"
-                    onChange={handleChange}
-                    value={form.surnames}
+              <label>Categoría:</label>
+              <input
+                type="text"
+                name="surnames"
+                placeholder="Categoría *"
+                onChange={handleChange}
+                value={datosArray.category}
+              />
+
+              <label>Tipo:</label>
+              <input
+                type="text"
+                name="surnames"
+                placeholder="Categoría *"
+                onChange={handleChange}
+                value={datosArray.type}
+              />
+
+              <div className="menuItemDiv__card__alergenos">
+                {datosArray.hasGluten ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_gluten.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
                   />
-
-                <label>Tipo:</label>
-                  <select name="select">
-                    <option value="value1">Value 1</option>
-                    <option value="value2" selected>Value 2</option>
-                    <option value="value3">Value 3</option>
-                  </select>
-                  {errors.phone && <p className="error">{errors.phone}</p>}
-
-                <label>Tiempo:</label>
-                  <input
-                    type="text"
-                    name="Tiempo"
-                    placeholder="Escribe tu email *"
-                    onChange={handleChange}
-                    value={form.email}
+                ) : (
+                  ""
+                )}
+                {datosArray.hasEgg ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_huevos.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
                   />
-                  {errors.email && <p className="error">{errors.email}</p>}
-                
-
-                <label>PVP:</label>
-                  <input
-                    type="text"
-                    name="PVP"
-                    placeholder="Escribe tu email *"
-                    onChange={handleChange}
-                    value={form.PVP}
+                ) : (
+                  ""
+                )}
+                {datosArray.hasFish ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_pescado.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
                   />
-                  {errors.PVP && <p className="error">{errors.PVP}</p>}
-                
-
+                ) : (
+                  ""
+                )}
+                {datosArray.hasSoja ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_soja.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasMilk ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_lactosa.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasFructose ? (
+                  <img
+                    src={require("../../../images/icons/Aler_Azucar.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasMustard ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_mostaza.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasApio ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_apio.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasMolusco ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_moluscos.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasAltramuces ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_altramuces.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasSesamo ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_sesamo.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasSulfito ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_sulfitos.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
+                {datosArray.hasCacahuete ? (
+                  <img
+                    src={require("../../../images/icons/ico_alerg_cacahuetes.png")}
+                    alt="Gluten"
+                    className="alergenoIcon"
+                  />
+                ) : (
+                  ""
+                )}
 
                 <div className="vSpace"></div>
 
-                <input type="submit" value="Enviar" />
-        
+                <label>Tiempo (min.):</label>
+                <input
+                  className="inputNumber"
+                  type="text"
+                  name="Tiempo"
+                  placeholder="Tiempo de cocinado"
+                  value={datosArray.timeCook}
+                />
+
+                <label>Importe (€.):</label>
+                <input
+                  className="inputNumber"
+                  type="text"
+                  name="importe"
+                  placeholder="PVP *"
+                  onChange={handleChange}
+                  value={datosArray.costNeto}
+                />
+
+                <label>IVA (€.):</label>
+                <input
+                  className="inputNumber"
+                  type="text"
+                  name="iva"
+                  placeholder="IVA"
+                  onChange={handleChange}
+                  value={datosArray.iva}
+                />
+
+                <label>PVP (€.):</label>
+                <input
+                  className="inputNumber"
+                  type="text"
+                  name="pvp"
+                  placeholder=""
+                  onChange={handleChange}
+                  value={datosArray.pvp}
+                />
+
+                <div className="vSpace"></div>
+              </div>
             </form>
-
-
-            <p className="menuItemDiv__card__titleandprice__divPrice__price">
-              <strong>{datosArray.pvp}€</strong>
-            </p>
-
-            <div className="menuItemDiv__card__alergenos">
-              {datosArray.hasGluten ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_gluten.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasEgg ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_huevos.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasFish ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_pescado.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasSoja ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_soja.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasMilk ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_lactosa.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasFructose ? (
-                <img
-                  src={require("../../../images/icons/Aler_Azucar.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasMustard ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_mostaza.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasApio ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_apio.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasMolusco ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_moluscos.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasAltramuces ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_altramuces.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasSesamo ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_sesamo.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasSulfito ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_sulfitos.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-              {datosArray.hasCacahuete ? (
-                <img
-                  src={require("../../../images/icons/ico_alerg_cacahuetes.png")}
-                  alt="Gluten"
-                  className="alergenoIcon"
-                />
-              ) : (
-                <p></p>
-              )}
-            </div>
           </div>
         </div>
       </div>

@@ -44,6 +44,7 @@ const ListadoPlatos = () => {
               <th>IVA</th>
               <th>PVP</th>
               <th>Alergenos</th>
+              <th>Activo</th>
               <th>Detalle</th>
             </tr>
           </thead>
@@ -158,13 +159,36 @@ const ListadoPlatos = () => {
                     />
                   ) :""}
                 </td>
+
+                <td data-th="Estado:" className="div__table__center">
+                
+                {item.isActive ? (
+                  <img
+                    src={require("../../../images/icons/ico_punto_verde.png")}
+                    alt="Plato activado"
+                    className="reservasIcon"
+                  />
+                ) : (
+                  <img
+                    src={require("../../../images/icons/ico_punto_rojo.png")}
+                    alt="Plato desactivado"
+                    className="reservasIcon"
+                  />
+                )}
+
+                </td>
+
                 <td data-th="Ver detalle:" className="div__table__center">
                 <p className="spaceMovile">
+                <Link to={`/detalleplatos/${item.id}`}>
                   <img
                     className="tableDetIcon"
                     src={require("../../../images/icons/flechaIcon.png")}
                     alt="Ver detalle del ticket"
-                  /></p>
+                  /></Link></p>
+
+
+
                 </td>
               </tr>
             ))}
