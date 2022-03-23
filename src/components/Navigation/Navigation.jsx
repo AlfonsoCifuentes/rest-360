@@ -19,8 +19,10 @@ const Navigation = () => {
     setIsChecked(!isChecked);
   };
 
+  //onBlur={handleOnChangeLogo}
+
   return (
-    <nav role="navigation" className="nav" onBlur={handleOnChangeLogo}>
+    <nav role="navigation" className="nav" onMouseLeave={handleOnChangeLogo}>
       <div id="menuToggle">
         <input className="check" type="checkbox" value="checkHamb" checked={isChecked} onChange={handleOnChange}/>
 
