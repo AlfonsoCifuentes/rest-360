@@ -52,7 +52,7 @@ const PedidoMesa = () => {
 
   //Efecto que controla si el formulario está correcto
   useEffect(() => {
-    if (formOK) {
+    if (formOK && mesaFound === true) {
       console.log("Datos del formuario correctos. Pedido enviado.");
     } else {
       return;

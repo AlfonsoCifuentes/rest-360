@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import StandardHeader from "../../../components/StandardHeader/StandardHeader";
-
+import { Link } from 'react-router-dom';
 const Socios = ({user}) => {
   //Props para el componente de header genérico: StandardHeader
   const bgImage = "https://images2.imgbox.com/69/b4/NbrJbPWf_o.jpg";
   
-  const { firstName, lastName, email, password, phone, userName, avatar } = user|| {};
+  const { firstName, lastName, email, phone, userName, rol } = user|| {};
   const firstNameInitial = firstName.charAt(0);
   const lastNameInitial = lastName.charAt(0);
 
@@ -41,11 +41,17 @@ const Socios = ({user}) => {
         <button className="standardButton" onClick={() => setShowModify(true)}>Modificar datos</button>
       </div>
 
+      {rol === "admin" ? (
+        <Link to="/admmain">
+          <button className="standardButton">Área de Administrador</button></Link>) : (<p></p>)}
+
+
       {showModify === true ? (
         <p>Mostrando modificar datos</p>
         ) : (
           <p></p>
           )}
+
     </div>
 
   );

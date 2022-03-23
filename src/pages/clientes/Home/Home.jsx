@@ -41,6 +41,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
+      <div className="footerSetter"></div>
     </div>
   );
 };

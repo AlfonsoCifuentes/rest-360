@@ -61,6 +61,7 @@ const IniciarSesion = () => {
             <button className="standardButton">Regístrate</button>
           </Link>
       </div>
+      <div className="footerSetter"></div>
     </div>
   );
 };

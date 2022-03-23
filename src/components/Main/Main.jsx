@@ -40,7 +40,7 @@ const NotFound = React.lazy(() => import("../../pages/clientes/NotFound/NotFound
 
 const Main = () => {
 
-  const {usuario} = useContext(UserContext);
+  const {usuario, setUsuario} = useContext(UserContext);
 
   return (
     <div className="mainDiv">
