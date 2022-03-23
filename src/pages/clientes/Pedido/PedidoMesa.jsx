@@ -2,19 +2,35 @@ import React, {useState, useEffect, useContext} from 'react'
 import StandardHeader from 'src/components/StandardHeader/StandardHeader';
 import { useForm } from "../../../Hooks/useForm";
 import { CartContext } from "src/components/CartContext/CartContext";
-
+import { UserContext } from 'src/context/UserContext';
 const PedidoMesa = () => {
 
-    //Props para el componente de header genérico: StandardHeader
-    const bgImage = "https://images2.imgbox.com/3b/b3/gCfNWEuG_o.jpg";
+  //Props para el componente de header genérico: StandardHeader
+  const bgImage = "https://images2.imgbox.com/3b/b3/gCfNWEuG_o.jpg";
 
+  //Seteadores necesarios para el pedido
   const [idMesa, setIdMesa] = useState(0);
   const [mesaFound, setMesaFound] = useState(false);
-  
+  const [orderSent, setOrderSent] = useState(false);
+  const [order, setOrder] = useState({});
+
   //Contexto de carrito
   const {cartItems}  = useContext(CartContext);
-  const {pvp}  = useContext(CartContext);
-    
+  const {pvp, setPvp}  = useContext(CartContext);
+  const {iva, setIva}  = useContext(CartContext);
+  const {costNeto, setCostNeto}  = useContext(CartContext);
+  const {dateOrder, setDateOrder}  = useContext(CartContext);
+
+  //Contexto de usuario
+  const {usuario, setUsuario}  = useContext(UserContext);
+
+
+  //Estado inicial del formulario
+   const initialForm = {
+    diners: "",
+    idTable: "",
+  };   
+
   //Comprobar si la mesa existe en la base de datos
   useEffect(()=>{
     fetch(`http://localhost:3001/api/tables/${form.idTable}`)
@@ -22,14 +38,7 @@ const PedidoMesa = () => {
     .then((data) => setIdMesa(data.id)) 
   })
 
-
-  //Estado inicial del formulario
-  const initialForm = {
-    diners: "",
-    idTable: "",
-  };
-
-
+  
   //Validaciones del formulario
   const validationsForm = (form) => {
     let errors = {};
@@ -43,27 +52,100 @@ const PedidoMesa = () => {
     return errors;
   };
 
-
+  //estado inicial del formulario
  const { form, errors, formOK, handleChange, handleSubmit } = useForm(
     initialForm,
     validationsForm
   );
 
+    //Suma del total del pvp de todos los artículos
+    const pvpTotalTemp = cartItems.reduce ((acumulador, plato) => {return acumulador + parseFloat(plato.pvp, 10)}, 0 );
+    const pvpTotal = pvpTotalTemp.toFixed(2)
+    useEffect(()=> {
+      setPvp(pvpTotal)
+    })
 
-  //Efecto que controla si el formulario está correcto
-  useEffect(() => {
-    if (formOK && mesaFound === true) {
-      console.log("Datos del formuario correctos. Pedido enviado.");
-    } else {
-      return;
-    }
-  }, [formOK]);
+    //Suma del total del precio neto de todos los artículos
+    const precioNetoTemp = cartItems.reduce ((acumulador, plato) => {return acumulador + parseFloat(plato.costNeto, 10)}, 0 );
+    const precioNeto = precioNetoTemp.toFixed(2)
+    useEffect(()=> {
+      setCostNeto(precioNeto)
+    })
+
+
+    //Suma del total del iva de todos los artículos
+    const ivaTotalTemp = cartItems.reduce ((acumulador, plato) => {return acumulador + parseFloat(plato.iva, 10)}, 0 );
+    const ivaTotal = ivaTotalTemp.toFixed(2)
+    useEffect(()=> {
+      setIva(ivaTotal)
+    })
+
+    //Obteniendo la fecha actual
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    useEffect(()=> {
+      setDateOrder(date)
+    })
 
 
   //Seteando a true la variable mesaFound si la mesa introducida existe en base de datos
   useEffect(()=> {
     idMesa === parseInt(form.idTable) ? setMesaFound(true) : setMesaFound(false)
   }, [idMesa, form.idTable])
+
+
+  //POST del pedido y los artículos a la base de datos
+  let postOrder = async (e) => {
+    try {
+      let response = await fetch("http://localhost:3001/api/orders/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          peopleCount:form.diners,
+          costNeto:costNeto,
+          iva:iva,
+          pvp: pvp,
+          status: 1,
+          date: dateOrder,
+          userId: usuario.id,
+          articlesIds: cartItems,
+          tableId: idMesa,
+          
+        }),
+      });
+      let responseJson = await response.json();
+      
+      if (response.status === 200) {
+        console.log("Pedido Enviado"); 
+        alert("Pedido enviado a cocina");
+        console.log("RESPONSE -->",response);
+        console.log("RESPONSE JSON -->",responseJson);
+        setOrder(responseJson);
+        localStorage.setItem("order", JSON.stringify(responseJson));
+        setOrder(order)
+        setOrderSent(true);
+        alert("Pedido enviado a cocina con éxito");
+      } else {
+        alert("Ha fallado el envío del pedido a cocina. Por favor, asegúrese de haber introducido bien el número de mesa o póngase en contacto con el personal");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  //Efecto que controla si el formulario está correcto
+  useEffect(() => {
+    if (formOK && mesaFound === true) {
+      console.log("Datos del formuario correctos. Realizando orden de pedido al servidor");
+      postOrder();
+    } else {
+      return;
+    }
+  }, [formOK]);
+
+
+
 
   return (
     <div className="mainDiv">
@@ -156,14 +238,14 @@ const PedidoMesa = () => {
         ) : (
 
           // Si el formulario esta Ok y se ha enviado.
-          <div className="confirmationLessMargin">
-            <img
+          <div className="confirmation">
+          {orderSent === true ? (<p><img
               className="bigIcon"
               src={require("../../../images/icons/RoundedTickIcon.png")}
               alt="Pedido OK"
             />
             <div className="vSpace" />
-            Tu pedido se ha registrado con éxito.
+            Pedido enviado a cocina
             <div className="vSpace" />
             Número de mesa: {form.idTable}
             <br />
@@ -174,8 +256,11 @@ const PedidoMesa = () => {
             Precio total: <h2>{pvp}€ ({cartItems.length} artículos)</h2>
             <br />
             <div className="vSpace" />
-            ¡Gracias por venir a comer a nuestro restaurante!
+            ¡Gracias por venir a comer a nuestro restaurante!</p>) : (<div><h2>Ha habido un error enviando el pedido a cocina.</h2><h2>Por favor, póngase en contacto con el personal del restaurante. Disculpe las molestias.</h2></div>)}
+            
+            
           </div>
+          
         )}
       </div>
     </div>
