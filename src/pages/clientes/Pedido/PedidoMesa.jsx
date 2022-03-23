@@ -238,14 +238,14 @@ const PedidoMesa = () => {
         ) : (
 
           // Si el formulario esta Ok y se ha enviado.
-          <div className="confirmationLessMargin">
-            <img
+          <div className="confirmation">
+          {orderSent === true ? (<p><img
               className="bigIcon"
               src={require("../../../images/icons/RoundedTickIcon.png")}
               alt="Pedido OK"
             />
             <div className="vSpace" />
-            Tu pedido se ha registrado con éxito.
+            Pedido enviado a cocina
             <div className="vSpace" />
             Número de mesa: {form.idTable}
             <br />
@@ -256,8 +256,11 @@ const PedidoMesa = () => {
             Precio total: <h2>{pvp}€ ({cartItems.length} artículos)</h2>
             <br />
             <div className="vSpace" />
-            ¡Gracias por venir a comer a nuestro restaurante!
+            ¡Gracias por venir a comer a nuestro restaurante!</p>) : (<div><h2>Ha habido un error enviando el pedido a cocina.</h2><h2>Por favor, póngase en contacto con el personal del restaurante. Disculpe las molestias.</h2></div>)}
+            
+            
           </div>
+          
         )}
       </div>
     </div>
