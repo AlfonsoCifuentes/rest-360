@@ -48,8 +48,11 @@ const Pedido = () => {
       </div>
 
       <div>
-        <h3><h1>{cantidadDeArticulos}</h1> Artículos</h3>
+        <h1>{cantidadDeArticulos}</h1>
+        <h3>Artículos</h3>
       </div>
+
+      
  
       <Acordeon title="ENTRANTES" response={entrantesArray} key="EntrantesDelPedido"/>
       <Acordeon title="PINCIPALES" response={principalesArray} key="PrincipalesDelPedido"/>
