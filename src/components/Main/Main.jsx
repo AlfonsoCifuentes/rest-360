@@ -33,6 +33,7 @@ const ListadoReservas = React.lazy(() => import("../../pages/admin/ListadoReserv
 const ListadoTickets = React.lazy(() => import("../../pages/admin/ListadoTickets/ListadoTickets"));
 const ListadoUsuarios = React.lazy(() => import("../../pages/admin/ListadoUsuarios/ListadoUsuarios"));
 const PedidosEnCurso = React.lazy(() => import("../../pages/admin/PedidosEnCurso/PedidosEnCurso"));
+const Cocina = React.lazy(() => import("../../pages/admin/Cocina/Cocina"));
 
 // Si la ruta o pagina no existe.
 const NotFound = React.lazy(() => import("../../pages/clientes/NotFound/NotFound"));
@@ -301,6 +302,15 @@ const Main = () => {
             element={
               <React.Suspense fallback={<>Loading ...</>}>
                 <PedidosEnCurso />
+              </React.Suspense>
+            }
+          />
+
+          <Route
+            path="/cocina"
+            element={
+              <React.Suspense fallback={<>Loading ...</>}>
+               <Cocina />
               </React.Suspense>
             }
           />
