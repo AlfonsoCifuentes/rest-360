@@ -137,8 +137,10 @@ const Contacto = () => {
             {errors.privacy && <p className="error">{errors.privacy}</p>}
             <div className="vSpace"></div>
 
-              <input type="submit" value="Enviar" />
-            </div>
+              <input className="standardButton" type="submit" value="Enviar" />
+              <div className="vSpace"></div>
+              <hr />
+            </div> 
           </form>
         ) : (
           // Si el formulario esta Ok y se ha enviado.
