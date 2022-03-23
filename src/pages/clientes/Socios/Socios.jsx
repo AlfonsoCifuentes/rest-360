@@ -45,6 +45,10 @@ const Socios = ({user}) => {
         <Link to="/admmain">
           <button className="standardButton">Área de Administrador</button></Link>) : (<p></p>)}
 
+      {rol === "chef" ? (
+        <Link to="/cocina">
+          <button className="standardButton">Acceso a Cocina</button></Link>) : (<p></p>)}
+
 
       {showModify === true ? (
         <p>Mostrando modificar datos</p>
