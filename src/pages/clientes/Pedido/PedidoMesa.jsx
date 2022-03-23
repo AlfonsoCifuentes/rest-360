@@ -47,7 +47,8 @@ const PedidoMesa = () => {
   
     useEffect(()=>{
      console.log("Article Array -->", articleArray)
-     }, [articleArray])
+     console.log("Usuario-->", usuario)
+     }, [articleArray, usuario])
   
   //Validaciones del formulario
   const validationsForm = (form) => {
@@ -127,16 +128,16 @@ const PedidoMesa = () => {
       
       if (response.status === 200) {
         console.log("Pedido Enviado"); 
-        alert("Pedido enviado a cocina");
+        console.log("Pedido enviado a cocina");
         console.log("RESPONSE -->",response);
         console.log("RESPONSE JSON -->",responseJson);
         setOrder(responseJson);
         localStorage.setItem("order", JSON.stringify(responseJson));
         setOrder(order)
         setOrderSent(true);
-        alert("Pedido enviado a cocina con éxito");
+        console.log("Pedido enviado a cocina con éxito");
       } else {
-        alert("Ha fallado el envío del pedido a cocina. Por favor, asegúrese de haber introducido bien el número de mesa o póngase en contacto con el personal");
+        console.log("Ha fallado el envío del pedido a cocina. Por favor, asegúrese de haber introducido bien el número de mesa o póngase en contacto con el personal");
       }
     } catch (err) {
       console.log(err);
