@@ -39,7 +39,9 @@ const DetallePedidos = () => {
             <p>Dia / Hora:{datosArray.date}</p>
           </div>
           <div className="datosUsuarioCabecera">
-          <p>{datosArray.userId} / {datosArray.peopleCount}</p>
+            <p>
+              {datosArray.userId} / {datosArray.peopleCount}
+            </p>
             <p>{datosArray.pvp}</p>
           </div>
 
@@ -59,8 +61,6 @@ const DetallePedidos = () => {
           ) : (
             "Pendiente"
           )}
-
-
         </div>
       </div>
     </div>
