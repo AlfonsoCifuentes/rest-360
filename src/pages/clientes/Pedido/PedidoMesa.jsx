@@ -11,7 +11,6 @@ const PedidoMesa = () => {
   //Seteadores necesarios para el pedido
   const [idMesa, setIdMesa] = useState(0);
   const [mesaFound, setMesaFound] = useState(false);
-  const [message,setMessage] = useState("");
   const [orderSent, setOrderSent] = useState(false);
   const [order, setOrder] = useState({});
 
@@ -118,16 +117,16 @@ const PedidoMesa = () => {
       
       if (response.status === 200) {
         console.log("Pedido Enviado"); 
-        setMessage("Pedido enviado a cocina");
+        alert("Pedido enviado a cocina");
         console.log("RESPONSE -->",response);
         console.log("RESPONSE JSON -->",responseJson);
         setOrder(responseJson);
         localStorage.setItem("order", JSON.stringify(responseJson));
         setOrder(order)
         setOrderSent(true);
-        setMessage("Pedido enviado a cocina con éxito");
+        alert("Pedido enviado a cocina con éxito");
       } else {
-        setMessage("Ha fallado el envío del pedido a cocina. Por favor, asegúrese de haber introducido bien el número de mesa o póngase en contacto con el personal");
+        alert("Ha fallado el envío del pedido a cocina. Por favor, asegúrese de haber introducido bien el número de mesa o póngase en contacto con el personal");
       }
     } catch (err) {
       console.log(err);
