@@ -312,18 +312,6 @@ const Reservas = () => {
               value={form.comments}
             />
 
-
-            {/* <label>
-              <input
-                type="checkbox"
-                name="newsletter"
-                checked={isChecked}
-                onChange={handleChange}
-              />
-              Deseo recibir ofertas especiales y notificaciones del restaurante
-              por correo electrónico y mensajes de texto.
-            </label> */}
-
             <label>
               <input
                 type="checkbox"
@@ -341,7 +329,6 @@ const Reservas = () => {
             {message && <div style={{color: 'tomato'}}>{message}</div>}
             </div>
           </form>
-
 
         ) : (
 
