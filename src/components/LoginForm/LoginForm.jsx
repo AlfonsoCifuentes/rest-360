@@ -35,8 +35,8 @@ const LoginForm = (props) => {
         console.log("RESPONSE -->",response);
         console.log("RESPONSE JSON -->",responseJson);
         setUsuario(responseJson.user);
-        localStorage.setItem("user", JSON.stringify(responseJson.user.id));
-        setUsuario(usuario)
+        localStorage.setItem("user", JSON.stringify(responseJson.user));
+        
         setIniciadaSesion(true);
       } else {
         setMessage("Correo electrónico o contraseña incorrectos");

@@ -41,7 +41,17 @@ const NotFound = React.lazy(() => import("../../pages/clientes/NotFound/NotFound
 
 const Main = () => {
 
-  const {usuario, setUsuario} = useContext(UserContext);
+  let {usuario, setUsuario} = useContext(UserContext);
+ 
+  console.log("Usuario--->", usuario)
+  const userString = localStorage.getItem("user")
+
+  if(userString && !usuario){
+    const ususaurio = JSON.parse(userString)
+    usuario = ususaurio
+    setUsuario(ususaurio)
+    console.log(usuario)
+  }
 
   return (
     <div className="mainDiv">

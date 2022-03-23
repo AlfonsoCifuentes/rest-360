@@ -45,11 +45,6 @@ const PedidoMesa = () => {
      setArticleArray(cartItems.map(item => item.id))
     }, [cartItems])
   
-    useEffect(()=>{
-     console.log("Article Array -->", articleArray)
-     console.log("Usuario-->", usuario)
-     }, [articleArray, usuario])
-  
   //Validaciones del formulario
   const validationsForm = (form) => {
     let errors = {};
@@ -104,7 +99,16 @@ const PedidoMesa = () => {
     idMesa === parseInt(form.idTable) ? setMesaFound(true) : setMesaFound(false)
   }, [idMesa, form.idTable])
 
+  
+  const userString = localStorage.getItem("user") 
+  let id = 6
 
+  if (userString){
+    const userObject = JSON.parse(userString)
+    id = userObject.id
+  }
+
+  
   //POST del pedido y los artículos a la base de datos
   let postOrder = async () => {
     try {
@@ -118,7 +122,7 @@ const PedidoMesa = () => {
           pvp: pvp,
           status: 1,
           date: date,
-          userId: 6,
+          userId: id,
           articlesIds: articleArray,
           idTable: idMesa,
           
