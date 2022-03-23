@@ -55,14 +55,14 @@ const handleAddItem = (articulo) => {
             </div>
           </div>
 
-          <div className="menuItemDiv__card__titleandprice">
-            <div className="menuItemDiv__card__titleandprice__divTitle">
-              <h1 className="menuItemDiv__card__titleandprice__divTitle__title">
+          <div className="menuItemDiv__card__titleandtime">
+            <div className="menuItemDiv__card__titleandtime__divTitle">
+              <h1 className="menuItemDiv__card__titleandtime__divTitle__title">
                 {props.name}
               </h1>
             </div>
-            <div className="menuItemDiv__card__titleandprice__divPrice">
-              <p className="menuItemDiv__card__titleandprice__divPrice__price">
+            <div className="menuItemDiv__card__titleandtime__divPrice">
+              <p className="menuItemDiv__card__titleandtime__divPrice__price">
                 <strong>{props.pvp}€</strong>
               </p>
             </div>
