@@ -16,7 +16,7 @@ export const useForm = (initialForm, validateForm) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-    // console.log(form)
+    console.log(form)
   };
 
   const handleSubmit = (e) => {

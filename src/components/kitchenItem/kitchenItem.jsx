@@ -1,13 +1,11 @@
+import { type } from "@testing-library/user-event/dist/type";
 import React, { useContext, useState } from "react";
-import { CartContext } from "../CartContext/CartContext";
+// import { CartContext } from "../CartContext/CartContext";
 
 import "./styles.scss";
 
 const kitchenItem = (props) => {
-  const lineaPpedido = props.ordenId;
-
-  console.log("Vemos KitchenItem");
-  console.log(lineaPpedido);
+  const lineaPedido = props.ordenId;
 
   //   const {cartItems, setCartItems} = useContext(CartContext)
   //   const [valor, setValor] = useState(0);
@@ -30,10 +28,10 @@ const kitchenItem = (props) => {
 
   return (
     <div className="ItemDiv">
-      <div className="kitchenItemDiv">
+      <div className={props.style}>
         <div className="kitchenItemDiv__card">
           <div className="kitchenItemDiv__card__title">
-            <h1>{lineaPpedido.name}</h1>
+            <h1>{lineaPedido.name}</h1>
           </div>
         </div>
 
@@ -42,8 +40,8 @@ const kitchenItem = (props) => {
             <div className="kitchenItemDiv__card__datos__image__roundDiv">
               <img
                 className="roundImage"
-                src={lineaPpedido.image}
-                alt={lineaPpedido.name}
+                src={lineaPedido.image}
+                alt={lineaPedido.name}
               />
             </div>
           </div>
@@ -51,29 +49,61 @@ const kitchenItem = (props) => {
           <div>
             <div className="kitchenItemDiv__card__titleandtime__divTime">
               <h1 className="kitchenItemDiv__card__titleandtime__divTime__time">
-                {lineaPpedido.timeCook} min.
+                {lineaPedido.timeCook} min.
               </h1>
 
               <div className="kitchenItemDiv__card__botones">
-
                 <div className="addItem">
-                  <img
-                    className="kitchenItemIcon"
-                    src={require("../../images/icons/ico_flechaizquierda.png")}
-                    alt="Añadir al pedido"
-                    // onClick={() => handleAddItem(props.carta)}
-                  />
-                  <img
-                    className="kitchenItemIcon"
-                    src={require("../../images/icons/ico_flechaderecha.png")}
-                    alt="Borrar del pedido"
-                    // onClick={() => handleRemoveItem(props.name)}
-                  />
+                  {props.type === "pedidos" ? (
+                    <img
+                      className="kitchenItemIconAdelante"
+                      src={require("../../images/icons/ico_flechaderecha.png")}
+                      alt="Borrar del pedido"
+                      // onClick={() => handleRemoveItem(props.name)}
+                    />
+                  ) : (
+                    ""
+                  )}
+
+                  {props.type === "elaboracion" ? (
+                    <>
+                      <img
+                        className="kitchenItemIconAtras"
+                        src={require("../../images/icons/ico_flechaizquierda_negra.png")}
+                        alt="Añadir al pedido"
+                        // onClick={() => handleAddItem(props.carta)}
+                      />
+                      <img
+                        className="kitchenItemIconAdelante"
+                        src={require("../../images/icons/ico_flechaderecha_roja.png")}
+                        alt="Borrar del pedido"
+                        // onClick={() => handleRemoveItem(props.name)}
+                      />
+                    </>
+                  ) : (
+                    ""
+                  )}
+
+                  {props.type === "terminado" ? (
+                    <>
+                      <img
+                        className="kitchenItemIconAtras"
+                        src={require("../../images/icons/ico_flechaizquierda_negra.png")}
+                        alt="Añadir al pedido"
+                        // onClick={() => handleAddItem(props.carta)}
+                      />
+                      <img
+                        className="kitchenItemIconAdelante"
+                        src={require("../../images/icons/ico_flechaderecha_verde.png")}
+                        alt="Borrar del pedido"
+                        // onClick={() => handleRemoveItem(props.name)}
+                      />
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </div>
-
               </div>
-
-
             </div>
           </div>
         </div>

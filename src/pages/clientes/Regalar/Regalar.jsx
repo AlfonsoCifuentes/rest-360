@@ -11,6 +11,7 @@ import "./styles.scss";
 const initialForm = {
   diners: "",
   gift: "",
+  code: "",
   experiencia: "125",
   degustacion: "70",
 };
@@ -31,6 +32,7 @@ const validationsForm = (form) => {
 
 const Regalar = () => {
   const [message, setMessage] = useState("");
+  const [codigoBBDD, setCodigoBBDD] = useState("")
   const { form, errors, formOK, handleChange, handleSubmit } = useForm(
     initialForm,
     validationsForm
@@ -43,20 +45,21 @@ const Regalar = () => {
     return codigo;
   };
 
-  // const giftCost = () => {
-  //   let cost = 0;
-  //   if (form.gift === "Menú degustación") {
-  //     cost = form.degustacion * form.diners;
-  //   }
-  //   if (form.gift === "Experiencia 360º") {
-  //     cost = form.experiencia * form.diners;
-  //   }
-  //   console.log(cost);
-  //   return cost;
-  // };
+  const giftCost = () => {
+    let cost = 0;
+    if (form.gift === "Menú degustación") {
+      cost = form.degustacion * form.diners;
+    }
+    if (form.gift === "Experiencia 360º") {
+      cost = form.experiencia * form.diners;
+    }
+    console.log(cost);
+    return cost;
+  };
 
   useEffect(() => {
     if (formOK) {
+      form.code = codigoRandom();
       guardadoDatos();
       console.log("listos para guardar datos");
     } else {
@@ -72,10 +75,10 @@ const Regalar = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           id: uuidv4(),
-          codigo: codigoRandom(),
+          codigo: form.code,
           typeGift: form.gift,
-          numPersonas: 5, //form.diners,
-          cost: 50, //giftCost(),
+          numPerson: form.diners, // Importante: En ORM esta como numPerson y en el campo como numPersonas.
+          cost: giftCost(),
           dateBuy: Date.now(),
           dateConsume: "",
           valid: 0,
@@ -232,7 +235,7 @@ const Regalar = () => {
             />
             <div className="vSpace">
               <p>¡Gracias por confiar en nosotros!</p>
-              <p>Se ha generado un Bono-Regalo con el codigo:</p>
+              <p>Se ha generado un Bono-Regalo<br />con el codigo: {form.code}</p>
             </div>
           </div>
         )}
