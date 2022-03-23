@@ -23,7 +23,7 @@ const IniciarSesion = () => {
   useEffect(() => {
     const usuarioLogueado = JSON.parse(localStorage.getItem("user"));
     setUsuario(usuarioLogueado);
-    console.log(usuario);
+
   }, []);
 
   const loginUser = (formData, prevRoute) => {

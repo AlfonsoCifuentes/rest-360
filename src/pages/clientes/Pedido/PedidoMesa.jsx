@@ -13,6 +13,7 @@ const PedidoMesa = () => {
   const [mesaFound, setMesaFound] = useState(false);
   const [orderSent, setOrderSent] = useState(false);
   const [order, setOrder] = useState({});
+  const [articleArray, setArticleArray] = useState([])
 
   //Contexto de carrito
   const {cartItems}  = useContext(CartContext);
@@ -20,6 +21,7 @@ const PedidoMesa = () => {
   const {iva, setIva}  = useContext(CartContext);
   const {costNeto, setCostNeto}  = useContext(CartContext);
   const {dateOrder, setDateOrder}  = useContext(CartContext);
+  
 
   //Contexto de usuario
   const {usuario, setUsuario}  = useContext(UserContext);
@@ -38,6 +40,14 @@ const PedidoMesa = () => {
     .then((data) => setIdMesa(data.id)) 
   })
 
+    //Mapear el array de ids de artículos
+    useEffect(()=>{
+     setArticleArray(cartItems.map(item => item.id))
+    }, [cartItems])
+  
+    useEffect(()=>{
+     console.log("Article Array -->", articleArray)
+     }, [articleArray])
   
   //Validaciones del formulario
   const validationsForm = (form) => {
@@ -82,10 +92,10 @@ const PedidoMesa = () => {
 
     //Obteniendo la fecha actual
     const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-    useEffect(()=> {
-      setDateOrder(date)
-    })
+    const date = current.toISOString()
+    //const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}T${current.getHours()}:${current.getMinutes()}${current.getSeconds()}Z`;
+
+
 
 
   //Seteando a true la variable mesaFound si la mesa introducida existe en base de datos
@@ -95,21 +105,21 @@ const PedidoMesa = () => {
 
 
   //POST del pedido y los artículos a la base de datos
-  let postOrder = async (e) => {
+  let postOrder = async () => {
     try {
       let response = await fetch("http://localhost:3001/api/orders/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           peopleCount:form.diners,
-          costNeto:costNeto,
+          costNeto: costNeto,
           iva:iva,
           pvp: pvp,
           status: 1,
-          date: dateOrder,
-          userId: usuario.id,
-          articlesIds: cartItems,
-          tableId: idMesa,
+          date: date,
+          userId: 6,
+          articlesIds: articleArray,
+          idTable: idMesa,
           
         }),
       });
@@ -239,7 +249,7 @@ const PedidoMesa = () => {
 
           // Si el formulario esta Ok y se ha enviado.
           <div className="confirmation">
-          {orderSent === true ? (<p><img
+          {orderSent === true ? (<div><img
               className="bigIcon"
               src={require("../../../images/icons/RoundedTickIcon.png")}
               alt="Pedido OK"
@@ -256,7 +266,7 @@ const PedidoMesa = () => {
             Precio total: <h2>{pvp}€ ({cartItems.length} artículos)</h2>
             <br />
             <div className="vSpace" />
-            ¡Gracias por venir a comer a nuestro restaurante!</p>) : (<div><h2>Ha habido un error enviando el pedido a cocina.</h2><h2>Por favor, póngase en contacto con el personal del restaurante. Disculpe las molestias.</h2></div>)}
+            ¡Gracias por venir a comer a nuestro restaurante!</div>) : (<div><h2>Ha habido un error enviando el pedido a cocina.</h2><h2>Por favor, póngase en contacto con el personal del restaurante. Disculpe las molestias.</h2></div>)}
             
             
           </div>
