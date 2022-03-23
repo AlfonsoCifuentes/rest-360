@@ -1,11 +1,10 @@
-.sectionParagraph_cocina{
+.sectionParagraph_cocina {
   display: flex;
   flex-direction: column;
   align-self: center;
   margin: 1rem auto;
   width: 95%;
 }
-
 
 .kitchenItemDiv {
   display: flex;
@@ -16,11 +15,11 @@
   margin-bottom: 1rem;
   padding: 0.5rem;
 
-  &.red{
-    background:#FFC4C4;
+  &.red {
+    background: #ffc4c4;
   }
-  &.green{
-    background:#94FFC6;
+  &.green {
+    background: #94ffc6;
   }
 
   justify-content: space-between;
@@ -49,11 +48,10 @@
       &__image__roundDiv {
         width: 50%;
       }
-
     }
 
     &__image {
-      width: 33%;
+      width: 28%;
     }
 
     &__titleandtime {
@@ -82,40 +80,64 @@
           font-size: 1.5rem;
           white-space: pre;
           margin: 0;
-          
         }
       }
     }
 
-    &__botones{
+    &__botones {
       white-space: pre;
       text-align: center;
     }
   }
 }
 
+.kitchenDetailItem__card {
+  width: 16%;
+  padding-left: 10px;
 
+  &__azul {
+    background: rgb(182, 182, 255);
+    font-size: 2rem;
+    width: 145px;
+    border-radius: 10px;
+    height: 100px;
+    margin-bottom: 60px;
+    margin-top: -25px;
 
-.kitchenDetailItem__card{
-width: 10%;
-background: pink;
+    .textH1 {
+      padding: 20px;
+    }
+  }
+  &__naranja {
+    background: orange;
+    font-size: 2rem;
+    width: 145px;
+    border-radius: 10px;
+    height: 100px;
+    margin-bottom: 60px;
+    margin-top: -25px;
 
+    .textH1 {
+      padding: 20px;
+    }
+  }
+
+  &h1 {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .estadoItemDiv__card {
-  
-  
-  &.rojo{
-    background:red;
+  &.rojo {
+    background: red;
   }
-  &.verde{
-    background:green;
+  &.verde {
+    background: green;
   }
-
-
 }
-
-
 
 .ItemDiv {
   display: flex;
@@ -126,28 +148,24 @@ background: pink;
   cursor: pointer;
 }
 
-@media (min-width: 500px) and (max-width:750px) {
-    // para este pequeño margen de tamaño.
-    .kitchenItemDiv__card__titleandtime__divTitle {
-        width: 80%;
-        padding-right: 0.6rem;
-    }
+@media (min-width: 500px) and (max-width: 750px) {
+  // para este pequeño margen de tamaño.
+  .kitchenItemDiv__card__titleandtime__divTitle {
+    width: 80%;
+    padding-right: 0.6rem;
+  }
 }
 
 //Punto de ruptura,
 // A partir de este dato se hace adaptativo para movil y escritorio.
 
 @media (min-width: 389px) and (max-width: 410px) {
-    // para este pequeño margen de tamaño.
-    .kitchenItemDiv__card__titleandtime__divTitle {
-        width: 45%;
-        padding-right: 0.6rem;
-    }
-
+  // para este pequeño margen de tamaño.
+  .kitchenItemDiv__card__titleandtime__divTitle {
+    width: 45%;
+    padding-right: 0.6rem;
+  }
 }
-
-
-
 
 //Punto de ruptura, A partir de este dato son estilos para movil responsive.
 
@@ -157,11 +175,9 @@ background: pink;
   }
 }
 
-
 //Punto de ruptura, A partir de este dato son estilos para movil responsive.
 
 @media (min-width: 1001px) {
-
   .kitchenItemDiv__card__datos__image__roundDiv {
     width: 40%;
   }

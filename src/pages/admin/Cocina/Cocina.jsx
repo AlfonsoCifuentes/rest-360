@@ -10,7 +10,7 @@ const Cocina = () => {
   const [datosArray, setDatosArray] = useState([]);
   const [comandaDatos, setComandaDatos] = useState([]);
   const [comanda, setComanda] = useState();
-  const [cocinaDato, setCocinaDatos] = useState([]);
+  const [cocinaDatos, setCocinaDatos] = useState([]);
 
   /* Estados de la cocina */
 
@@ -29,6 +29,8 @@ const Cocina = () => {
     fetch("http://localhost:3001/api/articles")
       .then((response) => response.json())
       .then((data) => setCocinaDatos(data));
+
+      console.log(cocinaDatos)
   }, []);
 
   //   useEffect(() => {
@@ -40,19 +42,19 @@ const Cocina = () => {
 
   useEffect(() => {
     setPedidosCocina(
-      cocinaDato.filter((plato) => plato.category === "Entrante")
+      cocinaDatos.filter((plato) => plato.category === "Entrante")
     );
     setElaboracionCocina(
-      cocinaDato.filter((plato) => plato.category === "Primeros")
+      cocinaDatos.filter((plato) => plato.category === "Primeros")
     );
     setTerminadosCocina(
-      cocinaDato.filter((plato) => plato.category === "Segundos")
+      cocinaDatos.filter((plato) => plato.category === "Segundos")
     );
     setServidosCocina(
-      cocinaDato.filter((plato) => plato.category === "Postres")
+      cocinaDatos.filter((plato) => plato.category === "Postres")
     );
-    setTicketCocina(cocinaDato.filter((plato) => plato.category === "Bebidas"));
-  }, [cocinaDato]);
+    setTicketCocina(cocinaDatos.filter((plato) => plato.category === "Bebidas"));
+  }, [cocinaDatos]);
 
   console.log("Vemos cocina");
   console.log(pedidosCocina);
@@ -75,7 +77,7 @@ const Cocina = () => {
 
         <div className="detallePedidos">
           <div className="estadoItem">
-            <h1>Pedidos</h1>
+            <h1>Pedidos ({pedidosCocina.length})</h1>
             {pedidosCocina.map((pedidos) => (
               <div
                 className="estadoItemDiv__card"
@@ -93,7 +95,7 @@ const Cocina = () => {
           </div>
 
           <div className="estadoItem">
-            <h1>Elaboración</h1>
+            <h1>Elaboración ({elaboracionCocina.length})</h1>
             {elaboracionCocina.map((pedidos) => (
               <div
                 className="estadoItemDiv__card"
@@ -111,7 +113,7 @@ const Cocina = () => {
           </div>
 
           <div className="estadoItem">
-            <h1>Terminados</h1>
+            <h1>Terminados ({terminadosCocina.length})</h1>
             {terminadosCocina.map((pedidos) => (
               <div
                 className="estadoItemDiv__card"
@@ -129,15 +131,20 @@ const Cocina = () => {
           </div>
 
           <div className="kitchenDetailItem__card">
+          <div className="kitchenDetailItem__card">
             <div >
               <h1>Servidos</h1>
+                <div className="kitchenDetailItem__card__azul"><h1 className="textH1">{servidoCocina.length}</h1></div>
 
             </div>
 
             <div >
               <h1>Ticket</h1>
+              <div className="kitchenDetailItem__card__naranja"><h1 className="textH1">{ticketCocina.length}</h1></div>
 
             </div>
+
+          </div>
 
           </div>
         </div>
