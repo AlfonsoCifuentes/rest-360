@@ -19,9 +19,11 @@ const Cocina = () => {
   const [terminadosCocina, setTerminadosCocina] = useState([]);
   const [servidoCocina, setServidosCocina] = useState([]);
   const [ticketCocina, setTicketCocina] = useState([]);
-  const [noSonTicketTemp, setNoSonTicketTemp] = useState([]);
+  
   const [noSonTicket, setNoSonTicket] = useState([]);
   const [pedidosArray, setPedidosArray] = useState([]);
+  const [pedidosTemp, setPedidosTemp] = useState([]);
+  const [orderArticles, setOrderArticles] = useState([]);
 
   const handleSelectItem = (ev) => {
     setComanda(ev);
@@ -38,16 +40,16 @@ const Cocina = () => {
   useEffect(()=>{
     setNoSonTicket(cocinaDatos.filter(numeropedido => numeropedido.status < 5))
   }, [cocinaDatos])
-  console.log("no son ticket temp--->", noSonTicket)
+  console.log("no son ticket--->", noSonTicket)
 
 useEffect(()=>{
   for (let pedido of noSonTicket){
     fetch(`http://localhost:3001/api/orders/${pedido.id}`)
     .then((response) => response.json())
-    .then((data) => console.log("data-->", data))//setPedidosArray([...pedidosArray, data]));
+    .then((data) => pedidosArray.push(data))//setPedidosArray([...pedidosArray, data]));
 }},)
-
 console.log("Pedidos Array--->", pedidosArray)
+
 
   //   useEffect(() => {
   //     // fetch(`http://localhost:3001/api/orderArticles/order/${comanda}`)
@@ -56,22 +58,33 @@ console.log("Pedidos Array--->", pedidosArray)
   //       .then((data) => setComandaDatos(data));
   //   }, [comanda]);
 
+  useEffect(()=> {
+    setPedidosTemp(pedidosArray.map(pedido => pedido.articles))
+  }, [pedidosArray])
+  
+  console.log("pedidos temp--->", pedidosTemp)
+  
+//   useEffect(()=> {
+//     setOrderArticles(pedidosTemp.map(plato => plato.orderArticle))
+//   }, [pedidosTemp])
+
+// console.log("Order Articles--->", orderArticles)
 
 
   // useEffect(() => {
-  //   setPedidosCocina(
-  //     noSonTicket.filter((plato) => plato.state === 1)
+  //   setPedidosCocina( 
+  //     orderArticles.filter((plato) => plato.status === 1)
   //   );
   //   setElaboracionCocina(
-  //     noSonTicket.filter((plato) => plato.state === 2)
+  //     orderArticles.filter((plato) => plato.status === 2)
   //   );
   //   setTerminadosCocina(
-  //     noSonTicket.filter((plato) => plato.state === 3)
+  //     orderArticles.filter((plato) => plato.status === 3)
   //   );
   //   setServidosCocina(
-  //     noSonTicket.filter((plato) => plato.state === 4)
+  //     orderArticles.filter((plato) => plato.status === 4)
   //   );
-  // }, [noSonTicket]);
+  // }, [orderArticles]);
 
   console.log("Vemos cocina");
   console.log(pedidosCocina);
