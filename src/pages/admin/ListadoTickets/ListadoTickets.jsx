@@ -52,7 +52,7 @@ const ListadoTickets = () => {
                 <td data-th="IVA:" className="div__table__right"><span>{item.iva}</span></td>
                 <td data-th="P.V.P.:" className="div__table__right"><span>{item.pvp}</span></td>
                 <td data-th="Pagado:" className="div__table__center"><span>{item.pagado ? (<><img src={require("../../../images/icons/ico_punto_verde.png")} alt="Usuario Administrador" className="reservasIcon"/>Pagado</>):('Pendiente')}</span></td>
-                <td data-th="Ver detalle:" className="div__table__center"><p className="spaceMovile"><Link to={`/detalletickets/${item.idTicket}`}><img className="tableDetIcon" src={require("../../../images/icons/flechaIcon.png")} alt="Ver detalle del ticket" /></Link></p></td>
+                <td data-th="Ver detalle:" className="div__table__center"><p className="spaceMovile"><Link to={`/detalletickets/${item.idOrder}`}><img className="tableDetIcon" src={require("../../../images/icons/flechaIcon.png")} alt="Ver detalle del ticket" /></Link></p></td>
               </tr>
             ))}
           </tbody>
