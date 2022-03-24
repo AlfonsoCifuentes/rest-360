@@ -19,6 +19,9 @@ const Cocina = () => {
   const [terminadosCocina, setTerminadosCocina] = useState([]);
   const [servidoCocina, setServidosCocina] = useState([]);
   const [ticketCocina, setTicketCocina] = useState([]);
+  const [noSonTicketTemp, setNoSonTicketTemp] = useState([]);
+  const [noSonTicket, setNoSonTicket] = useState([]);
+  const [pedidosArray, setPedidosArray] = useState([]);
 
   const handleSelectItem = (ev) => {
     setComanda(ev);
@@ -26,12 +29,25 @@ const Cocina = () => {
 
   //Fetch de pdidos al servidor
   useEffect(() => {
-    fetch("http://localhost:3001/api/articles")
+    fetch("http://localhost:3001/api/orders")
       .then((response) => response.json())
       .then((data) => setCocinaDatos(data));
-
-      console.log(cocinaDatos)
   }, []);
+  console.log("cocinadatos--->", cocinaDatos)
+
+  useEffect(()=>{
+    setNoSonTicket(cocinaDatos.filter(numeropedido => numeropedido.status < 5))
+  }, [cocinaDatos])
+  console.log("no son ticket temp--->", noSonTicket)
+
+useEffect(()=>{
+  for (let pedido of noSonTicket){
+    fetch(`http://localhost:3001/api/orders/${pedido.id}`)
+    .then((response) => response.json())
+    .then((data) => console.log("data-->", data))//setPedidosArray([...pedidosArray, data]));
+}},)
+
+console.log("Pedidos Array--->", pedidosArray)
 
   //   useEffect(() => {
   //     // fetch(`http://localhost:3001/api/orderArticles/order/${comanda}`)
@@ -40,21 +56,22 @@ const Cocina = () => {
   //       .then((data) => setComandaDatos(data));
   //   }, [comanda]);
 
-  useEffect(() => {
-    setPedidosCocina(
-      cocinaDatos.filter((plato) => plato.category === "Entrante")
-    );
-    setElaboracionCocina(
-      cocinaDatos.filter((plato) => plato.category === "Primeros")
-    );
-    setTerminadosCocina(
-      cocinaDatos.filter((plato) => plato.category === "Segundos")
-    );
-    setServidosCocina(
-      cocinaDatos.filter((plato) => plato.category === "Postres")
-    );
-    setTicketCocina(cocinaDatos.filter((plato) => plato.category === "Bebidas"));
-  }, [cocinaDatos]);
+
+
+  // useEffect(() => {
+  //   setPedidosCocina(
+  //     noSonTicket.filter((plato) => plato.state === 1)
+  //   );
+  //   setElaboracionCocina(
+  //     noSonTicket.filter((plato) => plato.state === 2)
+  //   );
+  //   setTerminadosCocina(
+  //     noSonTicket.filter((plato) => plato.state === 3)
+  //   );
+  //   setServidosCocina(
+  //     noSonTicket.filter((plato) => plato.state === 4)
+  //   );
+  // }, [noSonTicket]);
 
   console.log("Vemos cocina");
   console.log(pedidosCocina);

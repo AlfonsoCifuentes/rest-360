@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import StandardHeader from 'src/components/StandardHeader/StandardHeader';
 import { useForm } from "../../../Hooks/useForm";
 import { CartContext } from "src/components/CartContext/CartContext";
-import { UserContext } from 'src/context/UserContext';
+
 const PedidoMesa = () => {
 
   //Props para el componente de header genérico: StandardHeader
@@ -20,11 +20,7 @@ const PedidoMesa = () => {
   const {pvp, setPvp}  = useContext(CartContext);
   const {iva, setIva}  = useContext(CartContext);
   const {costNeto, setCostNeto}  = useContext(CartContext);
-  const {dateOrder, setDateOrder}  = useContext(CartContext);
-  
 
-  //Contexto de usuario
-  const {usuario, setUsuario}  = useContext(UserContext);
 
 
   //Estado inicial del formulario
