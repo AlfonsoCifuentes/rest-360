@@ -1,11 +1,22 @@
 import { type } from "@testing-library/user-event/dist/type";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 // import { CartContext } from "../CartContext/CartContext";
 
 import "./styles.scss";
 
-const kitchenItem = (props) => {
+const KitchenItem = (props) => {
   const lineaPedido = props.ordenId;
+
+  const [articulo, setArticulo] = useState({})
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/api/articles/${lineaPedido.articleId}`)
+      .then((response) => response.json())
+      .then((data) => setArticulo(data));
+  }, [lineaPedido.articleId]);
+  
+
+  console.log("Linea Pedido--->", lineaPedido)
 
   //   const {cartItems, setCartItems} = useContext(CartContext)
   //   const [valor, setValor] = useState(0);
@@ -23,15 +34,19 @@ const kitchenItem = (props) => {
   // const handleAddItem = (articulo) => {
   //   setCartItems(articulo)
   // }
-
+//
   // const contador = funcionContador();
 
+  //Fetch de pdidos al servidor
+
+
+  
   return (
     <div className="ItemDiv">
       <div className={props.style}>
         <div className="kitchenItemDiv__card">
           <div className="kitchenItemDiv__card__title">
-            <h1>{lineaPedido.name}</h1>
+            <h1>{articulo.name}</h1>
           </div>
         </div>
 
@@ -40,8 +55,8 @@ const kitchenItem = (props) => {
             <div className="kitchenItemDiv__card__datos__image__roundDiv">
               <img
                 className="roundImage"
-                src={lineaPedido.image}
-                alt={lineaPedido.name}
+                src={articulo.image}
+                alt={articulo.name}
               />
             </div>
           </div>
@@ -49,7 +64,7 @@ const kitchenItem = (props) => {
           <div>
             <div className="kitchenItemDiv__card__titleandtime__divTime">
               <h1 className="kitchenItemDiv__card__titleandtime__divTime__time">
-                {lineaPedido.timeCook} min.
+                {articulo.timeCook} min.
               </h1>
 
               <div className="kitchenItemDiv__card__botones">
@@ -62,7 +77,7 @@ const kitchenItem = (props) => {
                       // onClick={() => handleRemoveItem(props.name)}
                     />
                   ) : (
-                    ""
+                    <p></p>
                   )}
 
                   {props.type === "elaboracion" ? (
@@ -81,7 +96,7 @@ const kitchenItem = (props) => {
                       />
                     </>
                   ) : (
-                    ""
+                    <p></p>
                   )}
 
                   {props.type === "terminado" ? (
@@ -100,7 +115,7 @@ const kitchenItem = (props) => {
                       />
                     </>
                   ) : (
-                    ""
+                    <p></p>
                   )}
                 </div>
               </div>
@@ -112,4 +127,4 @@ const kitchenItem = (props) => {
   );
 };
 
-export default kitchenItem;
+export default KitchenItem;

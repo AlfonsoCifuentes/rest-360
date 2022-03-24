@@ -22,8 +22,9 @@ const Cocina = () => {
   
   const [noSonTicket, setNoSonTicket] = useState([]);
   const [pedidosArray, setPedidosArray] = useState([]);
-  const [pedidosTemp, setPedidosTemp] = useState([]);
-  const [orderArticles, setOrderArticles] = useState([]);
+  const [platejos, setPlatejos] = useState([]);
+  const [finalArray, setFinalArray] = useState([]);
+
 
   const handleSelectItem = (ev) => {
     setComanda(ev);
@@ -43,51 +44,65 @@ const Cocina = () => {
   console.log("no son ticket--->", noSonTicket)
 
 useEffect(()=>{
+  setPedidosArray([]);
+}, [])
+
+//
+useEffect(()=>{
   for (let pedido of noSonTicket){
     fetch(`http://localhost:3001/api/orders/${pedido.id}`)
     .then((response) => response.json())
     .then((data) => pedidosArray.push(data))//setPedidosArray([...pedidosArray, data]));
-}},)
+}}, [noSonTicket, pedidosArray],)
 console.log("Pedidos Array--->", pedidosArray)
 
 
-  //   useEffect(() => {
-  //     // fetch(`http://localhost:3001/api/orderArticles/order/${comanda}`)
-  //     fetch(`http://localhost:3001/api/orderArticles/order/1`)
-  //       .then((response) => response.json())
-  //       .then((data) => setComandaDatos(data));
-  //   }, [comanda]);
+console.log("Pedidoarray articles--->", pedidosArray.articles)
+
+useEffect(()=>{
+  setPlatejos([]);
+}, [])
 
   useEffect(()=> {
-    setPedidosTemp(pedidosArray.map(pedido => pedido.articles))
-  }, [pedidosArray])
-  
-  console.log("pedidos temp--->", pedidosTemp)
-  
-//   useEffect(()=> {
-//     setOrderArticles(pedidosTemp.map(plato => plato.orderArticle))
-//   }, [pedidosTemp])
+    for (let index of pedidosArray){
+      let platoAMeter = index.articles
+      platejos.push(platoAMeter)
+      console.log("index.articles--->", platoAMeter)
+     }
+  },[pedidosArray, platejos])
+  console.log("PLATEJOS--->", platejos)
 
-// console.log("Order Articles--->", orderArticles)
+  useEffect(()=>{
+    setFinalArray([]);
+  }, [])
+
+  useEffect(()=> {
+    for (let index of platejos){
+      console.log("INDEXXXXXXXX->", index)
+      for (let ind of index){
+        finalArray.push(ind.orderArticle)
+      }
+     }
+  },[])
 
 
-  // useEffect(() => {
-  //   setPedidosCocina( 
-  //     orderArticles.filter((plato) => plato.status === 1)
-  //   );
-  //   setElaboracionCocina(
-  //     orderArticles.filter((plato) => plato.status === 2)
-  //   );
-  //   setTerminadosCocina(
-  //     orderArticles.filter((plato) => plato.status === 3)
-  //   );
-  //   setServidosCocina(
-  //     orderArticles.filter((plato) => plato.status === 4)
-  //   );
-  // }, [orderArticles]);
 
-  console.log("Vemos cocina");
-  console.log(pedidosCocina);
+  useEffect(() => {
+    setPedidosCocina( 
+      finalArray.filter((plato) => plato.status === 1)
+    );
+    setElaboracionCocina(
+      finalArray.filter((plato) => plato.status === 2)
+    );
+    setTerminadosCocina(
+      finalArray.filter((plato) => plato.status === 3)
+    );
+    setServidosCocina(
+      finalArray.filter((plato) => plato.status === 4)
+    );
+  },[]);
+
+console.log("PEDIDOS COCINAAAAAAAAAAAA-->", pedidosCocina)
 
   return (
     <div className="mainDiv">
