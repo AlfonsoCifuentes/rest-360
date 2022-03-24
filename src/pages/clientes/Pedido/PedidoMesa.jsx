@@ -103,7 +103,6 @@ const PedidoMesa = () => {
     const userObject = JSON.parse(userString)
     id = userObject.id
   }
-
   
   //POST del pedido y los artículos a la base de datos
   let postOrder = async () => {
